@@ -1,0 +1,9 @@
+@media print {
+    .only-print {
+        display: black;
+    }
+}
+
+form [type='checkbox'] {
+    appearance: auto !important;
+}
