@@ -173,7 +173,7 @@
           </div>
         </div>
         <div class="bg-white text-cyan-900 h-fit p-2 flex-col justify-between w-full lg:w-1/2">
-          <div class="mb-4 flex text-xs justify-between rounded p-2 border border-gray-400">
+          <div class="mb-2 flex text-xs justify-between rounded p-2 border border-gray-400">
             <strong v-if="sale.id && sale.uuid" class="items-center">
               {{ $t('Print Order') }}#
               <a :href="`/print/sale/${sale.uuid}`" target="_blank">{{ sale.tracking }}</a>
@@ -187,6 +187,14 @@
               <span @click.prevent="models.serviceTableModel = true" class="flex space-x-1 cursor-pointer px-2 hover:text-blue-700">
                 <!--<svg-vue class="h-4 w-4 items-center" icon="font-awesome.utensils-solid"></svg-vue>-->
                 {{ currentTable.id ? currentTable.title + ' (' + $t('Edit') + ')' : $t('Select Table') }}
+              </span>
+            </template>
+          </div>
+          <div v-if="partnerStatus != null" class="mb-2 flex text-xs justify-center rounded p-2 border border-gray-400" :class="(partnerStatus==1) ? 'bg-lime-100' : 'bg-red-100'">
+            <template v-if="partnerStatus != null">
+              <span class="flex space-x-1 px-2">
+                <!--<svg-vue class="h-4 w-4 items-center" icon="font-awesome.utensils-solid"></svg-vue>-->
+                {{ $t(partnerMessage) }}
               </span>
             </template>
           </div>
@@ -434,7 +442,7 @@
         <div class="grid grid-cols-1 gap-2">
           <div class="col-span-3">
             <label class="form-label" for="customer_id">{{ $t('Select cutomer') }}</label>
-            <select id="customer_id" class="form-input p-5" v-model="currentCustomer">
+            <select id="customer_id" class="form-input p-5" v-model="currentCustomer" @change="handleCustomerChange">
               <option :value="{ id: null }">{{ $t('Select customer') }}</option>
               <option v-if="customers.length" v-for="(customer, index) in customers" :key="index" :value="customer">{{ customer.name }} {{ customer.email }}</option>
             </select>
@@ -627,6 +635,8 @@ export default {
   },
   data() {
     return {
+      partnerStatus: null,
+      partnerMessage: 'The customer is not a partner',
       paymentByCredit: false,
       loading: false,
       models: {
@@ -935,6 +945,43 @@ export default {
           this.loading = false;
         });
     },
+    handleCustomerChange(){
+      console.log(this.currentCustomer)
+      if (this.currentCustomer.partner == 1){
+        this.$axios
+          .get('http://localhost:8000/api/v1/pos/get-credit-status/',
+          {
+            params: 
+              this.currentCustomer,
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+          })
+          .then((response) => {
+            this.loading = false;
+            this.partnerStatus = response.data.status;
+            console.log(this.partnerStatus)
+            switch(this.partnerStatus){
+              case 0:
+                this.partnerMessage = "There's no credit limit assigned for this customer"
+                break; 
+              case 1:
+                this.partnerMessage = "There's credit available for this customer"
+                break;
+              case -1:
+                this.partnerMessage = "This user has exceeded his credit limit"
+                break;
+              default:
+                this.partnerMessage = "There was an error retrieving data"
+                break;
+            }
+          })
+          .catch((e) => {
+            this.loading = false;
+            console.log("Error retrieving partner's data")
+        });
+      }
+    },
     loadAll(loader = false) {
       this.loading = loader;
       this.clearAll();
@@ -966,6 +1013,8 @@ export default {
       this.serviceTables = [];
       this.unsetCartItems();
       this.clearFilters();
+      this.partnerStatus = null;
+      this.partnerMessage = 'The customer is not a partner';
       this.sale.tax = this.taxSetup;
       this.currentCustomer = { id: null };
       this.currentTable = {
