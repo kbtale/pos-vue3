@@ -519,12 +519,17 @@
 
       <payment-model :show="models.paymentModel" @close="models.paymentModel = false">
         <div class="grid grid-cols-1 gap-2">
-          <div class="col-span-3">
-            <label class="form-label" for="payment_method_id">{{ $t('Payment method') }}</label>
-            <select id="payment_method_id" class="form-input" v-model="sale.payment_method_id">
+          <div class="col-span-3 mt-5 mb-2 flex space-x-1 items-end">
+            <div class="w-full">
+              <label class="form-label" for="payment_method_id">{{ $t('Payment method') }}</label>
+              <select id="payment_method_id" class="form-input" v-model="sale.payment_method_id">
               <option :value="null" disabled>{{ $t('Select payment method') }}</option>
               <option v-for="(payment, index) in paymentMethods" :key="index" :value="payment.id">{{ payment.title }}</option>
-            </select>
+              </select>
+            </div>
+            <div class="w-full">
+              <button type="button" class="col-span-1 p-3 items-center text-center btn btn-app w-full" :disabled="currentCustomer.partner != true" @click.prevent="setCredit">Credit</button>
+            </div>
           </div>
           <div class="col-span-3 mb-2 flex space-x-1">
             <div class="w-full">
@@ -592,7 +597,7 @@
         </div>
         <div class="flex space-x-2 py-2">
           <button class="btn btn-red p-5 w-full" @click.prevent="models.paymentModel = false">{{ $t('Cancel') }}</button>
-          <button class="btn btn-green p-5 w-full" @click.prevent="checkout">{{ $t('Complete') }}</button>
+          <button class="btn btn-green p-5 w-full" @click.prevent="checkout" :disabled="sale.recipient_amount <= 0 && (paymentByCredit == false)">{{ $t('Complete') }}</button>
         </div>
       </payment-model>
     </div>
@@ -622,6 +627,7 @@ export default {
   },
   data() {
     return {
+      paymentByCredit: false,
       loading: false,
       models: {
         modifiersModel: false,
@@ -1190,6 +1196,10 @@ export default {
     },
     onSignatureModelOpen() {
       //this.$refs.signaturePad.resize();
+    },
+    setCredit(){
+      this.sale.payment_method_id = null;
+      this.paymentByCredit = true;
     },
     storeSignature() {
       let formData = new FormData();

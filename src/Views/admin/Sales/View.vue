@@ -33,7 +33,7 @@
           <ol class="relative border-l border-gray-500 my-2">
             <li class="mb-2 ml-6">
               <div class="items-center rounded-md justify-between p-3 bg-white border border-gray-400 shadow-sm sm:flex">
-                <time class="mb-1 text-xs font-normal text-gray-400 sm:order-last sm:mb-0">{{ sale.created_at }}</time>
+                <time class="mb-1 text-xs font-normal text-gray-400 sm:order-last sm:mb-0">{{ created_at }}</time>
                 <div class="text-sm font-normal text-gray-500 dark:text-gray-300">
                   {{ $t('Created at') }}
                 </div>
@@ -85,7 +85,7 @@
             </li>
             <li class="mb-10 ml-6">
               <div class="items-center rounded-md justify-between p-3 bg-white border border-gray-400 shadow-sm sm:flex">
-                <time class="mb-1 text-xs font-normal text-gray-400 sm:order-last sm:mb-0">{{ sale.updated_at }}</time>
+                <time class="mb-1 text-xs font-normal text-gray-400 sm:order-last sm:mb-0">{{ updated_at }}</time>
                 <div class="text-sm font-normal text-gray-500 dark:text-gray-300">
                   {{ $t('Last updated at') }}
                 </div>
@@ -196,6 +196,32 @@ export default {
   components: {
     //barcode: VueBarcode,
     SaleDeleteModel: confirmationModel,
+  },
+  computed: {
+    created_at() {
+      let timestamp = this.sale.created_at;
+      let date = new Date(timestamp);
+
+      let formattedTimestamp = date.getFullYear() + '-' +
+          ('00' + (date.getMonth()+1)).slice(-2) + '-' +
+          ('00' + date.getDate()).slice(-2) + ' ' + 
+          ('00' + date.getHours()).slice(-2) + ':' + 
+          ('00' + date.getMinutes()).slice(-2) + ':' + 
+          ('00' + date.getSeconds()).slice(-2);
+      return formattedTimestamp
+    },
+    updated_at() {
+      let timestamp = this.sale.updated_at;
+      let date = new Date(timestamp);
+
+      let formattedTimestamp = date.getFullYear() + '-' +
+          ('00' + (date.getMonth()+1)).slice(-2) + '-' +
+          ('00' + date.getDate()).slice(-2) + ' ' + 
+          ('00' + date.getHours()).slice(-2) + ':' + 
+          ('00' + date.getMinutes()).slice(-2) + ':' + 
+          ('00' + date.getSeconds()).slice(-2);
+      return formattedTimestamp
+    }
   },
   data() {
     return {
