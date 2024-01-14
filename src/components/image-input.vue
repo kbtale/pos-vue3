@@ -12,7 +12,7 @@
     </div>
     <div class="image-input-empty">
       <p class="image-input-empty-text">
-        <svg-vue class="image-input-icon" :icon="['fas', 'cloud-upload-light']"></svg-vue>
+        <svg-vue class="image-input-icon" :icon="['fas', 'cloud-upload']"></svg-vue>
         {{ $t('Drag and drop a file here or click') }}
       </p>
     </div>

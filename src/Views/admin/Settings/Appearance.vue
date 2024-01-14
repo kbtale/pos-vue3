@@ -42,8 +42,12 @@
   </main>
 </template>
 <script>
+import ImageInput from '../../../components/image-input.vue';
 export default {
   name: 'appearance',
+  components: {
+    'image-input': ImageInput,
+  },
   data() {
     return {
       loading: true,

@@ -156,7 +156,7 @@ import NoContent from '../../../components/no-content.vue'
 export default {
   name: 'list',
   components: {
-    NoContent: 'no-content',
+    'no-content': NoContent,
   },
   metaInfo() {
     return {

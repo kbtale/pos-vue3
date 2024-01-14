@@ -39,10 +39,17 @@
     <menu-item v-show="openSection === 'advancedGates'" label="Service Tables" mobile="mobile" :icon="['fas', 'star']" to="/admin/service-tables"/>
     <menu-item v-show="openSection === 'advancedGates'" label="Payment methods" mobile="mobile" :icon="['fas', 'dollar-sign']" to="/admin/payment-methods"/>
     <menu-item v-show="openSection === 'advancedGates'" label="Backup" mobile="mobile" :icon="['fas', 'database']" to="/admin/backup"/>
-    <menu-item @click="openSection = openSection === 'settingsGates' ? null : 'settingsGates'" label="Settings" class="py-2 px-4 select-none text-orange-500 hover:bg-orange-500 hover:text-slate-100 text-lg cursor-pointer" to="/admin/Settings"/>
-    <menu-item @click="openSection = openSection === 'languageGates' ? null : 'languageGates'" label="Languages" class="py-2 px-4 select-none text-orange-500 hover:bg-orange-500 hover:text-slate-100 text-lg cursor-pointer" to="/admin/Languages"/>
-    <!--<menu-item v-show="openSection === 'settingsGates'" label="Languages" mobile="mobile" :icon="font-awesome.globe-solid" to="/admin/Languages"/>-->
-  </div>
+    <router-link to="/admin/settings" custom v-slot="{ navigate, isActive, isExactActive }">
+      <div @click="openSection = openSection === 'settingsGates' ? null : 'settingsGates'; navigate()" :class="[isActive && 'active', isExactActive && 'exact-active']" class="py-2 px-4 select-none text-orange-500 hover:bg-orange-500 hover:text-slate-100 text-lg cursor-pointer">
+        Settings
+      </div>
+    </router-link>
+    <router-link to="/admin/languages" custom v-slot="{ navigate, isActive, isExactActive }">
+      <div @click="openSection = openSection === 'languageGates' ? null : 'languageGates'; navigate()" :class="[isActive && 'active', isExactActive && 'exact-active']" class="py-2 px-4 select-none text-orange-500 hover:bg-orange-500 hover:text-slate-100 text-lg cursor-pointer">
+        Languages
+      </div>
+    </router-link>
+    </div>
 </template>
 
 <script>

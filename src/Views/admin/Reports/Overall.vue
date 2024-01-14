@@ -299,7 +299,7 @@ export default {
   },
   components: {
     //barcode: VueBarcode,
-    NoContent: 'no-content',
+    'no-content': NoContent,
   },
   data() {
     return {

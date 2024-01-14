@@ -55,12 +55,16 @@
   </main>
 </template>
 <script>
+import ImageInput from '../../../components/image-input.vue';
 export default {
   name: 'New',
   metaInfo() {
     return {
       title: this.$t('Create category'),
     };
+  },
+  components: {
+    'image-input': ImageInput,
   },
   data() {
     return {

@@ -191,7 +191,7 @@ export default {
   },
   components: {
     ProductsDeleteModel: confirmationModel,
-    NoContent: 'no-content',
+    'no-content': NoContent,
   },
   data() {
     return {

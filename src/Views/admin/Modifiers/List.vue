@@ -179,7 +179,7 @@ export default {
   },
   components: {
     ModifierDeleteModel: confirmationModel,
-    NoContent: 'no-content'
+    'no-content': NoContent
   },
   data() {
     return {

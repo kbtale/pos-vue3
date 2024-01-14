@@ -65,6 +65,7 @@
 </template>
 <script>
 import confirmationModel from '../../../layouts/admin/confirmation.vue';
+import ImageInput from '../../../components/image-input.vue';
 export default {
   name: 'Edit',
   metaInfo() {
@@ -74,6 +75,7 @@ export default {
   },
   components: {
     CategoryDeleteModel: confirmationModel,
+    'image-input': ImageInput,
   },
   data() {
     return {

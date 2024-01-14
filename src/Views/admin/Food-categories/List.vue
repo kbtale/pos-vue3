@@ -168,7 +168,7 @@ export default {
   },
   components: {
     CategoryDeleteModel: confirmationModel,
-    NoContent: 'no-content'
+    'no-content': NoContent
   },
   data() {
     return {

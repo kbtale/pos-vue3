@@ -77,7 +77,7 @@ export default {
   components: {
     RestoreConfirmationModel: confirmationModel,
     DeleteConfirmationModel: confirmationModel,
-    NoContent: 'no-content',
+    'no-content': NoContent,
   },
   metaInfo() {
     return {
@@ -128,11 +128,13 @@ export default {
         });
     },
     restoreBackup() {
+      /*
       this.$notify({
         title: this.$t('Be patient').toString(),
         text: this.$t('Backup restoring process has been started !').toString(),
         type: 'info',
       });
+      */
       this.loading = true;
       this.restoreModel = false;
       this.$axios
@@ -154,20 +156,28 @@ export default {
         });
     },
     takeBackup() {
+      /*
       this.$notify({
         title: this.$t('Attention').toString(),
         text: this.$t('Backup generating process has been started').toString(),
         type: 'info',
       });
+      */
       this.loading = true;
       this.$axios
-        .post(route('backup.generate'))
+        .post('http://localhost:8000/api/v1/admin/backups/', {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        })
         .then((response) => {
+          /*
           this.$notify({
             title: this.$t('Success').toString(),
             text: response.data.message.toString(),
             type: 'success',
           });
+          */
           this.getBackups();
         })
         .catch(() => {

@@ -100,6 +100,7 @@
 <script>
 import confirmationModel from '../../../layouts/admin/confirmation.vue';
 import IngredientConsumption from '../../../Components/ingredient-consumption.vue';
+import ImageInput from '../../../components/image-input.vue';
 export default {
   name: 'Edit',
   metaInfo() {
@@ -110,6 +111,7 @@ export default {
   components: {
     DeleteModel: confirmationModel,
     'ingredient-consumption': IngredientConsumption,
+    'image-input': ImageInput,
   },
   data() {
     return {

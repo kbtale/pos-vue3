@@ -67,7 +67,7 @@ export default {
     };
   },
   components: {
-    NoContent: 'no-content'
+    'no-content': NoContent
   },
   data() {
     return {

@@ -18,7 +18,6 @@
         <ButtonElement class="btn btn-app" id="submit-login" @click="submit()" :full="true">
             {{ $t('Sign In') }}
         </ButtonElement>  
-        <!--<p class="text-sm" v-if="$store.getters['app/getSettings.register']">-->
         <StaticElement class="text-sm">
           {{ $t("Don't have an account?") }}
           <router-link class="align-baseline font-bold text-blue-700 hover:text-blue-900" to="/auth/register">{{ $t('Create account') }} </router-link>

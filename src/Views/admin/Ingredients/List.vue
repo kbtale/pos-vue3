@@ -194,7 +194,7 @@ export default {
   },
   components: {
     IngredientsDeleteModel: confirmationModel,
-    NoContent: 'no-content'
+    'no-content': NoContent
   },
   data() {
     return {

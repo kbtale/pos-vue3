@@ -106,7 +106,11 @@ const state = {
       console.log("Login mutation committed");
     },
     LOG_OUT(state) {
-      axios.post('http://localhost:8000/api/v1/auth/logout').then(() => {
+      axios.post('http://localhost:8000/api/v1/auth/logout', {}, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      }).then(() => {
         state.user = false;
       });
       //delete window.axios.defaults.headers.common.Authorization;
