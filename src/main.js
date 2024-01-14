@@ -11,6 +11,8 @@ import vueformConfig from '../vueform.config'
 import SvgVue from './components/global/svgVue.vue'
 import VueClickAway from "vue3-click-away"
 import { VueReCaptcha } from 'vue-recaptcha-v3'
+import { LoadingPlugin } from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/css/index.css';
 import router from './router.js'
 
 import axios from 'axios'
@@ -65,5 +67,5 @@ const Filters = {
 
 app.config.globalProperties.$axios = axios
 app.component('svg-vue', SvgVue)
-app.use(VueClickAway).use(VueAxios, axios).use(Filters)
+app.use(VueClickAway).use(VueAxios, axios).use(Filters).use(LoadingPlugin)
 app.use(router).use(i18n).use(store).use(Vueform, vueformConfig).mount('#app')

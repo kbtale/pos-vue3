@@ -55,69 +55,6 @@
     </div>
     </div>
 </div>
-<!--
-  <div>
-    <div>
- <div>
- <div>
- <div>
- <svg-vue icon="font-awesome.poll-h-solid"></svg-vue>
-            <h1>{{ $t('Sale orders') }}</h1>
-          </div>
-          <div>
-            <button @click="openFiltersSidebar">
-              {{ $t('Filters') }}
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <loading :status="loading"></loading>
-    <div v-if="saleList.length > 0">
-      <div v-if="$vuetify.breakpoint.smAndDown">
-        <ul>
-          <li v-for="(sale, index) in saleList" :key="index">
-            <router-link :to="'/admin/sales/' + sale.uuid + '/view'">
-              <div>ID # {{ sale.id }}</div>
-              <div v-if="sale.customer">{{ $t('Customer') }} : {{ sale.customer.name }}</div>
-              <div>{{ $t('Cost') }} : {{ sale.cart_total_cost }} {{ $t('Price') }} : {{ sale.cart_total_price }}</div>
-            </router-link>
-          </li>
-        </ul>
-      </div>
-      <div v-else>
-        <table>
-          <thead>
-            <tr>
-              <th>{{ $t('Tracking') }}</th>
-              <th>{{ $t('Information') }}</th>
-              <th>{{ $t('Table') }}/{{ $t('Type') }}</th>
-              <th>{{ $t('Status') }}</th>
-              <th>{{ $t('Booked at') }}</th>
-              <th>{{ $t('Prepared at') }}</th>
-              <th>{{ $t('Completed at') }}</th>
-            </tr>
-          </thead>
-          <tbody>
-            <router-link v-for="(sale, index) in saleList" :to="'/admin/sales/' + sale.uuid + '/view'" :key="index" tag="tr">
-              <td>{{ sale.tracking }}</td>
-              <td>
-                <div>ID # {{ sale.id }}</div>
-                <div v-if="sale.customer">{{ $t('Customer') }} : {{ sale.customer.name }}</div>
-                <div>{{ $t('Cost') }} : {{ sale.cart_total_cost }} {{ $t('Price') }} : {{ sale.cart_total_price }}</div>
-              </td>
-              <td>{{ sale.table }}/{{ decodeOrderType(sale.order_type) }}</td>
-              <td>{{ sale.progress }}%</td>
-              <td>{{ sale.took_at }}</td>
-              <td>{{ sale.prepared_at }}</td>
-              <td>{{ sale.completed_at }}</td>
-            </router-link>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
--->
 </template>
 <script>
 import { ref } from 'vue';

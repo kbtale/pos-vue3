@@ -53,12 +53,16 @@
   </main>
 </template>
 <script>
+import NoContent from '../../../components/no-content.vue'
 export default {
   name: 'Tax',
   metaInfo() {
     return {
       title: this.$t('Tax report'),
     };
+  },
+  components: {
+    NoContent: 'no-content'
   },
   data() {
     return {

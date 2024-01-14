@@ -180,6 +180,7 @@
 </template>
 <script>
 import confirmationModel from '../../../layouts/admin/confirmation.vue';
+import NoContent from '../../../components/no-content.vue'
 
 export default {
   name: 'list',
@@ -190,6 +191,7 @@ export default {
   },
   components: {
     ProductsDeleteModel: confirmationModel,
+    NoContent: 'no-content',
   },
   data() {
     return {

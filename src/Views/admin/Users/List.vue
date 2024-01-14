@@ -153,12 +153,16 @@
   </main>
 </template>
 <script>
+import NoContent from '../../../components/no-content.vue'
 export default {
   name: 'list',
   metaInfo() {
     return {
       title: this.$t('Users'),
     };
+  },
+  components: {
+    NoContent: 'no-content'
   },
   data() {
     return {

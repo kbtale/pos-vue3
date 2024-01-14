@@ -58,12 +58,16 @@
   </main>
 </template>
 <script>
+import NoContent from '../../../components/no-content.vue'
 export default {
   name: 'List',
   metaInfo() {
     return {
       title: this.$t('Payment methods'),
     };
+  },
+  components: {
+    NoContent: 'no-content'
   },
   data() {
     return {

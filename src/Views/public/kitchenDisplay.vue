@@ -4,7 +4,7 @@
       <loading :status="loading"></loading>
       <div class="p-2 bg-white mb-1 rounded shadow-md">
         <div class="grid grid-cols-3 lg:grid-cols-11 gap-1">
-          <router-link to="/pos" class="text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md">
+          <router-link to="/pos" class="flex flex-col text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md">
             <svg-vue class="content-title-icon mx-auto" :icon="['fas', 'reply-all']"></svg-vue>
             <span class="text-xs">{{ $t('Back') }}</span>
           </router-link>
@@ -39,7 +39,7 @@
             <option value="bg-purple-100">{{ $t('Background') }} : {{ $t('Normal purple') }}</option>
             <option value="bg-purple-200">{{ $t('Background') }} : {{ $t('High purple') }}</option>
           </select>
-          <button class="text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md" @click.prevent="getOrdersToPrepare">
+          <button class="flex flex-col items-center text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md" @click.prevent="getOrdersToPrepare">
             <svg-vue class="content-title-icon mx-auto" :icon="['fas', 'rotate']"></svg-vue>
             <span class="text-xs">{{ $t('Reload') }}</span>
           </button>

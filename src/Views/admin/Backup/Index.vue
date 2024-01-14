@@ -70,12 +70,14 @@
 </template>
 <script>
 import confirmationModel from '../../../layouts/admin/confirmation.vue';
+import NoContent from '../../../components/no-content.vue'
 
 export default {
   name: 'index',
   components: {
     RestoreConfirmationModel: confirmationModel,
     DeleteConfirmationModel: confirmationModel,
+    NoContent: 'no-content',
   },
   metaInfo() {
     return {
