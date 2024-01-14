@@ -3,12 +3,12 @@
     <div class="max-w-1/6 mx-auto p-2">
       <div class="p-2 bg-white mb-1 rounded">
         <div class="grid sm:grid-cols-3 md:grid-cols-12 gap-2">
-          <router-link to="/" class="text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md">
-            <svg-vue class="content-title-icon mx-auto" :icon="['fas', 'reply-all']"></svg-vue>
+          <router-link to="/" class="flex flex-col items-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md">
+            <svg-vue class="content-title-icon" :icon="['fas', 'reply-all']"></svg-vue>
             <span class="text-xs">{{ $t('Back') }}</span>
           </router-link>
-          <button class="text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md" @click.prevent="loadAll(true)">
-            <svg-vue class="content-title-icon mx-auto" :icon="['fas', 'circle-xmark']"></svg-vue>
+          <button class="flex flex-col items-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md" @click.prevent="loadAll(true)">
+            <svg-vue class="content-title-icon" :icon="['fas', 'circle-xmark']"></svg-vue>
             <span class="text-xs">{{ $t('Clear All') }}</span>
           </button>
           <select v-model="sale.order_type" class="col-span-3 border border-gray-400 p-1 cursor-pointer mb-1 rounded-md px-2">
@@ -24,7 +24,7 @@
             :placeholder="$t('Search product by names')"
           />
 
-          <button class="text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md" @click.prevent="models.notesModel = true">
+          <button class="flex flex-col items-center text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md" @click.prevent="models.notesModel = true">
             <svg-vue class="content-title-icon mx-auto" :icon="['fas', 'file-lines']"></svg-vue>
             <span class="text-xs">{{ $t('Notes') }}</span>
           </button>
@@ -33,21 +33,20 @@
             type="button"
             v-if="sale.progress > 99"
             @click.prevent="processCheckout"
-            class="text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md"
-          >
+            class="flex flex-col text-center border border-gray-400 p-1 items-center cursor-pointer hover:bg-gray-100 mb-1 rounded-md">
             <svg-vue class="content-title-icon mx-auto" :icon="['fas', 'credit-card']"></svg-vue>
             <span class="text-xs"> {{ $t('Payment') }} </span>
           </button>
 
-          <router-link v-if="!sale.uuid" to="/kitchen-display" class="text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md">
+          <router-link v-if="!sale.uuid" to="/kitchen-display" class="flex flex-col text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md">
             <svg-vue class="content-title-icon mx-auto" :icon="['fas', 'utensils']"></svg-vue>
             <span class="text-xs">{{ $t('kitchen') }}</span>
           </router-link>
-          <button type="button" @click.prevent="getAllSubmittedOrders" class="text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md">
+          <button type="button" @click.prevent="getAllSubmittedOrders" class="flex flex-col items-center text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md">
             <svg-vue class="content-title-icon mx-auto" :icon="['fas', 'rectangle-list']"></svg-vue>
             <span class="text-xs">{{ $t('In Process') }}</span>
           </button>
-          <button class="text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md" v-if="cartItems.length > 0" @click.prevent="showSignatureModel()">
+          <button class="flex flex-col items-center text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md" v-if="cartItems.length > 0" @click.prevent="showSignatureModel()">
             <svg-vue class="content-title-icon mx-auto" :icon="['fas', 'floppy-disk']"></svg-vue>
             <span class="text-xs"> {{ sale.uuid ? $t('Update') : $t('Submit') }} </span>
           </button>
