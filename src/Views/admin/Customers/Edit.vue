@@ -80,7 +80,7 @@
   </main>
 </template>
 <script>
-import confirmationModel from '../../../Components/layout/admin/confirmation.vue';
+import confirmationModel from '../../../layouts/admin/confirmation.vue';
 export default {
   name: 'edit',
   metaInfo() {

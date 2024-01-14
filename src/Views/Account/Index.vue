@@ -159,7 +159,7 @@
   </main>
 </template>
 <script>
-import Navbar from '../../Components/layout/shared/navbar.vue';
+import Navbar from '../../layouts/shared/navbar.vue';
 
 export default {
   name: 'Index',

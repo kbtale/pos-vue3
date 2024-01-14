@@ -7,7 +7,7 @@
     </div>
   </template>
   <script>
-  import Navbar from '../Components/layout/shared/navbar.vue';
+  import Navbar from './shared/navbar.vue';
   
   export default {
     name: 'public',

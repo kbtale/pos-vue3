@@ -643,7 +643,7 @@
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import model from '../../components/model.vue';
-import confirmationModel from '../../Components/layout/admin/confirmation.vue';
+import confirmationModel from '../../layouts/admin/confirmation.vue';
 import inputSelect from '../../components/input-select.vue';
 import { VueSignaturePad } from 'vue-signature-pad';
 

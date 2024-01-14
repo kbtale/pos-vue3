@@ -185,7 +185,7 @@
 </template>
 <script>
 //import VueBarcode from 'vue-barcode';
-import confirmationModel from '../../../Components/layout/admin/confirmation.vue';
+import confirmationModel from '../../../layouts/admin/confirmation.vue';
 
 export default {
   metaInfo() {
