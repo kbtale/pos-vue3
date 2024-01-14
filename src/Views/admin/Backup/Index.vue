@@ -3,7 +3,7 @@
     <div class="my-6 max-w-1/6 mx-auto px-4 sm:px-6 lg:px-8">
       <div class="md:flex md:items-center md:justify-between">
         <div class="flex min-w-0">
-          <svg-vue class="content-title-icon" :icon="['fas', 'database-solid']"></svg-vue>
+          <svg-vue class="content-title-icon" :icon="['fas', 'database']"></svg-vue>
           <h1 class="content-title">
             {{ $t('Database backups') }}
           </h1>
@@ -32,7 +32,7 @@
                             {{ backup.name }}
                           </div>
                           <div class="mt-2 flex items-center text-sm leading-5 text-gray-900">
-                            <svg-vue class="flex-shrink-0 mr-1.5 h-4 w-4 text-gray-400" :icon="['fas', 'database-solid']"></svg-vue>
+                            <svg-vue class="flex-shrink-0 mr-1.5 h-4 w-4 text-gray-400" :icon="['fas', 'database']"></svg-vue>
                             <span class="truncate">{{ backup.size }} ({{ backup.uuid }})</span>
                           </div>
                         </div>

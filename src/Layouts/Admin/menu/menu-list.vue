@@ -17,7 +17,7 @@
     <div @click="openSection = openSection === 'expenseGates' ? null : 'expenseGates'" class="py-2 px-4 select-none text-orange-500 hover:bg-orange-500 hover:text-slate-100 text-lg cursor-pointer">
       Expenses
     </div>
-    <menu-item v-show="openSection === 'expenseGates'" label="Expense Types" mobile="mobile" :icon="['fas', 'sitemap']"to="/admin/expense-types"/>
+    <menu-item v-show="openSection === 'expenseGates'" label="Expense Types" mobile="mobile" :icon="['fas', 'sitemap']" to="/admin/expense-types"/>
     <menu-item v-show="openSection === 'expenseGates'" label="Expenses" mobile="mobile" :icon="['fas', 'file-invoice']" to="/admin/expenses"/>
     <div @click="openSection = openSection === 'peopleGates' ? null : 'peopleGates'" class="py-2 px-4 select-none text-orange-500 hover:bg-orange-500 hover:text-slate-100 text-lg cursor-pointer">
       People

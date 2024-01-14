@@ -17,7 +17,7 @@ export default {
       require: true,
     },
     icon: {
-      type: String,
+      type: Array,
       require: true,
     },
     label: {
