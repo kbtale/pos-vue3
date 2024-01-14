@@ -3,7 +3,7 @@
     <div class="my-6 max-w-1/6 mx-auto px-4 sm:px-6 lg:px-8">
       <div class="md:flex md:items-center md:justify-between">
         <div class="flex min-w-0">
-          <!--<svg-vue class="content-title-icon" icon="font-awesome.cogs-solid"></svg-vue>-->
+          <svg-vue class="content-title-icon" :icon="['fas', 'gears']"></svg-vue>
           <h1 class="content-title">
             {{ $t('App Settings') }}
           </h1>
@@ -20,7 +20,7 @@
           >
             <div class="flex-1 flex flex-col p-6">
               <div class="flex-shrink-0 mx-auto">
-                <!--<svg-vue class="block-link-icon" icon="font-awesome.cog-regular"></svg-vue>-->
+                <svg-vue class="block-link-icon" :icon="['fas', 'gear']"></svg-vue>
               </div>
               <h3 class="form-description-head">
                 {{ $t('General') }}
@@ -37,7 +37,7 @@
           >
             <div class="flex-1 flex flex-col p-6">
               <div class="flex-shrink-0 mx-auto">
-                <!--<svg-vue class="block-link-icon" icon="font-awesome.inbox-out-duotone"></svg-vue>-->
+                <svg-vue class="block-link-icon" :icon="['fas', 'envelope-open-text']"></svg-vue>
               </div>
               <h3 class="form-description-head">
                 {{ $t('Outgoing mail') }}
@@ -55,7 +55,7 @@
           >
             <div class="flex-1 flex flex-col p-6">
               <div class="flex-shrink-0 mx-auto">
-                <!--<svg-vue class="block-link-icon" icon="font-awesome.palette-solid"></svg-vue>-->
+                <svg-vue class="block-link-icon" :icon="['fas', 'palette']"></svg-vue>
               </div>
               <h3 class="form-description-head">
                 {{ $t('Appearance') }}
@@ -72,7 +72,7 @@
           >
             <div class="flex-1 flex flex-col p-2">
               <div class="flex-shrink-0 mx-auto">
-                <!--<svg-vue class="block-link-icon" icon="font-awesome.dollar-sign-solid"></svg-vue>-->
+                <svg-vue class="block-link-icon" :icon="['fas', 'dollar-sign']"></svg-vue>
               </div>
               <h3 class="form-description-head">
                 {{ $t('Currency') }}
@@ -85,7 +85,7 @@
           <router-link class="col-span-1 flex flex-col text-center cursor-pointer bg-white shadow rounded-md border border-cyan-900" tag="li" to="/admin/settings/tax">
             <div class="flex-1 flex flex-col p-2">
               <div class="flex-shrink-0 mx-auto">
-                <!--<svg-vue class="block-link-icon" icon="font-awesome.money-check-alt-solid"></svg-vue>-->
+                <svg-vue class="block-link-icon" :icon="['fas', 'money-check-dollar']"></svg-vue>
               </div>
               <h3 class="form-description-head">
                 {{ $t('Tax') }}
@@ -102,7 +102,7 @@
           >
             <div class="flex-1 flex flex-col p-6">
               <div class="flex-shrink-0 mx-auto">
-                <!--<svg-vue class="block-link-icon" icon="font-awesome.fingerprint-duotone"></svg-vue>-->
+                <svg-vue class="block-link-icon" :icon="['fas', 'fingerprint']"></svg-vue>
               </div>
               <h3 class="form-description-head">
                 {{ $t('Authentication') }}
@@ -119,7 +119,7 @@
           >
             <div class="flex-1 flex flex-col p-6">
               <div class="flex-shrink-0 mx-auto">
-                <!--<svg-vue class="block-link-icon" icon="font-awesome.robot-duotone"></svg-vue>-->
+                <svg-vue class="block-link-icon" :icon="['fas', 'robot']"></svg-vue>
               </div>
               <h3 class="form-description-head">
                 {{ $t('Captcha') }}
@@ -136,7 +136,7 @@
           >
             <div class="flex-1 flex flex-col p-6">
               <div class="flex-shrink-0 mx-auto">
-                <!--<svg-vue class="block-link-icon" icon="font-awesome.language-duotone"></svg-vue>-->
+                <svg-vue class="block-link-icon" :icon="['fas', 'language']"></svg-vue>
               </div>
               <h3 class="form-description-head">
                 {{ $t('Localization') }}

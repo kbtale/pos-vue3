@@ -3,7 +3,7 @@
     <div class="m-auto text-gray-500">
       <div class="grid grid-cols-1 justify-items-center h-full w-full">
         <div class="flex justify-center items-center">
-          <!--<svg-vue class="h-full h-auto w-24 mb-6" icon="undraw.browsing"></svg-vue>-->
+          <svg-vue class="h-full h-auto w-24 mb-6" :icon="['fas', 'triangle-exclamation']"></svg-vue>
         </div>
         <div class="flex justify-center items-center">
           <div class="w-full font-semibold">

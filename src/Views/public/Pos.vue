@@ -4,11 +4,11 @@
       <div class="p-2 bg-white mb-1 rounded">
         <div class="grid sm:grid-cols-3 md:grid-cols-12 gap-2">
           <router-link to="/" class="text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md">
-            <!--<svg-vue class="content-title-icon mx-auto" icon="font-awesome.reply-all-solid"></svg-vue>-->
+            <svg-vue class="content-title-icon mx-auto" :icon="['fas', 'reply-all']"></svg-vue>
             <span class="text-xs">{{ $t('Back') }}</span>
           </router-link>
           <button class="text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md" @click.prevent="loadAll(true)">
-            <!--<svg-vue class="content-title-icon mx-auto" icon="font-awesome.times-circle-light"></svg-vue>-->
+            <svg-vue class="content-title-icon mx-auto" :icon="['fas', 'circle-xmark']"></svg-vue>
             <span class="text-xs">{{ $t('Clear All') }}</span>
           </button>
           <select v-model="sale.order_type" class="col-span-3 border border-gray-400 p-1 cursor-pointer mb-1 rounded-md px-2">
@@ -25,7 +25,7 @@
           />
 
           <button class="text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md" @click.prevent="models.notesModel = true">
-            <!--<svg-vue class="content-title-icon mx-auto" icon="font-awesome.file-alt-regular"></svg-vue>-->
+            <svg-vue class="content-title-icon mx-auto" :icon="['fas', 'file-lines']"></svg-vue>
             <span class="text-xs">{{ $t('Notes') }}</span>
           </button>
 
@@ -35,20 +35,20 @@
             @click.prevent="processCheckout"
             class="text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md"
           >
-            <!--<svg-vue class="content-title-icon mx-auto" icon="font-awesome.save-solid"></svg-vue>-->
+            <svg-vue class="content-title-icon mx-auto" :icon="['fas', 'credit-card']"></svg-vue>
             <span class="text-xs"> {{ $t('Payment') }} </span>
           </button>
 
           <router-link v-if="!sale.uuid" to="/kitchen-display" class="text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md">
-            <!--<svg-vue class="content-title-icon mx-auto" icon="font-awesome.utensils-solid"></svg-vue>-->
+            <svg-vue class="content-title-icon mx-auto" :icon="['fas', 'utensils']"></svg-vue>
             <span class="text-xs">{{ $t('kitchen') }}</span>
           </router-link>
           <button type="button" @click.prevent="getAllSubmittedOrders" class="text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md">
-            <!--<svg-vue class="content-title-icon mx-auto" icon="font-awesome.list-alt-regular"></svg-vue>-->
+            <svg-vue class="content-title-icon mx-auto" :icon="['fas', 'rectangle-list']"></svg-vue>
             <span class="text-xs">{{ $t('In Process') }}</span>
           </button>
           <button class="text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md" v-if="cartItems.length > 0" @click.prevent="showSignatureModel()">
-            <!--<svg-vue class="content-title-icon mx-auto" icon="font-awesome.save-solid"></svg-vue>-->
+            <svg-vue class="content-title-icon mx-auto" :icon="['fas', 'floppy-disk']"></svg-vue>
             <span class="text-xs"> {{ sale.uuid ? $t('Update') : $t('Submit') }} </span>
           </button>
           <button
@@ -57,7 +57,7 @@
             @click.prevent="models.deleteModel = true"
             class="text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md"
           >
-            <!--<svg-vue class="content-title-icon mx-auto" icon="font-awesome.save-solid"></svg-vue>-->
+            <svg-vue class="content-title-icon mx-auto" :icon="['fas', 'trash']"></svg-vue>
             <span class="text-xs"> {{ $t('Remove') }} </span>
           </button>
         </div>
@@ -145,7 +145,7 @@
                           {{ $t('Last update') }} : {{ sale.updated_at }}
                         </div>
                       </div>
-                      <svg-vue class="ml-4 h-5 w-5 text-gray-400 group-hover:text-gray-500 group-focus:text-gray-600 transition ease-in-out duration-150" icon="font-awesome.angle-right-regular"></svg-vue>
+                      <svg-vue class="ml-4 h-5 w-5 text-gray-400 group-hover:text-gray-500 group-focus:text-gray-600 transition ease-in-out duration-150" :icon="['fas', 'angle-right']"></svg-vue>
                     </router-link>
                   </li>
                 </ul>
@@ -154,7 +154,7 @@
             <template v-else>
               <div class="select-none bg-blue-gray-100 rounded flex flex-wrap content-center justify-center pt-24 opacity-25">
                 <div class="w-full text-center">
-                  <!--<svg-vue class="h-24 w-24 inline-block" icon="font-awesome.exclamation-triangle-duotone"></svg-vue>-->
+                  <svg-vue class="h-24 w-24 inline-block" :icon="['fas', 'triangle-exclamation']"></svg-vue>
                   <p class="text-xl">
                     {{ $t('Attention! record not found') }}
                   </p>
@@ -207,13 +207,13 @@
               <a :href="`/print/sale/${sale.uuid}`" target="_blank">{{ sale.tracking }}</a>
             </strong>
             <span @click.prevent="models.customersModel = true" class="flex space-x-1 cursor-pointer px-2 hover:text-blue-700">
-              <!--<svg-vue class="h-4 w-4 items-center" icon="font-awesome.user-solid"></svg-vue>-->
+              <svg-vue class="h-4 w-4 items-center" :icon="['fas', 'user']"></svg-vue>
               {{ currentCustomer.id > 0 ? currentCustomer.name + ' (' + $t('Edit') + ')' : $t('Select customer') }}
             </span>
 
             <template v-if="sale.order_type === 'dining'">
               <span @click.prevent="models.serviceTableModel = true" class="flex space-x-1 cursor-pointer px-2 hover:text-blue-700">
-                <!--<svg-vue class="h-4 w-4 items-center" icon="font-awesome.utensils-solid"></svg-vue>-->
+                <svg-vue class="h-4 w-4 items-center" :icon="['fas', 'utensils']"></svg-vue>
                 {{ currentTable.id ? currentTable.title + ' (' + $t('Edit') + ')' : $t('Select Table') }}
               </span>
             </template>
@@ -221,7 +221,7 @@
           <div v-if="partnerStatus != null" class="mb-2 flex text-xs justify-center rounded p-2 border border-gray-400" :class="(partnerStatus==1) ? 'bg-lime-100' : 'bg-red-100'">
             <template v-if="partnerStatus != null">
               <span class="flex space-x-1 px-2">
-                <!--<svg-vue class="h-4 w-4 items-center" icon="font-awesome.utensils-solid"></svg-vue>-->
+                <svg-vue class="h-4 w-4 items-center" :icon="['fas', 'circle-info']"></svg-vue>
                 {{ $t(partnerMessage) }}
               </span>
             </template>
@@ -263,7 +263,7 @@
                   <div class="flex space-x-2">
                     <template v-if="item.is_ready">
                       <span class="text-green-500 flex space-x-1">
-                        <!--<svg-vue class="w-6 h-6 p-1" icon="font-awesome.check-circle-solid"></svg-vue>-->
+                        <svg-vue class="w-6 h-6 p-1" :icon="['fas', 'circle-check']"></svg-vue>
                         {{ $t('Ready') }}</span
                       >
                     </template>
@@ -283,7 +283,7 @@
               </li>
             </ul>
             <div v-if="cartTotalItems === 0" class="flex-1 w-full p-4 pt-10 opacity-25 select-none flex flex-col flex-wrap content-center justify-center">
-              <!--<svg-vue class="h-16 inline-block" icon="font-awesome.cart-arrow-down-solid"></svg-vue>-->
+              <svg-vue class="h-16 inline-block" :icon="['fas', 'arrow-down-short-wide']"></svg-vue>
               <p>
                 {{ $t('Cart empty') }}
               </p>
@@ -396,7 +396,7 @@
           <template v-else>
             <div class="select-none bg-blue-gray-100 rounded flex flex-wrap content-center justify-center opacity-25">
               <div class="w-full text-center">
-                <!--<svg-vue class="h-24 w-24 inline-block" icon="font-awesome.exclamation-triangle-duotone"></svg-vue>-->
+                <svg-vue class="h-24 w-24 inline-block" :icon="['fas', 'triangle-exclamation']"></svg-vue>
                 <p class="text-xl">
                   {{ $t('Attention! record not found') }}
                 </p>

@@ -3,7 +3,7 @@
     <div class="my-6 max-w-1/6 mx-auto px-4 sm:px-6 lg:px-8">
       <div class="md:flex md:items-center md:justify-between">
         <div class="flex min-w-0">
-          <!--<svg-vue class="content-title-icon" icon="font-awesome.dollar-sign-solid"></svg-vue>-->
+          <svg-vue class="content-title-icon" :icon="['fas', 'dollar-sign']"></svg-vue>
           <h1 class="content-title">
             {{ $t('Payment methods') }}
           </h1>
@@ -33,7 +33,7 @@
                         <div class="flex">
                           <div class="inline-block align-middle text-sm font-medium leading-5 text-gray-900">
                             <div class="bg-gray-100 border px-2 py-1 flex">
-                              <!--<svg-vue class="content-title-icon w-4 h-4 text-gray-500" icon="font-awesome.tags-regular"></svg-vue>-->
+                              <svg-vue class="content-title-icon w-4 h-4 text-gray-500" :icon="['fas', 'tags']"></svg-vue>
                               {{ method.title }}
                             </div>
                             <small class="text-xs text-gray-500">{{ $t('Created at') }} : {{ method.created_at }}</small>
@@ -42,7 +42,7 @@
                       </div>
                     </div>
                     <div>
-                      <!--<svg-vue class="h-5 w-5 text-gray-400" icon="font-awesome.angle-right-regular"></svg-vue>-->
+                      <svg-vue class="h-5 w-5 text-gray-400" :icon="['fas', 'angle-right']"></svg-vue>
                     </div>
                   </div>
                 </router-link>

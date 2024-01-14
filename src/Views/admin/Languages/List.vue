@@ -3,7 +3,7 @@
     <div class="my-6 max-w-1/6 mx-auto px-4 sm:px-6 lg:px-8">
       <div class="md:flex md:items-center md:justify-between">
         <div class="flex min-w-0">
-          <!--<svg-vue class="content-title-icon" icon="font-awesome.globe-solid"></svg-vue>-->
+          <svg-vue class="content-title-icon" :icon="['fas', 'earth-americas']"></svg-vue>
           <h1 class="content-title">
             {{ $t('Languages') }}
           </h1>
@@ -43,7 +43,7 @@
                       </div>
                     </div>
                     <div>
-                      <!--<svg-vue class="h-5 w-5 text-gray-400" icon="font-awesome.angle-right-regular"></svg-vue>-->
+                      <svg-vue class="h-5 w-5 text-gray-400" :icon="['fas', 'angle-right']"></svg-vue>
                     </div>
                   </div>
                 </router-link>

@@ -3,7 +3,7 @@
     <div class="my-6 max-w-1/6 mx-auto px-4 sm:px-6 lg:px-8">
       <div class="md:flex md:items-center md:justify-between">
         <div class="flex min-w-0">
-          <!--<svg-vue class="content-title-icon" icon="font-awesome.user-lock-solid"></svg-vue>-->
+          <svg-vue class="content-title-icon" :icon="['fas', 'user-lock']"></svg-vue>
           <h1 class="content-title">
             {{ $t('User roles') }}
           </h1>
@@ -32,8 +32,8 @@
                   <option value="updated_at">{{ $t('Updated at') }}</option>
                 </select>
                 <button @click="changeSort" class="flex text-gray-800 font-bold px-2 form-input border-none bg-white" type="button">
-                  <!--<svg-vue class="h-4 w-4 text-gray-700" icon="font-awesome.sort-amount-down-alt-regular" v-show="sort.order === 'asc'"></svg-vue>-->
-                  <!--<svg-vue class="h-4 w-4 text-gray-700" icon="font-awesome.sort-amount-up-alt-regular" v-show="sort.order === 'desc'"></svg-vue>-->
+                  <svg-vue class="h-4 w-4 text-gray-700" :icon="['fas', 'arrow-down-wide-short']" v-show="sort.order === 'asc'"></svg-vue>
+                  <svg-vue class="h-4 w-4 text-gray-700" :icon="['fas', 'arrow-up-wide-short']" v-show="sort.order === 'desc'"></svg-vue>
                   <span class="ml-2">{{ $t('Sort') }}</span>
                 </button>
               </div>

@@ -33,7 +33,7 @@
           <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
             <div class="sm:flex sm:items-start">
               <div class="mx-auto flex-shrink-0 flex items-center justify-center h-20 w-20 bg-red-200 sm:mx-0 sm:h-10 sm:w-10">
-                <!--<svg-vue class="h-8 w-8 pb-1 text-red-600" icon="font-awesome.exclamation-triangle-light"></svg-vue>-->
+                <svg-vue class="h-8 w-8 pb-1 text-red-600" :icon="['fas', 'triangle-exclamation']"></svg-vue>
               </div>
               <div class="mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left">
                 <h3 class="text-lg leading-6 font-medium text-gray-900" id="modal-headline">

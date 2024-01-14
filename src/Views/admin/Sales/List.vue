@@ -16,8 +16,8 @@
                   <option value="updated_at">{{ $t('Updated at') }}</option>
                 </select>
                 <button @click="changeSort" class="flex text-gray-800 font-bold px-2 form-input border-none bg-white" type="button">
-                  <!--<svg-vue class="h-4 w-4 text-gray-700" icon="font-awesome.sort-amount-down-alt-regular" v-show="sort.order === 'asc'"></svg-vue>-->
-                  <!--<svg-vue class="h-4 w-4 text-gray-700" icon="font-awesome.sort-amount-up-alt-regular" v-show="sort.order === 'desc'"></svg-vue>-->
+                  <svg-vue class="h-4 w-4 text-gray-700" :icon="['fas', 'arrow-down-wide-short']" v-show="sort.order === 'asc'"></svg-vue>
+                  <svg-vue class="h-4 w-4 text-gray-700" :icon="['fas', 'arrow-up-wide-short']" v-show="sort.order === 'desc'"></svg-vue>
                   <span class="ml-2">{{ $t('Sort') }}</span>
                 </button>
               </div>
@@ -45,7 +45,7 @@
                 {{ $t('Last update') }} : {{ sale.updated_at }}
               </div>
             </div>
-            <svg-vue class="ml-4 h-5 w-5 text-gray-400 group-hover:text-gray-500 group-focus:text-gray-600 transition ease-in-out duration-150" icon="font-awesome.angle-right-regular"></svg-vue>
+            <svg-vue class="ml-4 h-5 w-5 text-gray-400 group-hover:text-gray-500 group-focus:text-gray-600 transition ease-in-out duration-150" :icon="['fas', 'angle-right']"></svg-vue>
           </router-link>
         </li>
       </ul>

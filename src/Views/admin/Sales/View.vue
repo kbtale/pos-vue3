@@ -3,7 +3,7 @@
     <div class="my-6 max-w-1/6 mx-auto px-4 sm:px-6 lg:px-8">
       <div class="md:flex md:items-center md:justify-between">
         <div class="flex min-w-0">
-          <svg-vue class="content-title-icon" icon="font-awesome.file-invoice-dollar-solid"></svg-vue>
+          <svg-vue class="content-title-icon" :icon="['fas', 'file-invoice-dollar']"></svg-vue>
           <h1 class="content-title">{{ $t('View sale order') }} #{{ sale.tracking }}</h1>
         </div>
         <div class="mt-4 flex md:mt-0 md:ml-4">

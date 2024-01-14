@@ -14,7 +14,7 @@
             <div class="relative w-screen max-w-md">
               <div class="absolute top-0 left-0 -ml-8 pt-4 pr-2 flex sm:-ml-10 sm:pr-4">
                 <button @click="closeSidebar" class="text-gray-100 hover:text-white transition ease-in-out duration-150">
-                  <svg-vue class="h-6 w-6" icon="font-awesome.times-light"></svg-vue>
+                  <svg-vue class="h-6 w-6" :icon="['fas', 'circle-xmark']"></svg-vue>
                 </button>
               </div>
               <div class="h-full flex flex-col pt-6 bg-white shadow-xl">
@@ -34,7 +34,7 @@
                     <div class="m-auto">
                       <div class="grid grid-cols-1 justify-items-center h-full w-full px-4 py-10">
                         <div class="flex justify-center items-center">
-                          <svg-vue class="h-full h-auto w-40 mb-8" icon="undraw.browsing"></svg-vue>
+                          <svg-vue class="h-full h-auto w-40 mb-8" :icon="['fas', 'triangle-exclamation']"></svg-vue>
                         </div>
                         <div class="flex justify-center items-center">
                           <div class="w-full font-semibold text-xl">{{ $t('No records found') }}</div>

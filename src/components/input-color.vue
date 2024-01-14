@@ -19,7 +19,7 @@
                     type="button"
                     @click="dropdownOpen = !dropdownOpen"
                 >
-                    <!--<svg-vue class="h-4 w-4 text-gray-700" icon="font-awesome.eye-dropper-solid"></svg-vue>-->
+                    <svg-vue class="h-4 w-4 text-gray-700" :icon="['fas', 'eye-dropper']"></svg-vue>
                 </button>
                 <transition
                     duration="100"

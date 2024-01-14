@@ -4,7 +4,7 @@
       <div class="h-full flex">
         <div class="mx-auto">
           <div class="text-center items-center p-6">
-            <!--<svg-vue class="h-full w-full md:h-64 mb-6" icon="undraw.page-not-found"></svg-vue>-->
+            <svg-vue class="h-full w-full md:h-64 mb-6" :icon="['fas', 'circle-exclamation']"></svg-vue>
             <div class="font-semibold text-2xl">
               {{ $t('Oops! You were not supposed to see this page') }}
             </div>

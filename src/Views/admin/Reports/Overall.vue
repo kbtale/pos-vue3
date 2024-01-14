@@ -4,7 +4,7 @@
       <div class="my-6 max-w-1/6 mx-auto px-4 sm:px-6 lg:px-8">
         <div class="md:flex md:items-center md:justify-between">
           <div class="flex min-w-0">
-            <!--<svg-vue class="content-title-icon" icon="font-awesome.file-invoice-solid"></svg-vue>-->
+            <svg-vue class="content-title-icon" :icon="['fas', 'file-lines']"></svg-vue>
             <h1 class="content-title">
               {{ $t('Overall report') }}
             </h1>
@@ -12,7 +12,7 @@
           <p v-if="generatedAt && report.list.length">{{ $t('Report created at ') }}: {{ generatedAt }}</p>
           <div class="flex md:mt-0 md:ml-4">
             <button @click="printReport" class="btn btn-secondary">
-              <!--<svg-vue class="h-5 w-5" icon="font-awesome.print-solid"></svg-vue>-->
+              <svg-vue class="h-5 w-5" :icon="['fas', 'print']"></svg-vue>
             </button>
           </div>
         </div>

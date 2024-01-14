@@ -3,7 +3,7 @@
     <div class="my-6 max-w-1/6 mx-auto px-4 sm:px-6 lg:px-8">
       <div class="md:flex md:items-center md:justify-between">
         <div class="flex min-w-0">
-          <!--<svg-vue class="content-title-icon" icon="font-awesome.user-tag-regular"></svg-vue>-->
+          <svg-vue class="content-title-icon" :icon="['fas', 'user-tag']"></svg-vue>
           <h1 class="content-title">
             {{ $t('Account information') }}
           </h1>
@@ -64,7 +64,7 @@
                       type="button"
                       v-show="user.avatar !== 'gravatar'"
                     >
-                      <!--<svg-vue class="h-4 w-4 p-px" icon="font-awesome.times-light"></svg-vue>-->
+                      <svg-vue class="h-4 w-4 p-px" :icon="['fas', 'xmark']"></svg-vue>
                     </button>
                     <img :src="user.avatar === 'gravatar' ? user.gravatar : user.avatar_preview" alt="User avatar" class="h-full w-full text-gray-300" />
                   </div>
@@ -95,7 +95,7 @@
     <div class="my-6 max-w-1/6 mx-auto px-4 sm:px-6 lg:px-8">
       <div class="md:flex md:items-center md:justify-between">
         <div class="flex min-w-0">
-          <!--<svg-vue class="content-title-icon text-white" icon="font-awesome.user-lock-solid"></svg-vue>-->
+          <svg-vue class="content-title-icon text-white" :icon="['fas', 'user-lock']"></svg-vue>
           <h1 class="content-title">
             {{ $t('Password change') }}
           </h1>

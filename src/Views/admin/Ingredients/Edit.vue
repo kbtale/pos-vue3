@@ -3,7 +3,7 @@
     <div class="my-6 max-w-1/6 mx-auto px-4 sm:px-6 lg:px-8">
       <div class="md:flex md:items-center md:justify-between">
         <div class="flex min-w-0">
-          <!--<svg-vue class="content-title-icon" icon="font-awesome.edit-regular"></svg-vue>-->
+          <svg-vue class="content-title-icon" :icon="['fas', 'pen']"></svg-vue>
           <h1 class="content-title">
             {{ $t('Edit ingredient') }}
           </h1>

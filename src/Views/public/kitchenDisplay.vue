@@ -5,7 +5,7 @@
       <div class="p-2 bg-white mb-1 rounded shadow-md">
         <div class="grid grid-cols-3 lg:grid-cols-11 gap-1">
           <router-link to="/pos" class="text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md">
-            <!--<svg-vue class="content-title-icon mx-auto" icon="font-awesome.reply-all-solid"></svg-vue>-->
+            <svg-vue class="content-title-icon mx-auto" :icon="['fas', 'reply-all']"></svg-vue>
             <span class="text-xs">{{ $t('Back') }}</span>
           </router-link>
           <select v-model="filters.order_type" @change.prevent="getOrdersToPrepare" class="col-span-3 border border-gray-400 p-1 cursor-pointer mb-1 rounded-md px-2">
@@ -40,7 +40,7 @@
             <option value="bg-purple-200">{{ $t('Background') }} : {{ $t('High purple') }}</option>
           </select>
           <button class="text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md" @click.prevent="getOrdersToPrepare">
-            <!--<svg-vue class="content-title-icon mx-auto" icon="font-awesome.sync-alt-solid"></svg-vue>-->
+            <svg-vue class="content-title-icon mx-auto" :icon="['fas', 'rotate']"></svg-vue>
             <span class="text-xs">{{ $t('Reload') }}</span>
           </button>
         </div>
@@ -113,7 +113,7 @@
       <template v-else>
         <div class="select-none rounded flex flex-wrap content-center justify-center pt-24 opacity-25">
           <div class="w-full text-center">
-            <!--<svg-vue class="h-24 w-24 inline-block" icon="font-awesome.exclamation-triangle-duotone"></svg-vue>-->
+            <svg-vue class="h-24 w-24 inline-block" :icon="['fas', 'triangle-exclamation']"></svg-vue>
             <p class="text-xl">
               {{ $t('Attention! record not found') }}
             </p>

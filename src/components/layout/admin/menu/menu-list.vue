@@ -1,13 +1,13 @@
 <template>
   <div class="pt-5">
-    <MenuItem
-      label="Dashboard"
+    <menu-item
+    label="Dashboard"
       mobile="mobile"
       :to="{ name: 'dashboard' }"
       v-if="visibility('dashboard_access')"
     />
     <template v-if="visibility('manage_sales')">
-      <MenuItem
+      <menu-item
         label="Sales"
         mobile="mobile"
         :to="{ name: 'sales' }"
@@ -19,14 +19,14 @@
       </div>
     </template>
     <template v-if="visibility('pos_portal')">
-      <MenuItem
+      <menu-item
         label="POS"
         mobile="mobile"
         :to="{ name: 'pos' }"
       />
     </template>
     <template v-if="visibility('kitchen_portal')">
-      <MenuItem
+      <menu-item
         label="kitchen"
         mobile="mobile"
         :to="{ name: 'kitchen-display' }"
@@ -38,28 +38,28 @@
       </div>
     </template>
     <template v-if="visibility('manage_food_categories')">
-      <MenuItem
+      <menu-item
         label="Categories"
         mobile="mobile"
         :to="{ name: 'categories' }"
       />
     </template>
     <template v-if="visibility('manage_food_items')">
-      <MenuItem
+      <menu-item
         label="Items"
         mobile="mobile"
         :to="{ name: 'products' }"
       />
     </template>
     <template v-if="visibility('manage_modifiers')">
-      <MenuItem
+      <menu-item
         label="Modifiers"
         mobile="mobile"
         :to="{ name: 'modifiers' }"
       />
     </template>
     <template v-if="visibility('manage_ingredients')">
-      <MenuItem
+      <menu-item
         label="Ingredients"
         mobile="mobile"
         :to="{ name: 'ingredients' }"
@@ -71,14 +71,14 @@
       </div>
     </template>
     <template v-if="visibility('manage_expense_types')">
-      <MenuItem
+      <menu-item
         label="Expense Types"
         mobile="mobile"
         :to="{ name: 'expense-types' }"
       />
     </template>
     <template v-if="visibility('manage_expenses')">
-      <MenuItem
+      <menu-item
         label="Expenses"
         mobile="mobile"
         :to="{ name: 'expenses' }"
@@ -90,7 +90,7 @@
       </div>
     </template>
     <template v-if="visibility('manage_users')">
-      <MenuItem
+      <menu-item
         label="Users"
         mobile="mobile"
         :to="{ name: 'users' }"
@@ -100,12 +100,12 @@
 </template>
 
 <script>
-import MenuItem from './MenuItem.vue';
+import menuItem from './menu-item.vue';
 
 export default {
   name: 'SidebarMenu',
   components: {
-    MenuItem,
+    menuItem: 'menu-item',
   },
   methods: {
     visibility(permission) {
@@ -168,11 +168,11 @@ export default {
 </template>
 
 <script>
-import MenuItem from './menu-item.vue';
+import menu-item from './menu-item.vue';
 
 export default {
   components: {
-    MenuItem,
+    menu-item,
   },
   data() {
     return {

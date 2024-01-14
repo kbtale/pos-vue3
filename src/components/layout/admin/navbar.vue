@@ -1,7 +1,7 @@
 <template>
   <div class="relative z-10 flex-shrink-0 flex h-16 bg-white shadow">
     <button @click="$emit('toggleSidebar')" aria-label="Open sidebar" class="px-4 text-gray-500 focus:outline-none focus:bg-gray-100 focus:text-gray-600 md:hidden">
-      abrir menú<!--<svg-vue class="h-6 w-6" icon="font-awesome.bars-regular"></svg-vue>-->
+      <svg-vue class="h-6 w-6" :icon="['fas', 'bars']"></svg-vue>
     </button>
     <div class="w-full px-5 flex justify-end items-center">
       <div class="mx-2">

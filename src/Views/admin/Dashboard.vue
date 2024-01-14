@@ -3,14 +3,14 @@
     <div class="my-6 max-w-1/6 mx-auto px-4 sm:px-6 lg:px-8">
       <div class="md:flex md:items-center md:justify-between">
         <div class="flex min-w-0">
-          <!--<svg-vue class="content-title-icon" icon="font-awesome.tachometer-alt-regular"></svg-vue>-->
+          <svg-vue class="content-title-icon" :icon="['fas', 'gauge-simple']"></svg-vue>
           <h1 class="content-title">
             {{ $t('Dashboard') }}
           </h1>
         </div>
         <div class="mt-4 flex md:mt-0 md:ml-4">
           <button @click="reload" class="btn btn-app" type="button">
-            <!--<svg-vue class="w-4 h-4" icon="font-awesome.sync-regular"></svg-vue>-->
+            <svg-vue class="w-4 h-4" :icon="['fas', 'rotate']"></svg-vue>
           </button>
         </div>
       </div>
