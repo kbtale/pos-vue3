@@ -974,7 +974,7 @@ export default {
     },
     getCreditSales(){
       
-    }
+    },
     handleCustomerChange(){
       console.log(this.currentCustomer)
       if (this.currentCustomer.partner == 1){
