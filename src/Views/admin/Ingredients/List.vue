@@ -36,8 +36,8 @@
                   <option value="updated_at">{{ $t('Updated at') }}</option>
                 </select>
                 <button @click="changeSort" class="flex text-gray-800 font-bold px-2 form-input border-none bg-white" type="button">
-                  <svg-vue class="h-4 w-4 text-gray-700" :icon="['fas', 'arrow-up-wide-short']" v-show="sort.order === 'asc'"></svg-vue>
-                  <svg-vue class="h-4 w-4 text-gray-700" :icon="['fas', 'arrow-down-wide-short']" v-show="sort.order === 'desc'"></svg-vue>
+                  <svg-vue class="h-4 w-4 text-gray-700" :icon="['fas', 'arrow-down-short-wide']" v-show="sort.order === 'asc'"></svg-vue>
+                  <svg-vue class="h-4 w-4 text-gray-700" :icon="['fas', 'arrow-up-wide-short']" v-show="sort.order === 'desc'"></svg-vue>
                   <span class="ml-2">{{ $t('Sort') }}</span>
                 </button>
               </div>
