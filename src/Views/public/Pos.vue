@@ -666,7 +666,7 @@ export default {
       partnerStatus: null,
       partnerMessage: 'The customer is not a partner',
       paymentByCredit: false,
-      creditSalesList: null,
+      creditSalesList: [],
       loading: false,
       models: {
         modifiersModel: false,
@@ -973,7 +973,22 @@ export default {
         });
     },
     getCreditSales(){
-      
+      this.$axios
+        .get('http://localhost:8000/api/v1/pos/get-pending-credit/' + this.currentCustomer.id,
+        {
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem('token')}`
+          }
+        })
+        .then((response) => {
+          this.loading = false;
+          console.log(response.data)
+          this.creditSalesList = response.data.items;
+        })
+        .catch((e) => {
+          this.loading = false;
+          console.log("Error retrieving partner's sales")
+        });      
     },
     handleCustomerChange(){
       console.log(this.currentCustomer)
@@ -1014,6 +1029,7 @@ export default {
       } else {
         this.partnerStatus = null;
         this.partnerMessage = "The customer is not a partner"
+        this.creditSalesList = [];
       }
     },
     loadAll(loader = false) {

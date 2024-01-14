@@ -8,6 +8,7 @@ import './css/custom-style.css'
 import App from './App.vue'
 import Vueform from '@vueform/vueform'
 import vueformConfig from '../vueform.config'
+import SvgVue from './components/global/svgVue.vue'
 import VueClickAway from "vue3-click-away"
 import { VueReCaptcha } from 'vue-recaptcha-v3'
 import router from './router.js'
@@ -63,5 +64,6 @@ const Filters = {
 }
 
 app.config.globalProperties.$axios = axios
+app.component('svg-vue', SvgVue)
 app.use(VueClickAway).use(VueAxios, axios).use(Filters)
 app.use(router).use(i18n).use(store).use(Vueform, vueformConfig).mount('#app')
