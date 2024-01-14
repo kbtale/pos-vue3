@@ -64,7 +64,7 @@
       </div>
       <div class="lg:flex lg:space-x-1">
         <div class="bg-white h-fit p-2 w-full overflow-auto">
-          <div class="mb-2">
+          <div v-if="products.length && partnerStatus != -1" class="mb-2">
             <input-select
               id="category"
               :default-label="$t('Filter by category')"
@@ -107,7 +107,7 @@
             >
           </div>
           <div class="product-list overflow-auto">
-            <template v-if="products.length">
+            <template v-if="products.length && partnerStatus != -1">
               <div class="grid grid-cols-3 md:grid-cols-4 gap-1" :class="cols_in_row">
                 <div
                   v-for="(product, index) in products"
@@ -121,6 +121,34 @@
                   <p class="flex-grow font-semibold text-gray-700 text-xs">{{ product.name }}</p>
                   <strong class="text-xs font-semibold text-blue-600">{{ product.price }}</strong>
                 </div>
+              </div>
+            </template>
+            <template v-else-if="partnerStatus == -1">
+              <div v-if="creditSalesList.length > 0">
+                <ul class="border-b border-gray-200 divide-y divide-gray-200">
+                  <li v-for="(sale, index) in creditSalesList" :key="index">
+                    <router-link :to="`/admin/sales/${sale.uuid}/view`" class="flex items-center justify-between px-4 py-4 hover:bg-gray-100 sm:px-6">
+                      <div class="flex items-center truncate space-x-3">
+                        <div class="whitespace-no-wrap">
+                          <div class="text-sm leading-5 w-full truncate">
+                            <span class="bg-gray-200 px-1 mr-1">ID # {{ sale.id }} </span>
+                            {{ sale.customer ? `${$t('Customer')} : ${sale.customer.name}` : '' }}
+                          </div>
+                          <div class="text-sm leading-5 w-full truncate">
+                            <span class="bg-yellow-200 px-1 mr-1"> {{ $t('Cost') }} : {{ sale.cart_total_cost }} </span>
+                            <span class="bg-yellow-200 px-1 mr-1"> {{ $t('Price') }} : {{ sale.cart_total_price }} </span>
+                          </div>
+                          <div class="text-sm leading-5 w-full truncate">
+                            <span class="bg-yellow-200 px-1 mr-1"> {{ $t('Discount') }} : {{ sale.discount_amount }} </span>
+                            <span class="bg-yellow-200 px-1 mr-1"> {{ $t('Tax') }} : {{ sale.tax_amount }} </span>
+                          </div>
+                          {{ $t('Last update') }} : {{ sale.updated_at }}
+                        </div>
+                      </div>
+                      <svg-vue class="ml-4 h-5 w-5 text-gray-400 group-hover:text-gray-500 group-focus:text-gray-600 transition ease-in-out duration-150" icon="font-awesome.angle-right-regular"></svg-vue>
+                    </router-link>
+                  </li>
+                </ul>
               </div>
             </template>
             <template v-else>
@@ -638,6 +666,7 @@ export default {
       partnerStatus: null,
       partnerMessage: 'The customer is not a partner',
       paymentByCredit: false,
+      creditSalesList: null,
       loading: false,
       models: {
         modifiersModel: false,
@@ -937,14 +966,15 @@ export default {
         .then((response) => {
           this.loading = false;
           this.customers = response.data;
-          setTimeout(() => {
-            this.currentCustomer = this.customers[0];
-          }, 2000);
+          this.currentCustomer = this.customers[0];
         })
         .catch((e) => {
           this.loading = false;
         });
     },
+    getCreditSales(){
+      
+    }
     handleCustomerChange(){
       console.log(this.currentCustomer)
       if (this.currentCustomer.partner == 1){
@@ -969,7 +999,8 @@ export default {
                 this.partnerMessage = "There's credit available for this customer"
                 break;
               case -1:
-                this.partnerMessage = "This user has exceeded his credit limit"
+                this.partnerMessage = "This user has exceeded his credit limit";
+                this.getCreditSales();
                 break;
               default:
                 this.partnerMessage = "There was an error retrieving data"
@@ -980,6 +1011,9 @@ export default {
             this.loading = false;
             console.log("Error retrieving partner's data")
         });
+      } else {
+        this.partnerStatus = null;
+        this.partnerMessage = "The customer is not a partner"
       }
     },
     loadAll(loader = false) {
@@ -1117,7 +1151,7 @@ export default {
         }).then((response) => {
         this.loading = false;
         if (response.data.message) {
-          this.loadAll();
+          this.loadAll(true);
           this.$notify({
             title: this.$t('Warning').toString(),
             text: response.data.message.toString(),
@@ -1126,9 +1160,9 @@ export default {
         } else {
           this.models.ordersModel = false;
           this.sale = response.data;
-          console.log("The sale is being declared here: " + this.sale);
           this.currentTable = this.sale.service_table ?? { id: null };
           this.currentCustomer = this.sale.customer ?? { id: null };
+          console.log('customer to be shown: ' + JSON.stringify(this.sale.customer));
           this.setCartItems(this.sale.items);
         }
       });

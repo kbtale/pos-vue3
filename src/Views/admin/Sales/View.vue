@@ -79,7 +79,7 @@
                 <img class="-full shadow-lg" :src="sale.biller.avatar !== 'gravatar' ? sale.biller.avatar : sale.biller.gravatar" :alt="sale.biller.name" />
               </span>
               <div class="items-center rounded-md justify-between p-3 bg-white border border-gray-400 shadow-sm sm:flex">
-                <time class="mb-1 text-xs font-normal text-gray-400 sm:order-last sm:mb-0">{{ $t('At') }}: {{ sale.took_at }}</time>
+                <time class="mb-1 text-xs font-normal text-gray-400 sm:order-last sm:mb-0">{{ $t('At') }}: {{ sale.completed_at }}</time>
                 <div class="text-sm font-normal text-gray-500 dark:text-gray-300">{{ $t('Checkout by ') }} {{ sale.biller.name }}</div>
               </div>
             </li>
