@@ -40,7 +40,7 @@
                 </template>
             </template>
             <div>
-                <loading :status="loading"></loading>
+                <!--<loading :active="loading"></loading>-->
                 <div v-if="attachments.length > 0" class="col-span-3">
                     <div class="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-2">
                         <template v-for="(attachment, index) in attachments">

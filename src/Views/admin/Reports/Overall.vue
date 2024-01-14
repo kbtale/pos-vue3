@@ -125,7 +125,7 @@
           <div class="pb-2">
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
               <div class="bg-white overflow-hidden shadow border rounded-md border-gray-400">
-                <loading :status="loading"></loading>
+                <!--<loading :active="loading"></loading>-->
                 <div class="px-2 py-3 sm:p-4">
                   <div class="text-sm font-medium truncate">
                     {{ $t('Total sale amount') }}
@@ -136,7 +136,7 @@
                 </div>
               </div>
               <div class="bg-white overflow-hidden shadow border rounded-md border-gray-400">
-                <loading :status="loading"></loading>
+                <!--<loading :active="loading"></loading>-->
                 <div class="px-2 py-3 sm:p-4">
                   <div class="text-sm font-medium truncate">{{ $t('Total cost amount') }}</div>
                   <div class="mt-1 font-semibold text-gray-900 text-xs">
@@ -145,7 +145,7 @@
                 </div>
               </div>
               <div class="bg-white overflow-hidden shadow border rounded-md border-gray-400">
-                <loading :status="loading"></loading>
+                <!--<loading :active="loading"></loading>-->
                 <div class="px-2 py-3 sm:p-4">
                   <div class="text-sm font-medium truncate">{{ $t('Total discount amount') }}</div>
                   <div class="mt-1 font-semibold text-gray-900 text-xs">
@@ -155,7 +155,7 @@
               </div>
 
               <div class="bg-white overflow-hidden shadow border rounded-md border-gray-400">
-                <loading :status="loading"></loading>
+                <!--<loading :active="loading"></loading>-->
                 <div class="px-2 py-3 sm:p-4">
                   <div class="text-sm font-medium truncate">
                     {{ $t('Total profit amount') }}
@@ -166,7 +166,7 @@
                 </div>
               </div>
               <div class="bg-white overflow-hidden shadow border rounded-md border-gray-400">
-                <loading :status="loading"></loading>
+                <!--<loading :active="loading"></loading>-->
                 <div class="px-2 py-3 sm:p-4">
                   <div class="text-sm font-medium truncate">
                     {{ $t('Total tax amount') }}
@@ -177,7 +177,7 @@
                 </div>
               </div>
               <div class="bg-white overflow-hidden shadow border rounded-md border-gray-400">
-                <loading :status="loading"></loading>
+                <!--<loading :active="loading"></loading>-->
                 <div class="px-2 py-3 sm:p-4">
                   <div class="text-sm font-medium truncate">{{ $t('Total payable amount') }}</div>
                   <div class="mt-1 font-semibold text-gray-900 text-xs">
@@ -190,7 +190,7 @@
           <div class="grid grid-cols-1 gap-6">
             <div class="content-card-body">
               <div class="p-4">
-                <loading :status="loading"></loading>
+                <!--<loading :active="loading"></loading>-->
                 <template v-if="report.list.length">
                   <table class="min-w-full border-collapse block text-xs md:table">
                     <thead class="block md:table-header-group">

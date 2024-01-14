@@ -12,18 +12,11 @@ import SvgVue from './components/global/svgVue.vue'
 import VueClickAway from "vue3-click-away"
 import { VueReCaptcha } from 'vue-recaptcha-v3'
 import { LoadingPlugin } from 'vue-loading-overlay'
-import 'vue-loading-overlay/dist/css/index.css';
+import 'vue-loading-overlay/dist/css/index.css'
 import router from './router.js'
 
 import axios from 'axios'
 import VueAxios from 'vue-axios'
-
-//import Login from './Views/Login.vue'
-//import Auth from './Layouts/Auth.vue'
-//import Admin from './Layouts/Admin.vue'
-//import Public from './Layouts/Public.vue'
-
-//import AdminHome from './Views/Admin/home.vue'
 
 const app = createApp(App)
 

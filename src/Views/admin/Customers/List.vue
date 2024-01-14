@@ -17,7 +17,7 @@
     </div>
     <div class="my-6 max-w-1/6 mx-auto px-4 sm:px-6 lg:px-8">
       <div class="content-card-body">
-        <loading :status="loading"></loading>
+        <!--<loading :active="loading"></loading>-->
         <div class="p-4">
           <div class="w-full flex categories-center justify-between">
             <div tabindex="0" class="focus:outline-none text-base sm:text-lg md:text-xl leading-normal text-gray-800">
@@ -51,7 +51,7 @@
               </div>
             </div>
             <div class="overflow-x-auto bg-white">
-              <loading :status="loading"></loading>
+              <!--<loading :active="loading"></loading>-->
               <template v-if="customerList.length">
                 <table class="w-full whitespace-nowrap">
                   <tbody>

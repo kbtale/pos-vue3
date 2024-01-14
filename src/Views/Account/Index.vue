@@ -16,7 +16,7 @@
     <div class="my-6 max-w-1/6 mx-auto px-4 sm:px-6 lg:px-8">
       <div class="content-card-body">
         <form @submit.prevent="editUser">
-          <loading :status="loading.details"></loading>
+          <!--<loading :status="loading.details"></loading>-->
           <div class="md:grid md:grid-cols-3 md:gap-3 px-4 py-5 sm:p-6">
             <div class="md:col-span-1">
               <h3 class="form-description-head">
@@ -105,7 +105,7 @@
     <div class="my-6 max-w-1/6 mx-auto px-4 sm:px-6 lg:px-8">
       <div class="content-card-body">
         <form @submit.prevent="changePassword">
-          <loading :status="loading.password"></loading>
+          <!--<loading :status="loading.password"></loading>-->
           <div class="md:grid md:grid-cols-3 md:gap-3 px-4 py-5 sm:p-6">
             <div class="md:col-span-1">
               <h3 class="form-description-head">

@@ -1,6 +1,6 @@
 <template>
     <div class="editor shadow-sm mt1">
-      <loading :status="loading"></loading>
+      <!--<loading :active="loading"></loading>-->
       <div v-html="top"></div>
    <div v-if="!readonly">
         <tinymce ref="editor" :d="id" :init="editorConfig" :model="{ value: input, callback: updateInput, expression: 'input' }"></tinymce>

@@ -12,4 +12,7 @@ export default defineConfig({
       plugins: [tailwindcss],
     },
   },
+  optimizeDeps: {
+    include: ['vue-loading-overlay']
+  }
 })

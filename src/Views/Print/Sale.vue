@@ -1,6 +1,6 @@
 <template>
   <div>
-    <loading :status="loading" />
+    <!--<loading :active="loading" />-->
     <div v-if="!loading">
       <div class="space-x-2 flex justify-between">
         <h2 class="w-full font-bold tracking-wider uppercase">

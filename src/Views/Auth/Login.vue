@@ -1,6 +1,6 @@
 <template>
     <div class=" ">
-      <!--<loading :status="loading"></loading>-->
+      <!--<loading :active="loading"></loading>-->
       <Vueform @submit.prevent="submit" size="md" v-model="data">
         <template v-if="isDemoMode">
           <StaticElement name="loginAsDemo" class="my-2 bg-green-200 py-3">

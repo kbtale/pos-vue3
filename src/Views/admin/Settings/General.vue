@@ -15,7 +15,7 @@
     </div>
     <div class="my-6 max-w-1/6 mx-auto px-4 sm:px-6 lg:px-8">
       <div>
-        <loading :status="loading.general"></loading>
+        <!--<loading :status="loading.general"></loading>-->
         <form @submit.prevent="save">
           <div class="content-card-body">
             <div class="px-4 py-5 bg-white sm:p-6">
@@ -71,7 +71,7 @@
     </div>
     <div class="my-6 max-w-1/6 mx-auto px-4 sm:px-6 lg:px-8">
       <div class="content-card-body">
-        <loading :status="loading.optimize"></loading>
+        <!--<loading :status="loading.optimize"></loading>-->
         <form @submit.prevent="optimizeSystem">
           <div class="px-4 py-5 bg-white sm:p-6">
             <div class="grid grid-cols-3 gap-3">

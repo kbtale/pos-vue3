@@ -1,6 +1,6 @@
 <template>
   <div>
-    <loading :status="loading"></loading>
+    <!--<loading :active="loading"></loading>-->
     <form @submit.prevent="submit">
       <div class="mb-4 pt-1 relative shadow-sm">
         <label class="form-label" for="email">

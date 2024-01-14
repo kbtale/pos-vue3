@@ -17,7 +17,7 @@
     </div>
     <div class="my-6 max-w-1/6 mx-auto px-4 sm:px-6 lg:px-8">
       <div class="content-card-body">
-        <loading :status="loading"></loading>
+        <!--<loading :active="loading"></loading>-->
         <div class="w-full p-4">
           <div class="py-2">
             <div class="flex items-center justify-between">
@@ -60,7 +60,7 @@
               </select>
             </div>
             <div class="overflow-x-auto bg-white">
-              <loading :status="loading"></loading>
+              <!--<loading :active="loading"></loading>-->
               <template v-if="productList.length">
                 <table class="w-full whitespace-nowrap">
                   <tbody>

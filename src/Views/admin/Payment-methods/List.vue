@@ -18,7 +18,7 @@
     </div>
     <div class="my-6 max-w-1/6 mx-auto px-4 sm:px-6 lg:px-8">
       <div class="content-card-body">
-        <loading :status="loading"></loading>
+        <!--<loading :active="loading"></loading>-->
         <template v-if="paymentMethodList.length > 0">
           <ul>
             <template v-for="(method, index) in paymentMethodList" :key="index">

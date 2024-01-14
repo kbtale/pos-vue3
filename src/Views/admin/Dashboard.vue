@@ -18,7 +18,7 @@
     <div class="my-6 max-w-1/6 mx-auto px-2 sm:px-6 lg:px-8">
       <div class="grid grid-cols-1 gap-2 sm:grid-cols-3 text-cyan-900">
         <div class="bg-white overflow-hidden shadow border rounded-md border-gray-400">
-          <loading :status="loading.states"></loading>
+          <!--<loading :status="loading.states"></loading>-->
           <div class="px-2 py-3 sm:p-4">
             <div class="text-sm font-medium truncate">
               {{ $t('Total sale amount') }}
@@ -29,7 +29,7 @@
           </div>
         </div>
         <div class="bg-white overflow-hidden shadow border rounded-md border-gray-400">
-          <loading :status="loading.states"></loading>
+          <!--<loading :status="loading.states"></loading>-->
           <div class="px-2 py-3 sm:p-4">
             <div class="text-sm font-medium truncate">{{ $t('Total cost amount') }}</div>
             <div class="mt-1 font-semibold text-xs">
@@ -38,7 +38,7 @@
           </div>
         </div>
         <div class="bg-white overflow-hidden shadow border rounded-md border-gray-400">
-          <loading :status="loading.states"></loading>
+          <!--<loading :status="loading.states"></loading>-->
           <div class="px-2 py-3 sm:p-4">
             <div class="text-sm font-medium truncate">{{ $t('Total discount amount') }}</div>
             <div class="mt-1 font-semibold text-xs">
@@ -47,7 +47,7 @@
           </div>
         </div>
         <div class="bg-white overflow-hidden shadow border rounded-md border-gray-400">
-          <loading :status="loading.states"></loading>
+          <!--<loading :status="loading.states"></loading>-->
           <div class="px-2 py-3 sm:p-4">
             <div class="text-sm font-medium truncate">
               {{ $t('Total profit amount') }}
@@ -58,7 +58,7 @@
           </div>
         </div>
         <div class="bg-white overflow-hidden shadow border rounded-md border-gray-400">
-          <loading :status="loading.states"></loading>
+          <!--<loading :status="loading.states"></loading>-->
           <div class="px-2 py-3 sm:p-4">
             <div class="text-sm font-medium truncate">
               {{ $t('Total tax amount') }}
@@ -69,7 +69,7 @@
           </div>
         </div>
         <div class="bg-white overflow-hidden shadow border rounded-md border-gray-400">
-          <loading :status="loading.states"></loading>
+          <!--<loading :status="loading.states"></loading>-->
           <div class="px-2 py-3 sm:p-4">
             <div class="text-sm font-medium truncate">{{ $t('Total payable amount') }}</div>
             <div class="mt-1 font-semibold text-xs">
@@ -87,7 +87,7 @@
               </div>
             </div>
             <div class="p-2 pt-0">
-              <loading :status="loading.chart"></loading>
+              <!--<loading :status="loading.chart"></loading>-->
               <line-chart :chart-data="chartData"></line-chart>
             </div>
           </div>

@@ -1,7 +1,7 @@
 <template>
 	<div :title="$t('Change lanuage')">
 		<button @click.prevent="loadAll" class="border p-2 rounded-md btn btn-app">
-			<loading :status="loading" />
+			<!--<loading :active="loading" />-->
 			<svg-vue class="h-5 w-5" :icon="['fas', 'globe']"></svg-vue>
 		</button>
 		<select-model :show="show" @close="show = false">

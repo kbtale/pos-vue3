@@ -1,7 +1,7 @@
 <template>
   <main class="flex-1 relative overflow-y-auto focus:outline-none" tabindex="0">
     <div class="my-1 max-w-1/6 mx-auto px-2">
-      <loading :status="loading"></loading>
+      <!--<loading :active="loading"></loading>-->
       <div class="p-2 bg-white mb-1 rounded shadow-md">
         <div class="grid grid-cols-3 lg:grid-cols-11 gap-1">
           <router-link to="/pos" class="flex flex-col text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md">

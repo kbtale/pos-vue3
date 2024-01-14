@@ -29,7 +29,7 @@
       </div>
       <div class="my-6 max-w-1/6 mx-auto px-4 sm:px-6 lg:px-8">
         <div class="content-card-body">
-          <loading :status="loading"></loading>
+          <!--<loading :active="loading"></loading>-->
           <div class="md:grid md:grid-cols-3 md:gap-3 px-4 py-3">
             <div class="mt-5 md:mt-0 md:col-span-3">
               <div class="flex flex-col">

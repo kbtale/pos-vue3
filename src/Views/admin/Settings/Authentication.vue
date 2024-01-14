@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="my-6 max-w-1/6 mx-auto px-4 sm:px-6 lg:px-8">
-      <loading :status="loading"></loading>
+      <!--<loading :active="loading"></loading>-->
       <form @submit.prevent="save">
         <div class="content-card-body">
           <div class="px-4 py-5 sm:p-6">
