@@ -86,7 +86,7 @@ export default {
                     const resolvedRoute = this.$router.resolve({name: 'AdminHome'});
                     console.log(resolvedRoute);
                     console.log("Dispatching... " + JSON.stringify(window.App))
-                    //this.$store.dispatch('app/setSettings', window.app);
+                    this.$store.dispatch('app/setSettings', window.app);
                     this.$router.push({name: 'AdminHome'});
                   }
                   const resolvedRoute = this.$router.resolve('/');
