@@ -437,6 +437,9 @@
         <button type="button" @click.prevent="clearSignature" class="text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md">
             <span class="text-xs">{{ $t('Cancel') }}</span>
         </button>
+        <button type="button" @click.prevent="$refs.signaturePad.clearSignature()" class="text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md">
+            <span class="text-xs">{{ $t('Clear') }}</span>
+        </button>
         <button class="text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md" v-if="cartItems.length > 0" @click.prevent="storeSignature()">
             <span class="text-xs"> {{ sale.uuid ? $t('Update') : $t('Submit') }} </span>
         </button>    
@@ -1211,8 +1214,9 @@ export default {
       }
     },
     clearSignature(){
+      this.$refs.signaturePad.clearSignature()
       this.models.signatureModel = false
-      this.$refs.signaturePad.clear()
+      this.signature = null
     },
     saveOrder() {
       this.loading = true;
