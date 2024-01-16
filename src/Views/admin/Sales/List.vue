@@ -109,7 +109,18 @@
                       <div class="flex items-center truncate space-x-3 flex-1">
                         <div class="flex flex-col items-start">
                           <div>
-                            <svg-vue class="h-5 w-5 text-gray-400 group-hover:text-gray-500 group-focus:text-gray-600 transition ease-in-out duration-150" :icon="['fas', 'angle-right']"></svg-vue>
+                            <template v-if="(sale.progress < 99) && (!sale.completed_at)">
+                            <svg-vue class="h-5 w-5 text-orange-400 group-hover:text-orange-500 group-focus:text-orange-600 transition ease-in-out duration-150" :icon="['fas', 'spinner']"></svg-vue>
+                            </template>
+                            <template v-else-if="(sale.progress > 99) && (!sale.completed_at)">
+                            <svg-vue class="h-5 w-5 text-green-400 group-hover:text-green-500 group-focus:text-green-600 transition ease-in-out duration-150" :icon="['fas', 'circle-check']"></svg-vue>
+                            </template>
+                            <template v-if="(sale.completed_at) && (sale.total_paid<sale.cart_total_price) && (!sale.customer.partner)">
+                            <svg-vue class="h-5 w-5 text-red-400 group-hover:text-red-500 group-focus:text-red-600 transition ease-in-out duration-150" :icon="['fas', 'triangle-exclamation']"></svg-vue>
+                            </template>
+                            <template v-if="(sale.completed_at) && (sale.total_paid<sale.cart_total_price) && (sale.customer.partner)">
+                            <svg-vue class="h-5 w-5 text-orange-400 group-hover:text-orange-500 group-focus:text-orange-600 transition ease-in-out duration-150" :icon="['fas', 'user-tie']"></svg-vue>
+                            </template>
                           </div>
                           <img :src="sale.signature" class="wider">
                         </div>
@@ -141,7 +152,7 @@
                           </div>
                         </div>
                       </div>
-                      <svg-vue class="ml-4 h-5 w-5 text-gray-400 group-hover:text-gray-500 group-focus:text-gray-600 transition ease-in-out duration-150" :icon="['fas', 'angle-right']"></svg-vue>
+                        <svg-vue class="ml-4 h-5 w-5 text-gray-400 group-hover:text-gray-500 group-focus:text-gray-600 transition ease-in-out duration-150" :icon="['fas', 'angle-right']"></svg-vue>
                     </router-link>
                   </li>
               </template>

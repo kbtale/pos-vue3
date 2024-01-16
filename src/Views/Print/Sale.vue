@@ -172,7 +172,7 @@ export default {
     setTimeout(() => {
       this.printDiv("SaleToPrint");
       window.close();
-    },1000)
+    },1500)
   },
   methods: {
     getSaleOrder() {

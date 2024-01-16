@@ -126,25 +126,54 @@
               <div v-if="creditSalesList.length > 0">
                 <ul class="border-b border-gray-200 divide-y divide-gray-200">
                   <li v-for="(sale, index) in creditSalesList" :key="index">
-                    <router-link :to="`/admin/sales/${sale.uuid}/view`" class="flex items-center justify-between px-4 py-4 hover:bg-gray-100 sm:px-6">
-                      <div class="flex items-center truncate space-x-3">
+                    <router-link :to="`/admin/sales/${sale.uuid}/view`" class="flex items-center px-4 py-2 hover:bg-gray-100 sm:px-6">
+                      <div class="flex items-center truncate space-x-3 flex-1">
+                        <div class="flex flex-col items-start">
+                          <div>
+                            <template v-if="(sale.progress < 99) && (!sale.completed_at)">
+                            <svg-vue class="h-5 w-5 text-orange-400 group-hover:text-orange-500 group-focus:text-orange-600 transition ease-in-out duration-150" :icon="['fas', 'spinner']"></svg-vue>
+                            </template>
+                            <template v-else-if="(sale.progress > 99) && (!sale.completed_at)">
+                            <svg-vue class="h-5 w-5 text-green-400 group-hover:text-green-500 group-focus:text-green-600 transition ease-in-out duration-150" :icon="['fas', 'circle-check']"></svg-vue>
+                            </template>
+                            <template v-if="(sale.completed_at) && (sale.total_paid<sale.cart_total_price) && (!sale.customer.partner)">
+                            <svg-vue class="h-5 w-5 text-red-400 group-hover:text-red-500 group-focus:text-red-600 transition ease-in-out duration-150" :icon="['fas', 'triangle-exclamation']"></svg-vue>
+                            </template>
+                            <template v-if="(sale.completed_at) && (sale.total_paid<sale.cart_total_price) && (sale.customer.partner)">
+                            <svg-vue class="h-5 w-5 text-orange-400 group-hover:text-orange-500 group-focus:text-orange-600 transition ease-in-out duration-150" :icon="['fas', 'user-tie']"></svg-vue>
+                            </template>
+                          </div>
+                          <img :src="sale.signature" class="wider">
+                        </div>
                         <div class="whitespace-no-wrap">
-                          <div class="text-sm leading-5 w-full truncate">
-                            <span class="bg-gray-200 px-1 mr-1">ID # {{ sale.id }} </span>
-                            {{ sale.customer ? `${$t('Customer')} : ${sale.customer.name}` : '' }}
+                          <div class="text-sm leading-5 w-full truncate py-2 px-3 border-b border-gray-300">
+                            <span class="bg-gray-200 px-1 mr-1">ID #{{ sale.id }} </span>
+                            {{ sale.customer ? `${$t('Customer')}: ${sale.customer.name}` : '' }}
                           </div>
-                          <div class="text-sm leading-5 w-full truncate">
-                            <span class="bg-yellow-200 px-1 mr-1"> {{ $t('Cost') }} : {{ sale.cart_total_cost }} </span>
-                            <span class="bg-yellow-200 px-1 mr-1"> {{ $t('Price') }} : {{ sale.cart_total_price }} </span>
+                          <div class="flex justify-start text-sm leading-5 w-full truncate py-2 px-3 border-b border-gray-300">
+                            <span class="px-1 mr-1"> {{ $t('Cost') }}: {{ sale.cart_total_cost }} </span>
+                            <span class="px-1 mr-1"> {{ $t('Price') }}: {{ sale.cart_total_price }} </span>
                           </div>
-                          <div class="text-sm leading-5 w-full truncate">
-                            <span class="bg-yellow-200 px-1 mr-1"> {{ $t('Discount') }} : {{ sale.discount_amount }} </span>
-                            <span class="bg-yellow-200 px-1 mr-1"> {{ $t('Tax') }} : {{ sale.tax_amount }} </span>
+                          <div class="flex justify-start text-sm leading-5 w-full truncate py-2 px-3 border-b border-gray-300">
+                            <span class="px-1 mr-1"> {{$t('Discount')}}: {{sale.discount_amount}}  </span>
+                            <span class=" px-1 mr-1"> {{$t('Tax')}}: {{sale.tax_amount}} </span>
                           </div>
-                          {{ $t('Last update') }} : {{ sale.updated_at }}
                         </div>
                       </div>
-                      <svg-vue class="ml-4 h-5 w-5 text-gray-400 group-hover:text-gray-500 group-focus:text-gray-600 transition ease-in-out duration-150" :icon="['fas', 'angle-right']"></svg-vue>
+                      <div class="flex items-center truncate space-x-3 flex-1">
+                        <div class="whitespace-no-wrap">
+                          <div class="flex justify-start text-sm leading-5 w-full truncate py-2 px-3 border-b border-gray-300">
+                            <span class="px-1 mr-1"> {{ $t('Tracking') }}: #{{ sale.tracking }}  </span>
+                          </div>
+                          <div class="text-sm leading-5 w-full truncate py-2 px-3 border-b border-gray-300">
+                            <span class="px-1 mr-1">{{ $t('Created at') }}: {{ sale.took_at }} </span>
+                          </div>
+                          <div class="flex justify-start text-sm leading-5 w-full truncate py-2 px-3 border-b border-gray-300">
+                            <span class="px-1 mr-1"> {{$t('Last update')}}: {{ (sale.updated_at) ? `${sale.updated_at}` : `${sale.took_at}` }} </span>
+                          </div>
+                        </div>
+                      </div>
+                        <svg-vue class="ml-4 h-5 w-5 text-gray-400 group-hover:text-gray-500 group-focus:text-gray-600 transition ease-in-out duration-150" :icon="['fas', 'angle-right']"></svg-vue>
                     </router-link>
                   </li>
                 </ul>
@@ -427,7 +456,7 @@
           </div>
         </div>
       </notes-model>
-      <signature-model :show="models.signatureModel" @close="models.signatureModel = false" @open="onSignatureModelOpen">
+      <signature-model :show="models.signatureModel" @close="onSignatureModelClose" @open="onSignatureModelOpen">
         <div class="py-5 lg:flex md:space-x-2 col-span-3 mb-2">
           <div class="w-full">
             <label class="form-label" for="Signature">{{ $t('Sign here') }}</label>
@@ -566,7 +595,7 @@
               </select>
             </div>
             <div class="w-full">
-              <button type="button" class="col-span-1 p-3 items-center text-center btn btn-app w-full" :disabled="currentCustomer.partner != true" @click.prevent="setCredit">Credit</button>
+              <button type="button" class="col-span-1 p-3 items-center text-center btn btn-app w-full" v-if="currentCustomer.partner == 1" @click.prevent="setCredit">Credit</button>
             </div>
           </div>
           <div class="col-span-3 mb-2 flex space-x-1">
@@ -945,6 +974,7 @@ export default {
       this.sale.discount_amount = this.discountAmount;
       this.sale.tax_amount = this.taxAmount;
       this.sale.profit_after_all = this.profit;
+      this.sale.total_paid = this.recipient_amount;
       this.sale.payable_after_all = this.totalAmount;
       console.log(this.sale)
       this.$axios
@@ -966,7 +996,8 @@ export default {
           let order = this.sale.uuid;
           this.loadAll();
           this.models.paymentModel = false;
-          return this.$router.push(`/print/sale/${order}`);
+          let routeData = this.$router.resolve({ path: `/print/sale/${order}` });
+          window.open(routeData.href, '_blank');
         })
         .catch((e) => {
           this.models.paymentModel = true;
@@ -1329,6 +1360,12 @@ export default {
     },
     onSignatureModelOpen() {
       //this.$refs.signaturePad.resize();
+    },
+    onSignatureModelClose() {
+      console.log("on close")
+      this.$refs.signaturePad.clearSignature()
+      this.signature = null
+      this.models.signatureModel = false
     },
     setCredit(){
       this.sale.payment_method_id = null;
