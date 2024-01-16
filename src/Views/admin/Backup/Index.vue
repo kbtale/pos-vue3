@@ -116,11 +116,13 @@ export default {
           }
         })
         .then((response) => {
+          /*
           this.$notify({
             title: this.$t('Success').toString(),
             text: response.data.message.toString(),
             type: 'success',
           });
+          */
           this.getBackups();
         })
         .catch(() => {
@@ -144,11 +146,13 @@ export default {
           }
         })
         .then((response) => {
+          /*
           this.$notify({
             title: this.$t('Success').toString(),
             text: response.data.message.toString(),
             type: 'success',
           });
+          */
           this.loading = false;
         })
         .catch(() => {

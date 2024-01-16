@@ -83,11 +83,13 @@ export default {
         .post('http://localhost:8000/'+'api/v1/auth/reset', this.user)
         .then((response) => {
           this.$store.commit('login', response.data);
+          /*
           this.$notify({
             title: this.$t('Success').toString(),
             text: response.data.message.toString(),
             type: 'success',
           });
+          */
           this.loading = false;
           this.$router.push('/');
         })

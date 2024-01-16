@@ -85,11 +85,13 @@ export default {
       this.$axios
         .post('http://localhost:8000/'+'api/v1/auth/register', this.user)
         .then((response) => {
+          /*
           this.$notify({
             title: this.$t('Success').toString(),
             text: response.data.message.toString(),
             type: 'success',
           });
+          */
           this.$store.commit('login', response.data);
           this.loading = false;
           this.$router.push('/');

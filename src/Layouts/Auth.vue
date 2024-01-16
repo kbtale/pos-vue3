@@ -48,9 +48,9 @@
       this.axios.get('http://localhost:8000/'+'api/v1/auth/authentication-settings')
         .then((response) => {
           console.log(JSON.stringify(response.data))
-          this.$store.commit('setPublic', response.data);
-          let data = this.$store.getters['getPublic'];
-          console.log(data);
+          //this.$store.commit('setPublic', response.data);
+          //let data = this.$store.getters['getPublic'];
+          //console.log(data);
         });
     },
     watch: {

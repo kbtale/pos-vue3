@@ -226,11 +226,13 @@ export default {
           this.user.avatar = event.target.files[0];
           this.user.avatar_preview = URL.createObjectURL(event.target.files[0]);
         } else {
+          /*
           this.$notify({
             title: this.$t('Unsupported file type').toString(),
             text: this.$t('Only image type files are accepted').toString(),
             type: 'error',
           });
+          */
         }
       }
     },
@@ -253,11 +255,13 @@ export default {
           headers: { 'Content-Type': 'multipart/form-data', Authorization: `Bearer ${localStorage.getItem('token')}` },
         })
         .then((response) => {
+          /*
           this.$notify({
             title: this.$t('Success').toString(),
             text: response.data.message.toString(),
             type: 'success',
           });
+          */
           if (response.data.user) {
             this.user.avatar = response.data.user.avatar;
             this.user.gravatar = response.data.user.gravatar;
@@ -288,11 +292,13 @@ export default {
           this.user.current_password = null;
           this.user.password = null;
           this.user.password_confirmation = null;
+          /*
           this.$notify({
             title: this.$t('Success').toString(),
             text: this.$t('Password changed successfully').toString(),
             type: 'success',
           });
+          */
         })
         .catch(() => {
           this.loading.password = false;

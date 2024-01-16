@@ -103,11 +103,13 @@ export default {
           this.loading = false;
           window.app.currency_symbol = this.currency.currency_symbol;
           window.app.currency_symbol_on_left = this.currency.currency_symbol_on_left;
+          /*
           this.$notify({
             title: this.$t('Success').toString(),
             text: response.data.message.toString(),
             type: 'success',
           });
+          */
         })
         .catch(() => {
           this.loading = false;

@@ -54,11 +54,13 @@ export default {
       this.$axios
         .post('http://localhost:8000/'+'api/v1/auth/recover', this.user)
         .then((response) => {
+          /*
           this.$notify({
             title: this.$t('Success').toString(),
             text: response.data.message.toString(),
             type: 'success',
           });
+          */
           this.loading = false;
           this.$router.push('/auth/login');
         })

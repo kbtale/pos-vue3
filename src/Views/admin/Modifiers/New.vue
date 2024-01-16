@@ -108,11 +108,13 @@ export default {
         .then((response) => {
           console.log(response.data)
           this.loading = false;
+          /*
           this.$notify({
             title: this.$t('Success').toString(),
             text: response.data.message.toString(),
             type: 'success',
           });
+          */
           this.$router.push(`/admin/modifiers`);
         })
         .catch(() => {

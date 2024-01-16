@@ -112,21 +112,25 @@ export default {
     },
     syncLanguages() {
       this.loading = true;
+      /*
       this.$notify({
         title: this.$t('Success').toString(),
         text: this.$t('The synchronization process has been started').toString(),
         type: 'info',
       });
+      */
       this.$axios.post('http://localhost:8000/'+'api/v1/admin/languages/sync', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
         }).then((response) => {
+          /*
         this.$notify({
           title: this.$t('Success').toString(),
           text: response.data.message.toString(),
           type: 'success',
         });
+        */
         this.loading = false;
       });
     },

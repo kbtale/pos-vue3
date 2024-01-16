@@ -138,11 +138,13 @@ export default {
             is_tax_fix: this.tax.is_tax_fix,
             is_vat: this.tax.is_vat,
           };
+          /*
           this.$notify({
             title: this.$t('Success').toString(),
             text: response.data.message.toString(),
             type: 'success',
           });
+          */
         })
         .catch(() => {
           this.loading = false;

@@ -434,7 +434,7 @@
             <vue-signature-pad v-model="signature" id="Signature" width="100%" height="200px" ref="signaturePad" :options="{onBegin: () => {$refs.signaturePad.resizeCanvas()}, onEnd: () => {this.signature = this.$refs.signaturePad.saveSignature().data}}"></vue-signature-pad>
           </div>
         </div>
-        <button type="button" @click.prevent="this.models.signatureModel = false" class="text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md">
+        <button type="button" @click.prevent="clearSignature" class="text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md">
             <span class="text-xs">{{ $t('Cancel') }}</span>
         </button>
         <button class="text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md" v-if="cartItems.length > 0" @click.prevent="storeSignature()">
@@ -798,13 +798,18 @@ export default {
         } else {
           return Number(Number(amount * rating) - amount);
         }
-      }*/
-        const rate = Number(this.sale.tax.tax_rate ?? this.sale.tax.rate);
+      }
+        if (this.sale.tax.tax_rate != undefined){
+          const rate = Number(this.sale.tax.tax_rate ?? this.sale.tax.rate);
+        } else {
+          const rate = Number(this.sale.tax.rate);
+        }
         if (this.sale.tax.is_tax_fix) {
           return rate;
         }
         return amount * (rate / 100);
-      
+        */
+        return amount;
     },
     totalAmount() {
       /*
@@ -870,11 +875,13 @@ export default {
         })
         .then((response) => {
           this.loading = false;
+          /*
           this.$notify({
             title: this.$t('Success').toString(),
             text: response.data.message.toString(),
             type: 'success',
           });
+          */
           this.loadAll();
         })
         .catch(() => {
@@ -936,7 +943,6 @@ export default {
       this.sale.tax_amount = this.taxAmount;
       this.sale.profit_after_all = this.profit;
       this.sale.payable_after_all = this.totalAmount;
-      this.models.paymentModel = false;
       console.log(this.sale)
       this.$axios
         .post('http://localhost:8000/'+'api/v1/pos/checkout/'+this.sale.uuid, this.sale,
@@ -947,17 +953,21 @@ export default {
         })
         .then((response) => {
           this.loading = false;
+          /*
           this.$notify({
             title: this.$t('Success').toString(),
             text: response.data.message.toString(),
             type: 'succ',
           });
+          */
           let order = this.sale.uuid;
           this.loadAll();
+          this.models.paymentModel = false;
           return this.$router.push(`/print/sale/${order}`);
         })
         .catch((e) => {
           this.models.paymentModel = true;
+          console.log(e)
           this.loading = false;
         });
     },
@@ -1070,6 +1080,7 @@ export default {
       this.serviceTables = [];
       this.unsetCartItems();
       this.clearFilters();
+      this.clearSignature();
       this.partnerStatus = null;
       this.partnerMessage = 'The customer is not a partner';
       this.sale.tax = this.taxSetup;
@@ -1108,11 +1119,13 @@ export default {
       }
     },
     flashUpOutOfStock() {
+      /*
       this.$notify({
         title: this.$t('Warning').toString(),
         text: this.$t('This item is out of stock').toString(),
         type: 'warning',
       });
+      */
     },
     getServiceTables() {
       this.loading = true;
@@ -1175,11 +1188,13 @@ export default {
         this.loading = false;
         if (response.data.message) {
           this.loadAll(true);
+          /*
           this.$notify({
             title: this.$t('Warning').toString(),
             text: response.data.message.toString(),
             type: 'warning',
           });
+          */
         } else {
           this.models.ordersModel = false;
           this.sale = response.data;
@@ -1194,6 +1209,10 @@ export default {
       if (this.$route.params.uuid) {
         this.$router.replace({ params: { uuid: null } });
       }
+    },
+    clearSignature(){
+      this.models.signatureModel = false
+      this.$refs.signaturePad.clear()
     },
     saveOrder() {
       this.loading = true;
@@ -1228,11 +1247,13 @@ export default {
           this.loading = false;
           this.loadAll();
           this.$router.replace({ params: { uuid: null } });
+          /*
           this.$notify({
             title: this.$t('Success').toString(),
             text: response.data.message.toString(),
             type: 'success',
           });
+          */
         })
         .catch((e) => {
           this.loading = false;
@@ -1249,11 +1270,13 @@ export default {
         .then((response) => {
           this.loading = false;
           this.loadAll();
+          /*
           this.$notify({
             title: this.$t('Success').toString(),
             text: response.data.message.toString(),
             type: 'success',
           });
+          */
         })
         .catch((e) => {
           this.loading = false;

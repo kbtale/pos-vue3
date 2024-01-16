@@ -127,11 +127,13 @@ export default {
 					this.file = null;
 					this.resource = null;
 					this.$refs.file.value = null;
+					/*
 					this.$notify({
 						title: this.$t('Success').toString(),
 						text: response.data.message.toString(),
 						type: 'success',
 					});
+					*/
 				})
 				.catch(() => {
 					this.loading = false;

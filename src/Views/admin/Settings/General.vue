@@ -184,11 +184,13 @@ export default {
           this.loading.general = false;
           window.app.name = this.form.app_name;
           this.$store.commit('setSettings', window.app);
+          /*
           this.$notify({
             title: this.$t('Success').toString(),
             text: response.data.message.toString(),
             type: 'success',
           });
+          */
         })
         .catch(() => {
           this.loading.general = false;

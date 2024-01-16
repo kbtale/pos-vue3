@@ -107,11 +107,13 @@ export default {
             window.app.background = this.app_background.preview;
             this.$store.commit('setSettings', window.app);
           }
+          /*
           this.$notify({
             title: this.$t('Success').toString(),
             text: response.data.message.toString(),
             type: 'success',
           });
+          */
         })
         .catch(() => {
           this.loading = false;

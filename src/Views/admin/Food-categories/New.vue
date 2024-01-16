@@ -95,11 +95,13 @@ export default {
         })
         .then((response) => {
           this.loading.create = false;
+          /*
           this.$notify({
             title: this.$t('Success').toString(),
             text: response.data.message.toString(),
             type: 'success',
           });
+          */
           this.$router.push(`/admin/categories`);
         })
         .catch(() => {

@@ -112,11 +112,6 @@ export default {
           window.app.recaptcha_enabled = this.captcha.recaptcha_enabled;
           window.app.recaptcha_public = this.captcha.recaptcha_public;
           this.$store.commit('setSettings', window.app);
-          this.$notify({
-            title: this.$t('Success').toString(),
-            text: response.data.message.toString(),
-            type: 'success',
-          });
         })
         .catch(() => {
           this.loading = false;

@@ -84,9 +84,8 @@ export default {
                 console.log("Checking user role");
                   if (response.data.user.role_id == 1) {
                     const resolvedRoute = this.$router.resolve({name: 'AdminHome'});
-                    console.log(resolvedRoute);
-                    console.log("Dispatching... " + JSON.stringify(window.App))
-                    this.$store.dispatch('app/setSettings', window.app);
+                    //console.log("Dispatching... " + JSON.stringify(window.app))
+                    //this.$store.dispatch('app/setSettings', window.app);
                     this.$router.push({name: 'AdminHome'});
                   }
                   const resolvedRoute = this.$router.resolve('/');
@@ -102,13 +101,12 @@ export default {
         getSettings(){
           this.axios.get('http://localhost:8000/'+'api/v1/admin/settings/all', {
             headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`,
-            'ngrok-skip-browser-warning': '69420'
+            Authorization: `Bearer ${localStorage.getItem('token')}`
             }
           })
             .then((response) => {
               console.log(response.data)
-              /*
+              
               let settings = response.data
               settings.orderTypes = [
                 { key: 'all', title: 'All' },
@@ -117,7 +115,7 @@ export default {
                 { key: 'delivery', title: 'Delivery' },
               ];
               this.$store.dispatch('app/setSettings', settings);
-              */
+              
             })
         }
     },

@@ -4,7 +4,6 @@ const state = {
     user: false,
     permissions: {},
     settings: false,
-    public: {},
     role: { ordertaking_access: false, kitchendisplay_access: false, billingdisplay_access: false },
   };
   
@@ -12,7 +11,7 @@ const state = {
     isAllowedToSync(state) {
       return state.settings.synchronizer_display;
     },
-
+  
     getVersion(state) {
       return state.settings.version;
     },
@@ -27,7 +26,6 @@ const state = {
     getUser(state) {
       return state.user;
     },
-
     getRole(state) {
       return state.role;
     },
@@ -39,10 +37,7 @@ const state = {
     getSettings(state) {
       return state.settings;
     },
-    getPublic(state) {
-      return state.public;
-    },
-
+  
     isDemo(state) {
       return state.settings.is_demo_mode;
     },
@@ -50,7 +45,7 @@ const state = {
     getAppName(state) {
       return state.settings.app_name;
     },
-
+  
     getAppLogo(state) {
       console.log("Getting app logo...")
       console.log(state.settings);
@@ -76,12 +71,11 @@ const state = {
   
   const actions = {
     setSettings({ commit }, payload) {
+      console.log("executing setSettings vuex");
       commit('SET_SETTINGS', payload);
     },
-    setPublic({ commit }, payload){
-      commit('SET_PUBLIC', payload);
-    },
     login({ commit }, payload) {
+      console.log("executing login vuex");
       commit('LOG_IN', payload);
     },
     logout({ commit }) {
@@ -100,9 +94,6 @@ const state = {
       state.settings = data;
       console.log(state.settings);
     },
-    SET_PUBLIC(state, data){
-      state.public = data;
-    },
     LOG_IN(state, response) {
       console.log("Executing login mutation");
       state.user = response.user;
@@ -115,7 +106,7 @@ const state = {
       console.log("Login mutation committed");
     },
     LOG_OUT(state) {
-      axios.post('http://localhost:8000/'+'api/v1/auth/logout', {}, {
+      axios.post('http://localhost:8000/api/v1/auth/logout', {}, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`
         }
@@ -127,7 +118,7 @@ const state = {
     },
     SET_USER(state) {
       if (localStorage.getItem('token')) {
-        axios.get('http://localhost:8000/'+'api/v1/auth/user').then((response) => {
+        axios.get('http://localhost:8000/api/v1/auth/user').then((response) => {
           state.user = response.data;
           state.permissions = response.data.role.permissions;
           state.role = response.data.role;
@@ -147,4 +138,5 @@ const state = {
     actions,
     mutations,
   };
+  
   

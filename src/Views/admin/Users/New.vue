@@ -142,11 +142,13 @@ export default {
         })
         .then((response) => {
           this.loading = false;
+          /*
           this.$notify({
             title: this.$t('Success').toString(),
             text: this.$t('Data saved correctly').toString(),
             type: 'success',
           });
+          */
           this.$router.push(`/admin/users`);
         })
         .catch(() => {

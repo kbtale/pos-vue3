@@ -92,11 +92,13 @@ export default {
           }
         })
         .then((response) => {
+          /*
           this.$notify({
             title: this.$t('Success').toString(),
             text: response.data.message.toString(),
             type: 'success',
           });
+          */
           this.$router.push('/admin/payment-methods');
         })
         .catch(() => {
@@ -113,11 +115,13 @@ export default {
         })
         .then((response) => {
           this.loading = false;
+          /*
           this.$notify({
             title: this.$t('Success').toString(),
             text: response.data.message.toString(),
             type: 'success',
           });
+          */
         })
         .catch(() => {
           this.loading = false;

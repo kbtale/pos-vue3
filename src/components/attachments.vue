@@ -96,11 +96,13 @@ export default {
             if (!this.loading) {
                 this.$refs.fileInput.click();
             } else {
+                /*
                 this.$notify({
                     title: this.$t('Error').toString(),
                     text: this.$t('A file is being uploaded').toString(),
                     type: 'warning',
                 });
+                */
             }
         },
         uploadFile(e) {

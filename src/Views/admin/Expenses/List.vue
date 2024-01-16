@@ -224,11 +224,13 @@ export default {
         })
         .then((response) => {
           this.selectedRows = [];
+          /*
           this.$notify({
             title: this.$t('Success').toString(),
             text: response.data.message.toString(),
             type: 'success',
           });
+          */
           this.getExpeses();
         })
         .catch(() => {
