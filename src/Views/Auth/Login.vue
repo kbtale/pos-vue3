@@ -2,6 +2,7 @@
     <div class=" ">
       <!--<loading :active="loading"></loading>-->
       <Vueform @submit.prevent="submit" size="md" v-model="data">
+        <!--
         <template v-if="isDemoMode">
           <StaticElement name="loginAsDemo" class="my-2 bg-green-200 py-3">
             <StaticElement class="pl-5" name="loginAsDemoInfo" content="Click to login as below while demo mode &#128512;"></StaticElement>
@@ -13,9 +14,10 @@
           </StaticElement>
           <StaticElement name="divider" tag="hr" />
         </template>
+        -->
         <TextElement name="email" id="Email" :placeholder="$t('Email')" v-model="user.email" :columns="{ container: 6, label: 12, wrapper: 12, }" field-name="Email" :rules="['required', 'max:255',]"/>
         <TextElement name="password" input-type="password" v-model="user.password" :columns="{ container: 6, label: 12, wrapper: 12, }" :rules="['required', 'min:8', 'max:20']" field-name="Password" :placeholder="$t('Password')"/>
-        <ButtonElement class="btn btn-app" id="submit-login" @click="submit()" :full="true">
+        <ButtonElement class="btn-app" id="submit-login" @click="submit()" :full="true">
             {{ $t('Sign In') }}
         </ButtonElement>  
         <StaticElement class="text-sm">
@@ -63,7 +65,7 @@ export default {
             this.submit();
         },
         submit() {
-            console.log(this.data)
+            //console.log(this.data)
             this.user.email = this.data.email;
             this.user.password = this.data.password;
             this.login();
@@ -72,7 +74,7 @@ export default {
             this.$axios
             .post('http://192.168.1.186:8000/'+'api/v1/auth/login', this.user)
             .then((response) => {
-              console.log(JSON.stringify(response.data));
+              //console.log(JSON.stringify(response.data));
               this.$store.dispatch('app/login', response.data);
               this.getSettings();
               const intendedUrl = Cookies.get('intended_url');
@@ -89,7 +91,7 @@ export default {
                     this.$router.push({name: 'AdminHome'});
                   }
                   const resolvedRoute = this.$router.resolve('/');
-                  console.log(resolvedRoute);
+                  //console.log(resolvedRoute);
                   //this.$router.push('/');
               }
             })
@@ -105,7 +107,7 @@ export default {
             }
           })
             .then((response) => {
-              console.log(response.data)
+              //console.log(response.data)
               
               let settings = response.data
               settings.orderTypes = [

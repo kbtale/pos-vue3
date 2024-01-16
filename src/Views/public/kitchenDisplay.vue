@@ -170,7 +170,7 @@ export default {
     },
     decodeOrderType(orderkey) {
       let data = {};
-      console.log(this.orderTypes)
+      //console.log(this.orderTypes)
       if (this.orderTypes != undefined) {
         this.orderTypes.forEach((item) => {
           if (item.key === orderkey) {

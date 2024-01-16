@@ -279,7 +279,7 @@ export default {
           }
         })
         .then((response) => {
-          console.log(JSON.stringify(response))
+          //console.log(JSON.stringify(response))
           this.salesList = response.data.items;
           this.pagination = response.data.pagination;
           if (this.pagination.totalPages < this.pagination.currentPage) {

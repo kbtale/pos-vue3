@@ -107,7 +107,7 @@ export default {
       title: this.$t('Admin dashboard'),
     };
   },
-  components: { LineChart: 'line-chart' },
+  components: { 'line-chart': LineChart },
   data() {
     return {
       loading: {
@@ -180,6 +180,7 @@ export default {
         })
         .then((response) => {
           this.lineChartData = response.data;
+          console.log(this.lineChartData);
           this.loading.chart = false;
         })
         .catch(() => {

@@ -483,11 +483,11 @@ const authGuard = (to, from, next) => {
       console.log('Registering is not allowed in this mode.')
       next('/auth/login');
     } else if (localStorage.getItem('token') && to.meta.middleware.includes('guest')) {
-      console.log('There is a token. You can proceed')
+      //console.log('There is a token. You can proceed')
       next();
     } else if (to.meta.middleware.includes('auth') && localStorage.getItem('token')) {
-      console.log(localStorage.getItem('token'))
-      console.log("Checking token...")
+      //console.log(localStorage.getItem('token'))
+      //console.log("Checking token...")
       axios
         .post('http://192.168.1.186:8000/'+'api/v1/auth/check',
         { gate: to.meta.gate },

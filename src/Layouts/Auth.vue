@@ -7,7 +7,7 @@
             <div class="flex justify-center">
               <div class="w-full rounded-md shadow-md max-w-md bg-white p-5">
                 <div class="justify-center mb-8 md:flex items-center">
-                  <img src="../images/icon.png" :alt="appName" class="w-36 h-36" />
+                  <img src="../images/la-trattoria-transparent.png" :alt="appName" class="h-36" />
                 </div>
                 <!--<loading class=" " :active="loading"></loading>-->
                 <template v-if="isActive">

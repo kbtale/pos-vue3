@@ -250,13 +250,13 @@
           </div>
           <div v-if="partnerStatus != null" class="mb-2 flex text-xs justify-center rounded p-2 border border-gray-400" :class="(partnerStatus==1) ? 'bg-lime-100' : 'bg-red-100'">
             <template v-if="partnerStatus != null">
-              <span class="flex space-x-1 px-2">
-                <svg-vue class="h-4 w-4 items-center" :icon="['fas', 'circle-info']"></svg-vue>
-                {{ $t(partnerMessage) }}
+              <span class="text-md flex space-x-1 px-2">
+                <svg-vue class="h-4 w-4 mr-1 items-center" :icon="['fas', 'circle-info']"></svg-vue>
+                 {{ $t(partnerMessage) }} -- {{$t("Limit")}}: {{ currentCustomer.creditLimit }} | {{ $t("Current debt") }}: {{ currentCustomer.partnerCurrentCredit }}
               </span>
             </template>
           </div>
-          <div class="cart-list overflow-auto">
+          <div :class="(currentCustomer.partner != 1) ? 'cart-list overflow-auto' : 'cart-list-partners overflow-auto' ">
             <ul role="list ">
               <li v-for="(item, index) in cartItems" :key="index" class="w-full mb-1">
                 <div class="flex">
@@ -321,19 +321,22 @@
           </div>
           <div class="align-bottom bg-gray-100">
             <div class="md:flex space-x-1">
+              <!--
               <div class="w-full border rounded border-gray-300 py-1 px-2">
                 <p class="text-sm text-cyan-900">{{ $t('Subtotal') }}:</p>
                 <strong>{{ cartTotalPrice }}</strong>
               </div>
+              
               <div class="w-full border rounded border-gray-300 py-1 px-2">
                 <p class="text-sm text-cyan-900">{{ $t('Tax') }}:</p>
                 <strong>{{ taxAmount }}</strong>
               </div>
+              -->
             </div>
             <div class="mt-1">
               <div class="w-full border rounded border-gray-300 py-1 px-2">
-                <p class="text-sm text-cyan-900">{{ $t('Total') }}:</p>
-                <strong>{{ totalAmount }}</strong>
+                <p class="text-md text-cyan-900">{{ $t('Total') }}:</p>
+                <strong class="text-xl">${{ totalAmount }}</strong>
               </div>
             </div>
           </div>
@@ -597,7 +600,7 @@
               </select>
             </div>
             <div class="w-full">
-              <button type="button" class="col-span-1 p-3 items-center text-center btn btn-app w-full" v-if="currentCustomer.partner == 1" @click.prevent="setCredit">{{$t(Credit)}}</button>
+              <button type="button" class="col-span-1 p-3 items-center text-center btn btn-app w-full" v-if="currentCustomer.partner == 1" @click.prevent="setCredit">{{$t("Credit")}}</button>
             </div>
           </div>
           <div class="col-span-3 mb-2 flex space-x-1">
@@ -702,6 +705,7 @@ export default {
         { key: 'delivery', title: 'Delivery' },
       ],
       partnerStatus: null,
+      partnerCurrentCredit: null,
       partnerMessage: 'The customer is not a partner',
       paymentByCredit: false,
       creditSalesList: [],
@@ -983,7 +987,7 @@ export default {
       this.sale.profit_after_all = this.profit;
       this.sale.total_paid = this.recipient_amount;
       this.sale.payable_after_all = this.totalAmount;
-      console.log(this.sale)
+      //console.log(this.sale)
       this.$axios
         .post('http://192.168.1.186:8000/'+'api/v1/pos/checkout/'+this.sale.uuid, this.sale,
         {
@@ -1040,7 +1044,7 @@ export default {
         })
         .then((response) => {
           this.loading = false;
-          console.log(response.data)
+          //console.log(response.data)
           this.creditSalesList = response.data.items;
         })
         .catch((e) => {
@@ -1049,7 +1053,7 @@ export default {
         });      
     },
     handleCustomerChange(){
-      console.log(this.currentCustomer)
+      //console.log(this.currentCustomer)
       if (this.currentCustomer.partner == 1){
         this.$axios
           .get('http://192.168.1.186:8000/'+'api/v1/pos/get-credit-status/',
@@ -1063,7 +1067,9 @@ export default {
           .then((response) => {
             this.loading = false;
             this.partnerStatus = response.data.status;
-            console.log(this.partnerStatus)
+            //console.log(JSON.stringify(response.data))
+            this.partnerCurrentCredit = response.data.creditGotten;
+            //console.log(this.partnerStatus)
             switch(this.partnerStatus){
               case 0:
                 this.partnerMessage = "There's no credit limit assigned for this customer"
@@ -1241,7 +1247,7 @@ export default {
           this.sale = response.data;
           this.currentTable = this.sale.service_table ?? { id: null };
           this.currentCustomer = this.sale.customer ?? { id: null };
-          console.log('customer to be shown: ' + JSON.stringify(this.sale.customer));
+          //console.log('customer to be shown: ' + JSON.stringify(this.sale.customer));
           this.setCartItems(this.sale.items);
         }
       });
@@ -1258,6 +1264,7 @@ export default {
     },
     saveOrder() {
       this.loading = true;
+      this.clearSignature();
       this.models.signatureModel = false;
       this.sale.items = this.cartItems;
       this.sale.tax_amount = this.taxAmount;
@@ -1385,7 +1392,7 @@ export default {
         headers: { 'Content-Type': 'multipart/form-data', Authorization: `Bearer ${localStorage.getItem('token')}` }
       })
         .then(response => {
-          console.log('Image uploaded: '+ JSON.stringify(response.data))
+          //console.log('Image uploaded: '+ JSON.stringify(response.data))
           this.signatureDir = response.data.file_url;
           this.saveOrder();
         })
@@ -1400,20 +1407,28 @@ export default {
 <style type="text/css">
 .cart-list {
   @apply overflow-y-auto;
-  height: calc(100vh - 270px);
+  height: calc(100vh - 120px);
+}
+.cart-list-partners {
+  @apply overflow-y-auto;
+  height: calc(100vh - 180px);
 }
 .product-list {
   @apply overflow-y-auto;
-  height: calc(95vh - 270px);
+  height: calc(95vh - 90px);
 }
 
 @media (min-width: theme('screens.md')) {
   .product-list {
-    height: calc(86vh - 170px);
+    height: calc(86vh - 120px);
   }
   .cart-list {
     @apply overflow-y-auto;
-    height: calc(96vh - 300px);
+    height: calc(96vh - 250px);
+  }
+  .cart-list-partners {
+    @apply overflow-y-auto;
+    height: calc(96vh - 305px);
   }
 }
 </style>

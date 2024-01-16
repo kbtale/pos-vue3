@@ -5,28 +5,39 @@
 </template>
 
 <script>
+import { ref, watch, onMounted } from 'vue'
 import { Line } from 'vue-chartjs'
 
 export default {
-  extends: Line,
+  name: 'ChartComponent',
   props: {
     chartData: {
       type: Object,
       default: null
-    },
-    options: {
-      type: Object,
-      default: null
     }
   },
-  watch: {
-    chartData () {
-      this.$data._chart.destroy()
-      this.renderChart(this.chartData, this.options)
+  setup(props) {
+    const canvas = ref(null)
+
+    watch(() => props.chartData, (newVal, oldVal) => {
+      if (newVal !== oldVal) {
+        // Destroy and re-render chart
+      }
+    })
+
+    onMounted(() => {
+      console.log(props.chartData)
+      /*
+      const chart = new Line(canvas.value.getContext('2d'), {
+        data: props.chartData,
+        options: {} // You can define default options here
+      })
+      */
+    })
+
+    return {
+      canvas
     }
-  },
-  mounted () {
-    this.renderChart(this.chartData, this.options)
   }
 }
 </script>
