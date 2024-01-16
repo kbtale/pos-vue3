@@ -755,5 +755,17 @@
     "Your current password": "Tu contraseña actual",
     "Your name": "Tu nombre",
     "Your new password": "Tu nueva contraseña",
-    "Your registration successful": "Tu registro fue exitoso"
+    "Your registration successful": "Tu registro fue exitoso",
+    "Can't access to your account?": "¿No puedes acceder a tu cuenta?",
+    "Food": "Restaurante",
+    "Advanced": "Avanzado",
+    "Kitchen": "Cocina",
+    "Sign here": "Firma aquí",
+    "Clear": "Borrar",
+    "Credit limit": "Límite",
+    "Credit": "Crédito",
+    "There's no credit limit assigned for this customer": "El socio no tiene crédito asignado",
+    "There's credit available for this customer": "El socio dispone de crédito disponible",
+    "This user has exceeded his credit limit": "El socio ha excedido el límite de crédito",
+    "There was an error retrieving data": "Hubo un error recibiendo los datos"
 }

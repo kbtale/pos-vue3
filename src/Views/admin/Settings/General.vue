@@ -141,7 +141,7 @@ export default {
       this.loading.optimize = true;
       this.system.output = null;
       this.$axios
-        .post('http://localhost:8000/'+'api/v1/admin/settings/optimize/', this.system, {
+        .post('http://192.168.1.186:8000/'+'api/v1/admin/settings/optimize/', this.system, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -159,7 +159,7 @@ export default {
     },
     get() {
       this.$axios
-        .get('http://localhost:8000/'+'api/v1/admin/settings/general/', {
+        .get('http://192.168.1.186:8000/'+'api/v1/admin/settings/general/', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -175,7 +175,7 @@ export default {
     save() {
       this.loading.general = true;
       this.$axios
-        .post('http://localhost:8000/'+'api/v1/admin/settings/general/', this.form, {
+        .post('http://192.168.1.186:8000/'+'api/v1/admin/settings/general/', this.form, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

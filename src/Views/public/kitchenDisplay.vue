@@ -4,7 +4,7 @@
       <!--<loading :active="loading"></loading>-->
       <div class="p-2 bg-white mb-1 rounded shadow-md">
         <div class="grid grid-cols-3 lg:grid-cols-11 gap-1">
-          <router-link to="/pos" class="flex flex-col text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md">
+          <router-link to="/admin" class="flex flex-col text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md">
             <svg-vue class="content-title-icon mx-auto" :icon="['fas', 'reply-all']"></svg-vue>
             <span class="text-xs">{{ $t('Back') }}</span>
           </router-link>
@@ -129,6 +129,12 @@ export default {
   name: 'kitchenDisplay',
   data() {
     return {
+      orderTypes: [
+        { key: 'all', title: 'All' },
+        { key: 'dining', title: 'Dining' },
+        { key: 'takeout', title: 'Takeout' },
+        { key: 'delivery', title: 'Delivery' },
+      ],
       orders_bg: 'bg-white',
       orders_in_a_row: 2,
       loading: false,
@@ -152,7 +158,7 @@ export default {
   watch: {},
   computed: {
     ...mapGetters({
-      orderTypes: 'app/getOrderTypes',
+      //orderTypes: 'app/getOrderTypes',
     }),
   },
   methods: {
@@ -179,7 +185,7 @@ export default {
       order.progress = this.getProgress(order.items);
       this.loading = true;
       this.$axios
-        .post('http://localhost:8000/'+'api/v1/pos/order-progress/'+order.uuid, order, {
+        .post('http://192.168.1.186:8000/'+'api/v1/pos/order-progress/'+order.uuid, order, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -200,7 +206,7 @@ export default {
     },
     autoSycro() {
       this.$axios
-        .get('http://localhost:8000/'+'api/v1/pos/kitchen-orders/', {
+        .get('http://192.168.1.186:8000/'+'api/v1/pos/kitchen-orders/', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

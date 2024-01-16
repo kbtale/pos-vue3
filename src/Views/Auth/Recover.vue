@@ -52,7 +52,7 @@ export default {
     recover() {
       this.loading = true;
       this.$axios
-        .post('http://localhost:8000/'+'api/v1/auth/recover', this.user)
+        .post('http://192.168.1.186:8000/'+'api/v1/auth/recover', this.user)
         .then((response) => {
           /*
           this.$notify({

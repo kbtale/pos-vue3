@@ -70,7 +70,7 @@ export default {
         },
         login() {
             this.$axios
-            .post('http://localhost:8000/'+'api/v1/auth/login', this.user)
+            .post('http://192.168.1.186:8000/'+'api/v1/auth/login', this.user)
             .then((response) => {
               console.log(JSON.stringify(response.data));
               this.$store.dispatch('app/login', response.data);
@@ -99,7 +99,7 @@ export default {
             });
         },
         getSettings(){
-          this.axios.get('http://localhost:8000/'+'api/v1/admin/settings/all', {
+          this.axios.get('http://192.168.1.186:8000/'+'api/v1/admin/settings/all', {
             headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
             }

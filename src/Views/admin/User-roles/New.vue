@@ -123,7 +123,7 @@ export default {
     saveUserRole() {
       this.loading = true;
       this.$axios
-        .post('http://localhost:8000/'+'api/v1/admin/user-roles/'+this.$route.params.id, this.userRole, {
+        .post('http://192.168.1.186:8000/'+'api/v1/admin/user-roles/'+this.$route.params.id, this.userRole, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -146,7 +146,7 @@ export default {
     getPermissions() {
       this.loading = true;
       this.$axios
-        .get('http://localhost:8000/'+'api/v1/admin/roles/permissions', {
+        .get('http://192.168.1.186:8000/'+'api/v1/admin/roles/permissions', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

@@ -206,7 +206,7 @@ export default {
       this.loading = true;
       this.categoryDeleteModel = false;
       this.$axios
-        .delete('http://localhost:8000/'+'api/v1/admin/food-category-row-destroy/', this.selectedRows, {
+        .delete('http://192.168.1.186:8000/'+'api/v1/admin/food-category-row-destroy/', this.selectedRows, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -245,7 +245,7 @@ export default {
     getFoodCategories() {
       this.loading = true;
       this.$axios
-        .get('http://localhost:8000/'+'api/v1/admin/food-categories/', {
+        .get('http://192.168.1.186:8000/'+'api/v1/admin/food-categories/', {
           params: {
             page: this.page,
             sort: this.sort,

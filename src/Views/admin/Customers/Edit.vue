@@ -110,7 +110,7 @@ export default {
     updateCustomer() {
       this.loading = true;
       this.$axios
-        .put('http://localhost:8000/'+'api/v1/admin/customers/'+this.$route.params.uuid, this.customer,
+        .put('http://192.168.1.186:8000/'+'api/v1/admin/customers/'+this.$route.params.uuid, this.customer,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -133,7 +133,7 @@ export default {
     getCustomer() {
       this.loading = true;
       this.$axios
-        .get('http://localhost:8000/'+'api/v1/admin/customers/'+this.$route.params.uuid,
+        .get('http://192.168.1.186:8000/'+'api/v1/admin/customers/'+this.$route.params.uuid,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -149,7 +149,7 @@ export default {
     },
     deleteCustomer() {
       this.$axios
-        .delete('http://localhost:8000/'+'api/v1/admin/customers/'+this.$route.params.uuid,
+        .delete('http://192.168.1.186:8000/'+'api/v1/admin/customers/'+this.$route.params.uuid,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`

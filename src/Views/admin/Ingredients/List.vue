@@ -232,7 +232,7 @@ export default {
       this.loading = true;
       this.ingredientDeleteModel = false;
       this.$axios
-        .delete('http://localhost:8000/'+'api/v1/admin/ingredients-destroy/', { rows: this.selectedRows }, {
+        .delete('http://192.168.1.186:8000/'+'api/v1/admin/ingredients-destroy/', { rows: this.selectedRows }, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -271,7 +271,7 @@ export default {
     getIngredients() {
       this.loading = true;
       this.$axios
-        .get('http://localhost:8000/'+'api/v1/admin/ingredients/', {
+        .get('http://192.168.1.186:8000/'+'api/v1/admin/ingredients/', {
           params: {
             page: this.page,
             sort: this.sort,

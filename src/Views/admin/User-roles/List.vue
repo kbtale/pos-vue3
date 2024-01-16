@@ -196,7 +196,7 @@ export default {
     getUserRoles() {
       this.loading = true;
       this.$axios
-        .get('http://localhost:8000/'+'api/v1/admin/user-roles/', {
+        .get('http://192.168.1.186:8000/'+'api/v1/admin/user-roles/', {
           params: {
             page: this.page,
             sort: this.sort,

@@ -100,7 +100,7 @@ export default {
         formData.append('image', this.image.file);
       }
       this.$axios
-        .post('http://localhost:8000/'+'api/v1/admin/food-categories/'+this.$route.params.id, formData, {
+        .post('http://192.168.1.186:8000/'+'api/v1/admin/food-categories/'+this.$route.params.id, formData, {
           headers: { 'Content-Type': 'multipart/form-data', Authorization: `Bearer ${localStorage.getItem('token')}`}
         })
         .then((response) => {
@@ -120,7 +120,7 @@ export default {
     getCategory() {
       this.loading = true;
       this.$axios
-        .get('http://localhost:8000/'+'api/v1/admin/food-categories/'+this.$route.params.id, {
+        .get('http://192.168.1.186:8000/'+'api/v1/admin/food-categories/'+this.$route.params.id, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -136,7 +136,7 @@ export default {
     },
     deleteCategory() {
       this.$axios
-        .delete('http://localhost:8000/'+'api/v1/admin/food-categories/'+this.$route.params.id, {
+        .delete('http://192.168.1.186:8000/'+'api/v1/admin/food-categories/'+this.$route.params.id, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

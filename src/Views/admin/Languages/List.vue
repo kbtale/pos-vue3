@@ -97,7 +97,7 @@ export default {
     getLanguages() {
       this.loading = true;
       this.$axios
-        .get('http://localhost:8000/'+'api/v1/admin/languages/', {
+        .get('http://192.168.1.186:8000/'+'api/v1/admin/languages/', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -119,7 +119,7 @@ export default {
         type: 'info',
       });
       */
-      this.$axios.post('http://localhost:8000/'+'api/v1/admin/languages/sync', {
+      this.$axios.post('http://192.168.1.186:8000/'+'api/v1/admin/languages/sync', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

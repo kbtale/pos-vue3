@@ -157,7 +157,7 @@ export default {
     getStates() {
       this.loading.states = true;
       this.$axios
-        .get('http://localhost:8000/'+'api/v1/admin/dashboard-states/', {
+        .get('http://192.168.1.186:8000/'+'api/v1/admin/dashboard-states/', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -173,7 +173,7 @@ export default {
     getAnnualData() {
       this.loading.chart = true;
       this.$axios
-        .get('http://localhost:8000/'+'api/v1/admin/dashboard-graphical/', {
+        .get('http://192.168.1.186:8000/'+'api/v1/admin/dashboard-graphical/', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

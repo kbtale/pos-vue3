@@ -168,7 +168,7 @@ export default {
   methods: {
     get() {
       this.$axios
-        .get('http://localhost:8000/'+'api/v1/admin/settings/outgoing/mail', {
+        .get('http://192.168.1.186:8000/'+'api/v1/admin/settings/outgoing/mail', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -186,7 +186,7 @@ export default {
     save() {
       this.loading = true;
       this.$axios
-        .post('http://localhost:8000/'+'api/v1/admin/settings/outgoing/mail', this.mail, {
+        .post('http://192.168.1.186:8000/'+'api/v1/admin/settings/outgoing/mail', this.mail, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

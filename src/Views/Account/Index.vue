@@ -196,7 +196,7 @@ export default {
     getUser() {
       this.loading.details = true;
       this.$axios
-        .get('http://localhost:8000/'+'api/v1/auth/user',
+        .get('http://192.168.1.186:8000/'+'api/v1/auth/user',
         {
 					headers: {
 						Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -251,7 +251,7 @@ export default {
         formData.append('avatar', this.user.avatar);
       }
       this.$axios
-        .post('http://localhost:8000/'+'api/v1/account/update/', formData, {
+        .post('http://192.168.1.186:8000/'+'api/v1/account/update/', formData, {
           headers: { 'Content-Type': 'multipart/form-data', Authorization: `Bearer ${localStorage.getItem('token')}` },
         })
         .then((response) => {
@@ -278,7 +278,7 @@ export default {
     changePassword() {
       this.loading.password = true;
       this.$axios
-        .post('http://localhost:8000/'+'api/v1/account/password/', {
+        .post('http://192.168.1.186:8000/'+'api/v1/account/password/', {
           current_password: this.user.current_password,
           password: this.user.password,
           password_confirmation: this.user.password_confirmation,

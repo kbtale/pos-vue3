@@ -45,7 +45,7 @@
       };
     },
     mounted() {
-      this.axios.get('http://localhost:8000/'+'api/v1/auth/authentication-settings')
+      this.axios.get('http://192.168.1.186:8000/'+'api/v1/auth/authentication-settings')
         .then((response) => {
           console.log(JSON.stringify(response.data))
           //this.$store.commit('setPublic', response.data);

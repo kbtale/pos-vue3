@@ -178,7 +178,7 @@ export default {
     getSaleOrder() {
       this.loading = true;
       this.$axios
-        .get('http://localhost:8000/'+'api/v1/pos/sale/'+this.$route.params.uuid, {
+        .get('http://192.168.1.186:8000/'+'api/v1/pos/sale/'+this.$route.params.uuid, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

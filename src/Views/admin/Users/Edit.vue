@@ -146,7 +146,7 @@ export default {
     updateUser() {
       this.loading = true;
       this.$axios
-        .put('http://localhost:8000/'+'api/v1/admin/users/'+this.$route.params.id, this.user, {
+        .put('http://192.168.1.186:8000/'+'api/v1/admin/users/'+this.$route.params.id, this.user, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -168,7 +168,7 @@ export default {
     getUser() {
       this.loading = true;
       this.$axios
-        .get('http://localhost:8000/'+'api/v1/admin/users/'+this.$route.params.id, {
+        .get('http://192.168.1.186:8000/'+'api/v1/admin/users/'+this.$route.params.id, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -183,7 +183,7 @@ export default {
     },
     deleteUser() {
       this.$axios
-        .delete('http://localhost:8000/'+'api/v1/admin/users/'+this.$route.params.id, {
+        .delete('http://192.168.1.186:8000/'+'api/v1/admin/users/'+this.$route.params.id, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -204,7 +204,7 @@ export default {
     },
     getUserRoles() {
       this.$axios
-        .get('http://localhost:8000/'+'api/v1/admin/users/user-roles', {
+        .get('http://192.168.1.186:8000/'+'api/v1/admin/users/user-roles', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

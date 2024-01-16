@@ -118,7 +118,7 @@ export default {
     saveCustomer() {
       this.loading = true;
       this.$axios
-        .post('http://localhost:8000/'+'api/v1/admin/customers', this.customer, {
+        .post('http://192.168.1.186:8000/'+'api/v1/admin/customers', this.customer, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

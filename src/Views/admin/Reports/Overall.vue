@@ -303,6 +303,12 @@ export default {
   },
   data() {
     return {
+      orderTypes: [
+        { key: 'all', title: 'All' },
+        { key: 'dining', title: 'Dining' },
+        { key: 'takeout', title: 'Takeout' },
+        { key: 'delivery', title: 'Delivery' },
+      ],
       printing: false,
       loading: false,
       generatedAt: null,
@@ -332,7 +338,7 @@ export default {
 
   computed: {
     ...mapGetters({
-      orderTypes: 'app/getOrderTypes',
+      //orderTypes: 'app/getOrderTypes',
     }),
     anyFilter() {
       return (
@@ -374,7 +380,7 @@ export default {
       this.generateReport();
     },
     getFilters() {
-      this.$axios.get('http://localhost:8000/'+'api/v1/admin/sale-filters/', {
+      this.$axios.get('http://192.168.1.186:8000/'+'api/v1/admin/sale-filters/', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -388,7 +394,7 @@ export default {
     generateReport() {
       this.loading = true;
       this.$axios
-        .get('http://localhost:8000/'+'api/v1/admin/sale-report/', {
+        .get('http://192.168.1.186:8000/'+'api/v1/admin/sale-report/', {
           params: this.filters,
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`

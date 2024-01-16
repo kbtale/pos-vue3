@@ -67,7 +67,7 @@ export default {
 			this.loading = true;
 			console.log(this.exportForm)
 			this.$axios
-				.post('http://localhost:8000/'+'api/v1/admin/exports/', this.exportForm, {
+				.post('http://192.168.1.186:8000/'+'api/v1/admin/exports/', this.exportForm, {
 				headers: {
 					Authorization: `Bearer ${localStorage.getItem('token')}`
 				}

@@ -82,7 +82,7 @@ export default {
     getTableList() {
       this.loading = true;
       this.$axios
-        .get('http://localhost:8000/'+'api/v1/admin/service-tables/', {
+        .get('http://192.168.1.186:8000/'+'api/v1/admin/service-tables/', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

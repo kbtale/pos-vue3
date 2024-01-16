@@ -86,7 +86,7 @@ export default {
   methods: {
     get() {
       this.$axios
-        .get('http://localhost:8000/'+'api/v1/admin/settings/captcha/', {
+        .get('http://192.168.1.186:8000/'+'api/v1/admin/settings/captcha/', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -102,7 +102,7 @@ export default {
     save() {
       this.loading = true;
       this.$axios
-        .post('http://localhost:8000/'+'api/v1/admin/settings/captcha/', this.captcha, {
+        .post('http://192.168.1.186:8000/'+'api/v1/admin/settings/captcha/', this.captcha, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

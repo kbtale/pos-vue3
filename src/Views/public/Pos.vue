@@ -64,6 +64,7 @@
       <div class="lg:flex lg:space-x-1">
         <div class="bg-white h-fit p-2 w-full overflow-auto">
           <div v-if="products.length && partnerStatus != -1" class="mb-2">
+            <!--
             <input-select
               id="category"
               :default-label="$t('Filter by category')"
@@ -104,6 +105,7 @@
             <small v-if="filters.category" class="px-2 pt-4 cursor-pointer text-red-400 hover:text-red-600" @click.prevent="filters.category = null">
               x {{ $t('clear category') }}</small
             >
+            -->
           </div>
           <div class="product-list overflow-auto">
             <template v-if="products.length && partnerStatus != -1">
@@ -459,22 +461,22 @@
       <signature-model :show="models.signatureModel" @close="onSignatureModelClose" @open="onSignatureModelOpen">
         <div class="py-5 lg:flex md:space-x-2 col-span-3 mb-2">
           <div class="w-full">
-            <label class="form-label" for="Signature">{{ $t('Sign here') }}</label>
-            <vue-signature-pad v-model="signature" id="Signature" width="100%" height="200px" ref="signaturePad" :options="{onBegin: () => {$refs.signaturePad.resizeCanvas()}, onEnd: () => {this.signature = this.$refs.signaturePad.saveSignature().data}}"></vue-signature-pad>
+            <label class="form-label text-center text-2xl font-bold" for="Signature">{{ $t('Sign here') }}</label>
+            <vue-signature-pad v-model="signature" class="border-2 shadow-lg" id="Signature" width="100%" height="200px" ref="signaturePad" :options="{onBegin: () => {$refs.signaturePad.resizeCanvas()}, onEnd: () => {this.signature = this.$refs.signaturePad.saveSignature().data}}"></vue-signature-pad>
           </div>
         </div>
-        <button type="button" @click.prevent="clearSignature" class="text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md">
-            <span class="text-xs">{{ $t('Cancel') }}</span>
-        </button>
-        <button type="button" @click.prevent="$refs.signaturePad.clearSignature()" class="text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md">
-            <span class="text-xs">{{ $t('Clear') }}</span>
-        </button>
-        <button class="text-center border border-gray-400 p-1 cursor-pointer hover:bg-gray-100 mb-1 rounded-md" v-if="cartItems.length > 0" @click.prevent="storeSignature()">
-            <span class="text-xs"> {{ sale.uuid ? $t('Update') : $t('Submit') }} </span>
-        </button>    
+        <div class="flex justify-center mt-4 space-x-4">
+          <button type="button" @click.prevent="clearSignature" class="px-4 py-2 text-white bg-red-500 hover:bg-red-700 rounded shadow">
+            <font-awesome-icon :icon="['fas', 'times']" /> {{ $t('Cancel') }}
+          </button>
+          <button type="button" @click.prevent="$refs.signaturePad.clearSignature()" class="px-4 py-2 text-white bg-blue-500 hover:bg-blue-700 rounded shadow">
+            <font-awesome-icon :icon="['fas', 'eraser']" /> {{ $t('Clear') }}
+          </button>
+          <button v-if="cartItems.length > 0" @click.prevent="storeSignature()" class="px-4 py-2 text-white bg-green-500 hover:bg-green-700 rounded shadow">
+            <font-awesome-icon :icon="['fas', 'check']" /> {{ sale.uuid ? $t('Update') : $t('Submit') }}
+          </button>
+        </div>    
       </signature-model>
-
-
       <table-model :show="models.serviceTableModel" @close="models.serviceTableModel = false">
         <div class="p-3">
           <strong class="text-xl font-semibold text-cyan-900">{{ $t('Service table') }}</strong>
@@ -595,7 +597,7 @@
               </select>
             </div>
             <div class="w-full">
-              <button type="button" class="col-span-1 p-3 items-center text-center btn btn-app w-full" v-if="currentCustomer.partner == 1" @click.prevent="setCredit">Credit</button>
+              <button type="button" class="col-span-1 p-3 items-center text-center btn btn-app w-full" v-if="currentCustomer.partner == 1" @click.prevent="setCredit">{{$t(Credit)}}</button>
             </div>
           </div>
           <div class="col-span-3 mb-2 flex space-x-1">
@@ -694,6 +696,11 @@ export default {
   },
   data() {
     return {
+      orderTypes: [
+        { key: 'dining', title: 'Dining' },
+        { key: 'takeout', title: 'Takeout' },
+        { key: 'delivery', title: 'Delivery' },
+      ],
       partnerStatus: null,
       partnerMessage: 'The customer is not a partner',
       paymentByCredit: false,
@@ -797,7 +804,7 @@ export default {
       cartTotalPrice: 'cart/getCartTotalPrice',
       cartTotalCost: 'cart/getCartTotalCost',
       userRole: 'app/getRole',
-      orderTypes: 'app/getOrderTypes',
+      //orderTypes: 'app/getOrderTypes',
       taxSetup: 'app/getTaxSetup',
     }),
     computedQty: function() {
@@ -900,7 +907,7 @@ export default {
       this.loading = true;
       this.models.deleteModel = false;
       this.$axios
-        .delete('http://localhost:8000/'+'api/v1/admin/sales/'+this.sale.uuid, {
+        .delete('http://192.168.1.186:8000/'+'api/v1/admin/sales/'+this.sale.uuid, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -933,7 +940,7 @@ export default {
     storeCustomer() {
       this.loading = true;
       this.$axios
-        .post('http://localhost:8000/'+'api/v1/admin/customers/', this.currentCustomer,
+        .post('http://192.168.1.186:8000/'+'api/v1/admin/customers/', this.currentCustomer,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -978,7 +985,7 @@ export default {
       this.sale.payable_after_all = this.totalAmount;
       console.log(this.sale)
       this.$axios
-        .post('http://localhost:8000/'+'api/v1/pos/checkout/'+this.sale.uuid, this.sale,
+        .post('http://192.168.1.186:8000/'+'api/v1/pos/checkout/'+this.sale.uuid, this.sale,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -1008,7 +1015,7 @@ export default {
     getCustomers() {
       this.loading = true;
       this.$axios
-        .get('http://localhost:8000/'+'api/v1/pos/customers/',
+        .get('http://192.168.1.186:8000/'+'api/v1/pos/customers/',
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -1025,7 +1032,7 @@ export default {
     },
     getCreditSales(){
       this.$axios
-        .get('http://localhost:8000/'+'api/v1/pos/get-pending-credit/' + this.currentCustomer.id,
+        .get('http://192.168.1.186:8000/'+'api/v1/pos/get-pending-credit/' + this.currentCustomer.id,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -1045,7 +1052,7 @@ export default {
       console.log(this.currentCustomer)
       if (this.currentCustomer.partner == 1){
         this.$axios
-          .get('http://localhost:8000/'+'api/v1/pos/get-credit-status/',
+          .get('http://192.168.1.186:8000/'+'api/v1/pos/get-credit-status/',
           {
             params: 
               this.currentCustomer,
@@ -1163,7 +1170,7 @@ export default {
     },
     getServiceTables() {
       this.loading = true;
-      this.$axios.get('http://localhost:8000/'+'api/v1/pos/avl-service-tables/',
+      this.$axios.get('http://192.168.1.186:8000/'+'api/v1/pos/avl-service-tables/',
       {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -1175,7 +1182,7 @@ export default {
     },
     getPaymentMethods() {
       this.loading = true;
-      this.$axios.get('http://localhost:8000/'+'api/v1/pos/payment-methods/',
+      this.$axios.get('http://192.168.1.186:8000/'+'api/v1/pos/payment-methods/',
       {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -1187,7 +1194,7 @@ export default {
     },
     getCategories() {
       this.loading = true;
-      this.$axios.get('http://localhost:8000/'+'api/v1/pos/categories/',
+      this.$axios.get('http://192.168.1.186:8000/'+'api/v1/pos/categories/',
       {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -1199,7 +1206,7 @@ export default {
     },
     getAllSubmittedOrders() {
       this.loading = true;
-      this.$axios.get('http://localhost:8000/'+'api/v1/pos/submitted-orders/',
+      this.$axios.get('http://192.168.1.186:8000/'+'api/v1/pos/submitted-orders/',
       {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -1213,7 +1220,7 @@ export default {
     getAlreadysubmittedOrder(order) {
       this.loading = true;
       this.models.ordersModel = false;
-      this.$axios.post('http://localhost:8000/'+'api/v1/pos/submitted-sale/', { uuid: order.uuid },
+      this.$axios.post('http://192.168.1.186:8000/'+'api/v1/pos/submitted-sale/', { uuid: order.uuid },
       {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -1272,7 +1279,7 @@ export default {
     updateSale() {
       this.sale.customer_id = this.currentCustomer.id ?? null;
       this.$axios
-        .patch('http://localhost:8000/'+'api/v1/admin/sales/'+this.sale.uuid, this.sale,
+        .patch('http://192.168.1.186:8000/'+'api/v1/admin/sales/'+this.sale.uuid, this.sale,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -1296,7 +1303,7 @@ export default {
     },
     storeSale() {
       this.$axios
-        .post('http://localhost:8000/'+'api/v1/admin/sales/', this.sale,
+        .post('http://192.168.1.186:8000/'+'api/v1/admin/sales/', this.sale,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -1332,7 +1339,7 @@ export default {
       };
       console.log("Filters: " + this.filters)
       this.$axios
-        .get('http://localhost:8000/'+'api/v1/pos/products/', {
+        .get('http://192.168.1.186:8000/'+'api/v1/pos/products/', {
         headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -1374,7 +1381,7 @@ export default {
     storeSignature() {
       let formData = new FormData();
       formData.append('signature', this.signature);
-      this.axios.post('http://localhost:8000/'+'api/v1/files/store-signature/', formData, {
+      this.axios.post('http://192.168.1.186:8000/'+'api/v1/files/store-signature/', formData, {
         headers: { 'Content-Type': 'multipart/form-data', Authorization: `Bearer ${localStorage.getItem('token')}` }
       })
         .then(response => {

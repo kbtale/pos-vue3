@@ -77,7 +77,7 @@ export default {
     getStockAlerts() {
       this.loading = true;
       this.$axios
-        .get('http://localhost:8000/'+'api/v1/admin/stock-alerts/', {
+        .get('http://192.168.1.186:8000/'+'api/v1/admin/stock-alerts/', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

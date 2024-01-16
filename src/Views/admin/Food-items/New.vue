@@ -130,7 +130,7 @@ export default {
     getFoodCategories() {
       this.loading = true;
       this.$axios
-        .get('http://localhost:8000/'+'api/v1/admin/food-categories-list/', {
+        .get('http://192.168.1.186:8000/'+'api/v1/admin/food-categories-list/', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -160,7 +160,7 @@ export default {
         formData.append('image', this.image.file);
       }
       this.$axios
-        .post('http://localhost:8000/'+'api/v1/admin/food-items/', formData, {
+        .post('http://192.168.1.186:8000/'+'api/v1/admin/food-items/', formData, {
           headers: { 'Content-Type': 'multipart/form-data', Authorization: `Bearer ${localStorage.getItem('token')}` },
         })
         .then((response) => {

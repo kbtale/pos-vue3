@@ -256,7 +256,7 @@ export default {
   methods: {
     deleteSale() {
       this.$axios
-        .delete('http://localhost:8000/'+'api/v1/admin/sales/'+this.$route.params.uuid, {
+        .delete('http://192.168.1.186:8000/'+'api/v1/admin/sales/'+this.$route.params.uuid, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -279,7 +279,7 @@ export default {
       this.loading = true;
       console.log(this.$route)
       this.$axios
-        .get('http://localhost:8000/'+'api/v1/admin/sales/'+this.$route.params.uuid, {
+        .get('http://192.168.1.186:8000/'+'api/v1/admin/sales/'+this.$route.params.uuid, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
