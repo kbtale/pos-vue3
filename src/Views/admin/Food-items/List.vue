@@ -233,7 +233,7 @@ export default {
       this.loading = true;
       this.productDeleteModel = false;
       this.$axios
-        .delete('http://localhost:8000/api/v1/admin/food-items-rows-destroy/', this.selectedRows, {
+        .delete('http://localhost/'+'api/v1/admin/food-items-rows-destroy/', this.selectedRows, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -269,7 +269,7 @@ export default {
     getProductCategories() {
       this.loading = true;
       this.$axios
-        .get('http://localhost:8000/api/v1/admin/food-categories-list/', {
+        .get('http://localhost/'+'api/v1/admin/food-categories-list/', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -286,7 +286,7 @@ export default {
     getProducts() {
       this.loading = true;
       this.$axios
-        .get('http://localhost:8000/api/v1/admin/food-items/', {
+        .get('http://localhost/'+'api/v1/admin/food-items/', {
           params: {
             page: this.page,
             sort: this.sort,

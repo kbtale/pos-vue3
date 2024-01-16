@@ -76,7 +76,7 @@ export default {
     getTaxData() {
       this.loading = true;
       this.$axios
-        .post('http://localhost:8000/api/v1/admin/report-tax/', this.report, {
+        .post('http://localhost/'+'api/v1/admin/report-tax/', this.report, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

@@ -97,7 +97,7 @@ export default {
     getLanguages() {
       this.loading = true;
       this.$axios
-        .get('http://localhost:8000/api/v1/admin/languages/', {
+        .get('http://localhost/'+'api/v1/admin/languages/', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -117,7 +117,7 @@ export default {
         text: this.$t('The synchronization process has been started').toString(),
         type: 'info',
       });
-      this.$axios.post('http://localhost:8000/api/v1/admin/languages/sync', {
+      this.$axios.post('http://localhost/'+'api/v1/admin/languages/sync', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

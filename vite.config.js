@@ -14,5 +14,8 @@ export default defineConfig({
   },
   optimizeDeps: {
     include: ['vue-loading-overlay']
+  },
+  server: {
+    host: true
   }
 })

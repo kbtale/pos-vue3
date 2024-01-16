@@ -44,6 +44,15 @@
         //loading: false,
       };
     },
+    mounted() {
+      this.axios.get('http://localhost/'+'api/v1/auth/authentication-settings')
+        .then((response) => {
+          console.log(JSON.stringify(response.data))
+          this.$store.commit('setPublicSettings', response.data);
+          let data = this.$store.getters['getPublicSettings'];
+          console.log(data);
+        });
+    },
     watch: {
       activeUser(user) {
         //this.loading = true;

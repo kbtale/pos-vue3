@@ -70,7 +70,7 @@ export default {
     savePaymentMethod() {
       this.loading = true;
       this.$axios
-        .post('http://localhost:8000/api/v1/admin/payment-methods/', this.payment, {
+        .post('http://localhost/'+'api/v1/admin/payment-methods/', this.payment, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

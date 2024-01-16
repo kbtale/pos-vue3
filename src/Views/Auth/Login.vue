@@ -70,7 +70,7 @@ export default {
         },
         login() {
             this.$axios
-            .post('http://localhost:8000/api/v1/auth/login', this.user)
+            .post('http://localhost/'+'api/v1/auth/login', this.user)
             .then((response) => {
               console.log(JSON.stringify(response.data));
               this.$store.dispatch('app/login', response.data);
@@ -100,12 +100,15 @@ export default {
             });
         },
         getSettings(){
-          this.axios.get('http://localhost:8000/api/v1/admin/settings/all', {
+          this.axios.get('http://localhost/'+'api/v1/admin/settings/all', {
             headers: {
-            Authorization: `Bearer ${localStorage.getItem('token')}`
+            Authorization: `Bearer ${localStorage.getItem('token')}`,
+            'ngrok-skip-browser-warning': '69420'
             }
           })
             .then((response) => {
+              console.log(response.data)
+              /*
               let settings = response.data
               settings.orderTypes = [
                 { key: 'all', title: 'All' },
@@ -114,6 +117,7 @@ export default {
                 { key: 'delivery', title: 'Delivery' },
               ];
               this.$store.dispatch('app/setSettings', settings);
+              */
             })
         }
     },

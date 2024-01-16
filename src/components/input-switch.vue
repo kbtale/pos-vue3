@@ -10,7 +10,7 @@
       @click="check"
     >
       <div
-        :class="input ? (isRTL ? '-translate-x-5' : 'translate-x-5') : 'translate-x-0'"
+        :class="input ? 'translate-x-5' : 'translate-x-0'"
         aria-hidden="true"
         class="inline-block h-5 w-5 rounded-full bg-white shadow transform transition ease-in-out duration-200"
       ></div>
@@ -21,11 +21,14 @@
     </div>
   </div>
 </template>
+
 <script>
+import { ref } from 'vue';
+
 export default {
   name: 'input-switch',
   props: {
-    value: {
+    modelValue: {
       required: false,
     },
     id: {
@@ -46,25 +49,20 @@ export default {
     },
   },
 
-  computed: {
-    isRTL() {
-      return this.$store.getters['app/getSettings'].app_direction == 'rtl' ? true : false;
-    },
-    input: {
-      get() {
-        return this.value;
-      },
-      set(value) {
-        this.$emit('input', value);
-      },
-    },
-  },
-  methods: {
-    check() {
-      if (!this.readonly) {
-        this.input = !this.input;
+  setup(props, { emit }) {
+    const input = ref(props.modelValue);
+
+    const check = () => {
+      if (!props.readonly) {
+        input.value = !input.value;
+        emit('update:modelValue', input.value);
       }
-    },
+    };
+
+    return {
+      input,
+      check,
+    };
   },
 };
 </script>

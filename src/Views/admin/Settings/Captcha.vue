@@ -59,12 +59,16 @@
   </main>
 </template>
 <script>
+import InputSwitch from '../../../components/input-switch.vue'
 export default {
   name: 'captcha',
   metaInfo() {
     return {
       title: this.$t('Captcha settings'),
     };
+  },
+  components: {
+    'input-switch': InputSwitch,
   },
   data() {
     return {
@@ -82,7 +86,7 @@ export default {
   methods: {
     get() {
       this.$axios
-        .get('http://localhost:8000/api/v1/admin/settings/captcha/', {
+        .get('http://localhost/'+'api/v1/admin/settings/captcha/', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -98,7 +102,7 @@ export default {
     save() {
       this.loading = true;
       this.$axios
-        .post('http://localhost:8000/api/v1/admin/settings/captcha/', this.captcha, {
+        .post('http://localhost/'+'api/v1/admin/settings/captcha/', this.captcha, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

@@ -107,8 +107,12 @@
   </main>
 </template>
 <script>
+import InputSwitch from '../../../components/input-switch.vue'
 export default {
   name: 'general',
+  components: {
+    'input-switch': InputSwitch,
+  },
   data() {
     return {
       loading: {
@@ -137,7 +141,7 @@ export default {
       this.loading.optimize = true;
       this.system.output = null;
       this.$axios
-        .post('http://localhost:8000/api/v1/admin/settings/optimize/', this.system, {
+        .post('http://localhost/'+'api/v1/admin/settings/optimize/', this.system, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -155,7 +159,7 @@ export default {
     },
     get() {
       this.$axios
-        .get('http://localhost:8000/api/v1/admin/settings/general/', {
+        .get('http://localhost/'+'api/v1/admin/settings/general/', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -171,7 +175,7 @@ export default {
     save() {
       this.loading.general = true;
       this.$axios
-        .post('http://localhost:8000/api/v1/admin/settings/general/', this.form, {
+        .post('http://localhost/'+'api/v1/admin/settings/general/', this.form, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

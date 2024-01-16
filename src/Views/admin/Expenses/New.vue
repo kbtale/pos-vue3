@@ -99,7 +99,7 @@ export default {
   methods: {
     getExpenseTypes() {
       this.loading = true;
-      this.$axios.get('http://localhost:8000/api/v1/admin/expense-types-list/', {
+      this.$axios.get('http://localhost/'+'api/v1/admin/expense-types-list/', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -111,7 +111,7 @@ export default {
     saveExpense() {
       this.loading = true;
       this.$axios
-        .post('http://localhost:8000/api/v1/admin/expenses/', this.expense, {
+        .post('http://localhost/'+'api/v1/admin/expenses/', this.expense, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

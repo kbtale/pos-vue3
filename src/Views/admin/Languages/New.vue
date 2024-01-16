@@ -86,7 +86,7 @@ export default {
     saveLanguage() {
       this.loading = true;
       this.$axios
-        .post('http://localhost:8000/api/v1/admin/languages/', this.language, {
+        .post('http://localhost/'+'api/v1/admin/languages/', this.language, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

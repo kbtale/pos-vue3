@@ -90,7 +90,7 @@ export default {
         formData.append('image', this.image.file);
       }
       this.$axios
-        .post('http://localhost:8000/api/v1/admin/food-categories/', formData, {
+        .post('http://localhost/'+'api/v1/admin/food-categories/', formData, {
           headers: { 'Content-Type': 'multipart/form-data', Authorization: `Bearer ${localStorage.getItem('token')}` }
         })
         .then((response) => {

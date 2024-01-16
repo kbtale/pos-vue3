@@ -57,16 +57,17 @@ export default {
 		return {
 			loading: false,
 			exportForm: {
-				resource: null,
-				format: null,
+				'resource': null,
+				'format': null,
 			},
 		};
 	},
 	methods: {
 		exportData() {
 			this.loading = true;
+			console.log(this.exportForm)
 			this.$axios
-				.post('http://localhost:8000/api/v1/admin/exports/', { responseType: 'blob' }, this.exportForm, {
+				.post('http://localhost/'+'api/v1/admin/exports/', this.exportForm, {
 				headers: {
 					Authorization: `Bearer ${localStorage.getItem('token')}`
 				}
@@ -83,11 +84,13 @@ export default {
 						format: null,
 					};
 					this.loading = false;
+					/*
 					this.$notify({
 						title: this.$t('Success').toString(),
 						text: this.$t('Data exported successfully').toString(),
 						type: 'success',
 					});
+					*/
 				})
 				.catch(() => {
 					this.loading = false;

@@ -67,7 +67,7 @@ export default {
   methods: {
     get() {
       this.$axios
-        .get('http://localhost:8000/api/v1/admin/settings/appearance/', {
+        .get('http://localhost/'+'api/v1/admin/settings/appearance/', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -91,7 +91,7 @@ export default {
         formData.append('background', this.app_background.file);
       }
       this.$axios
-        .post('http://localhost:8000/api/v1/admin/settings/appearance/', formData, {
+        .post('http://localhost/'+'api/v1/admin/settings/appearance/', formData, {
           headers: { 'Content-Type': 'multipart/form-data', Authorization: `Bearer ${localStorage.getItem('token')}` },
         })
         .then((response) => {

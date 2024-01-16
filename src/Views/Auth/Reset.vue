@@ -80,7 +80,7 @@ export default {
     reset() {
       this.loading = true;
       this.$axios
-        .post('http://localhost:8000/api/v1/auth/reset', this.user)
+        .post('http://localhost/'+'api/v1/auth/reset', this.user)
         .then((response) => {
           this.$store.commit('login', response.data);
           this.$notify({

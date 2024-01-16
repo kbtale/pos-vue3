@@ -58,7 +58,9 @@ const Filters = {
     },
 }
 
+app.config.globalProperties.$back = 'http://localhost/'
 app.config.globalProperties.$axios = axios
 app.component('svg-vue', SvgVue)
-app.use(VueClickAway).use(VueAxios, axios).use(Filters).use(LoadingPlugin)
+app.use(VueClickAway)
+app.use(VueAxios, axios).use(Filters).use(LoadingPlugin)
 app.use(router).use(i18n).use(store).use(Vueform, vueformConfig).mount('#app')

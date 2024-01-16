@@ -80,12 +80,16 @@
   </main>
 </template>
 <script>
+import InputSwitch from '../../../components/input-switch.vue'
 export default {
   name: 'tax',
   metaInfo() {
     return {
       title: this.$t('Tax'),
     };
+  },
+  components: {
+    'input-switch': InputSwitch,
   },
   data() {
     return {
@@ -104,7 +108,7 @@ export default {
   methods: {
     get() {
       this.$axios
-        .get('http://localhost:8000/api/v1/admin/settings/tax/', {
+        .get('http://localhost/'+'api/v1/admin/settings/tax/', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -120,7 +124,7 @@ export default {
     save() {
       this.loading = true;
       this.$axios
-        .post('http://localhost:8000/api/v1/admin/settings/tax/', this.tax, {
+        .post('http://localhost/'+'api/v1/admin/settings/tax/', this.tax, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

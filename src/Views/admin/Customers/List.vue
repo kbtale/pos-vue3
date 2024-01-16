@@ -206,7 +206,7 @@ export default {
     getCustomers() {
       this.loading = true;
       this.$axios
-        .get('http://localhost:8000/api/v1/admin/customers', {
+        .get('http://localhost/'+'api/v1/admin/customers', {
           params: {
             page: this.page,
             sort: this.sort,

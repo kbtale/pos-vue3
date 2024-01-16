@@ -109,7 +109,7 @@ export default {
     },
     getSaleOrderList() {
       this.$axios
-        .get('http://localhost:8000/api/v1/admin/sales/', {
+        .get('http://localhost/'+'api/v1/admin/sales/', {
           params: {
             page: this.page,
             sort: this.sort,
@@ -121,6 +121,7 @@ export default {
           }
         })
         .then((response) => {
+          console.log(JSON.stringify(response))
           this.salesList = response.data.items;
           this.pagination = response.data.pagination;
           if (this.pagination.totalPages < this.pagination.currentPage) {

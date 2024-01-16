@@ -789,7 +789,8 @@ export default {
       return this.afterDiscount - this.sale.cart_total_cost;
     },
     taxAmount() {
-      const amount = this.afterDiscount;
+    let amount = this.afterDiscount;
+      /*
       if (this.sale.tax.is_vat) {
         let rating = '1.' + this.sale.tax.tax_rate ?? this.sale.tax.rate;
         if (this.sale.tax.is_tax_included) {
@@ -797,19 +798,26 @@ export default {
         } else {
           return Number(Number(amount * rating) - amount);
         }
-      } else {
+      }*/
         const rate = Number(this.sale.tax.tax_rate ?? this.sale.tax.rate);
         if (this.sale.tax.is_tax_fix) {
           return rate;
         }
         return amount * (rate / 100);
-      }
+      
     },
     totalAmount() {
-      if (this.sale.tax.is_tax_included === 'true') {
+      /*
+      if (this.sale.tax.is_tax_included) {
         return Number(this.afterDiscount);
+        return Number(this.afterDiscount + this.taxAmount);
       }
-      return Number(this.afterDiscount + this.taxAmount);
+      */
+      if (this.afterDiscount == undefined) {
+        return Number(this.afterDiscount);
+      } else {
+        return Number(this.cartTotalPrice);
+      }
     },
     balenceAmount() {
       return this.sale.recipient_amount - this.totalAmount;
@@ -855,7 +863,7 @@ export default {
       this.loading = true;
       this.models.deleteModel = false;
       this.$axios
-        .delete('http://localhost:8000/api/v1/admin/sales/'+this.sale.uuid, {
+        .delete('http://localhost/'+'api/v1/admin/sales/'+this.sale.uuid, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -886,7 +894,7 @@ export default {
     storeCustomer() {
       this.loading = true;
       this.$axios
-        .post('http://localhost:8000/api/v1/admin/customers/', this.currentCustomer,
+        .post('http://localhost/'+'api/v1/admin/customers/', this.currentCustomer,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -931,7 +939,7 @@ export default {
       this.models.paymentModel = false;
       console.log(this.sale)
       this.$axios
-        .post('http://localhost:8000/api/v1/pos/checkout/'+this.sale.uuid, this.sale,
+        .post('http://localhost/'+'api/v1/pos/checkout/'+this.sale.uuid, this.sale,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -956,7 +964,7 @@ export default {
     getCustomers() {
       this.loading = true;
       this.$axios
-        .get('http://localhost:8000/api/v1/pos/customers/',
+        .get('http://localhost/'+'api/v1/pos/customers/',
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -973,7 +981,7 @@ export default {
     },
     getCreditSales(){
       this.$axios
-        .get('http://localhost:8000/api/v1/pos/get-pending-credit/' + this.currentCustomer.id,
+        .get('http://localhost/'+'api/v1/pos/get-pending-credit/' + this.currentCustomer.id,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -993,7 +1001,7 @@ export default {
       console.log(this.currentCustomer)
       if (this.currentCustomer.partner == 1){
         this.$axios
-          .get('http://localhost:8000/api/v1/pos/get-credit-status/',
+          .get('http://localhost/'+'api/v1/pos/get-credit-status/',
           {
             params: 
               this.currentCustomer,
@@ -1108,7 +1116,7 @@ export default {
     },
     getServiceTables() {
       this.loading = true;
-      this.$axios.get('http://localhost:8000/api/v1/pos/avl-service-tables/',
+      this.$axios.get('http://localhost/'+'api/v1/pos/avl-service-tables/',
       {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -1120,7 +1128,7 @@ export default {
     },
     getPaymentMethods() {
       this.loading = true;
-      this.$axios.get('http://localhost:8000/api/v1/pos/payment-methods/',
+      this.$axios.get('http://localhost/'+'api/v1/pos/payment-methods/',
       {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -1132,7 +1140,7 @@ export default {
     },
     getCategories() {
       this.loading = true;
-      this.$axios.get('http://localhost:8000/api/v1/pos/categories/',
+      this.$axios.get('http://localhost/'+'api/v1/pos/categories/',
       {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -1144,7 +1152,7 @@ export default {
     },
     getAllSubmittedOrders() {
       this.loading = true;
-      this.$axios.get('http://localhost:8000/api/v1/pos/submitted-orders/',
+      this.$axios.get('http://localhost/'+'api/v1/pos/submitted-orders/',
       {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -1158,7 +1166,7 @@ export default {
     getAlreadysubmittedOrder(order) {
       this.loading = true;
       this.models.ordersModel = false;
-      this.$axios.post('http://localhost:8000/api/v1/pos/submitted-sale/', { uuid: order.uuid },
+      this.$axios.post('http://localhost/'+'api/v1/pos/submitted-sale/', { uuid: order.uuid },
       {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -1210,7 +1218,7 @@ export default {
     updateSale() {
       this.sale.customer_id = this.currentCustomer.id ?? null;
       this.$axios
-        .patch('http://localhost:8000/api/v1/admin/sales/'+this.sale.uuid, this.sale,
+        .patch('http://localhost/'+'api/v1/admin/sales/'+this.sale.uuid, this.sale,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -1232,7 +1240,7 @@ export default {
     },
     storeSale() {
       this.$axios
-        .post('http://localhost:8000/api/v1/admin/sales/', this.sale,
+        .post('http://localhost/'+'api/v1/admin/sales/', this.sale,
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -1266,7 +1274,7 @@ export default {
       };
       console.log("Filters: " + this.filters)
       this.$axios
-        .get('http://localhost:8000/api/v1/pos/products/', {
+        .get('http://localhost/'+'api/v1/pos/products/', {
         headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -1302,7 +1310,7 @@ export default {
     storeSignature() {
       let formData = new FormData();
       formData.append('signature', this.signature);
-      this.axios.post('http://localhost:8000/api/v1/files/store-signature/', formData, {
+      this.axios.post('http://localhost/'+'api/v1/files/store-signature/', formData, {
         headers: { 'Content-Type': 'multipart/form-data', Authorization: `Bearer ${localStorage.getItem('token')}` }
       })
         .then(response => {

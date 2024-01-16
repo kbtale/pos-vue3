@@ -138,7 +138,7 @@ export default {
     getFoodCategories() {
       this.loading = true;
       this.$axios
-        .get('http://localhost:8000/api/v1/admin/food-items/', {
+        .get('http://localhost/'+'api/v1/admin/food-items/', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -157,7 +157,7 @@ export default {
     getProduct() {
       this.loading = true;
       this.$axios
-        .get('http://localhost:8000/api/v1/admin/food-items/'+this.$route.params.uuid, {
+        .get('http://localhost/'+'api/v1/admin/food-items/'+this.$route.params.uuid, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -174,7 +174,7 @@ export default {
     },
     deleteProduct() {
       this.$axios
-        .delete('http://localhost:8000/api/v1/admin/food-items/'+this.$route.params.uuid, {
+        .delete('http://localhost/'+'api/v1/admin/food-items/'+this.$route.params.uuid, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -205,7 +205,7 @@ export default {
         formData.append('image', this.image.file);
       }
       this.$axios
-        .post('http://localhost:8000/api/v1/admin/food-items/'+this.$route.params.uuid, formData, {
+        .post('http://localhost/'+'api/v1/admin/food-items/'+this.$route.params.uuid, formData, {
           headers: { 'Content-Type': 'multipart/form-data', Authorization: `Bearer ${localStorage.getItem('token')}` },
         })
         .then((response) => {

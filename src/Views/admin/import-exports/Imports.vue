@@ -119,7 +119,7 @@ export default {
 			formData.append('file', this.file);
 			formData.append('resource', this.resource);
 			this.$axios
-				.post('http://localhost:8000/api/v1/admin/imports/', formData, {
+				.post('http://localhost/'+'api/v1/admin/imports/', formData, {
 					headers: { 'Content-Type': 'multipart/form-data', Authorization: `Bearer ${localStorage.getItem('token')}` },
 				})
 				.then((response) => {

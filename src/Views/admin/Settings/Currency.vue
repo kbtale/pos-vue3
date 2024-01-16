@@ -52,12 +52,16 @@
   </main>
 </template>
 <script>
+import InputSwitch from '../../../components/input-switch.vue'
 export default {
   name: 'currency',
    metaInfo() {
     return {
       title: this.$t('currency'),
     };
+  },
+  components: {
+    'input-switch': InputSwitch,
   },
   data() {
     return {
@@ -74,7 +78,7 @@ export default {
   methods: {
     get() {
       this.$axios
-        .get('http://localhost:8000/api/v1/admin/settings/currency/', {
+        .get('http://localhost/'+'api/v1/admin/settings/currency/', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -90,7 +94,7 @@ export default {
     save() {
       this.loading = true;
       this.$axios
-        .post('http://localhost:8000/api/v1/admin/settings/currency/', this.currency, {
+        .post('http://localhost/'+'api/v1/admin/settings/currency/', this.currency, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

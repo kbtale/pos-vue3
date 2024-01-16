@@ -1,7 +1,7 @@
 <template>
   <div>
     <!--<loading :active="loading" />-->
-    <div v-if="!loading">
+    <div v-if="!loading" id="SaleToPrint">
       <div class="space-x-2 flex justify-between">
         <h2 class="w-full font-bold tracking-wider uppercase">
           <strong class="text-2xl">{{ app.name }}</strong>
@@ -24,7 +24,7 @@
       <div class="flex items-center mb-2">
         <label class="min-w-32 block font-bold uppercase">{{ $t('Type') }}</label>
         <span class="mr-4 inline-block">:</span>
-        {{ order.order_type | uppercase }}
+        {{ order.order_type }}
       </div>
       <template v-if="order.customer">
         <div class="flex items-center">
@@ -113,15 +113,16 @@
           </div>
         </div>
         <div class="pt-2">
-          <div class="flex justify-between">
+          <div class="flex flex-col items-center justify-center">
             <div class="font-bold flex-1">
               {{ $t('Signature') }}
             </div>
-            <div class="font-sm">------------------------------</div>
+            <img :src="order.signature">
+            <div class="font-sm">-------------------------------------------------</div>
           </div>
         </div>
         <div class="flex place-content-center barder">
-          <barcode width="1" :value="order.tracking" class="self-center" height="15" />
+          <!--<barcode width="1" :value="order.tracking" class="self-center" height="15" />-->
         </div>
       </template>
       <template v-else>
@@ -168,13 +169,16 @@ export default {
   },
   mounted() {
     this.getSaleOrder();
+    setTimeout(() => {
+      this.printDiv("SaleToPrint");
+      window.close();
+    },1000)
   },
-
   methods: {
     getSaleOrder() {
       this.loading = true;
       this.$axios
-        .get('http://localhost:8000/api/v1/pos/sale/'+this.$route.params.uuid, {
+        .get('http://localhost/'+'api/v1/pos/sale/'+this.$route.params.uuid, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -187,6 +191,20 @@ export default {
           this.loading = false;
         });
     },
+    printDiv(divName) {
+      var printContent = document.getElementById(divName).innerHTML;
+      var originalContent = document.body.innerHTML;
+      document.body.innerHTML = printContent;
+      
+      window.print();
+      document.body.innerHTML = originalContent;
+    },
   },
 };
 </script>
+<style scoped>
+img {
+  height: 120px;
+  width: auto;
+}
+</style>

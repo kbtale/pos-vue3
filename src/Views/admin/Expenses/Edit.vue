@@ -112,7 +112,7 @@ export default {
   methods: {
     getExpenseTypes() {
       this.loading = true;
-      this.$axios.get('http://localhost:8000/api/v1/admin/expense-types-list',
+      this.$axios.get('http://localhost/'+'api/v1/admin/expense-types-list',
       {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -125,7 +125,7 @@ export default {
     updateExpense() {
       this.loading = true;
       this.$axios
-        .put('http://localhost:8000/api/v1/admin/expenses/'+this.$route.params.uuid, this.expense, {
+        .put('http://localhost/'+'api/v1/admin/expenses/'+this.$route.params.uuid, this.expense, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -145,7 +145,7 @@ export default {
     getExpense() {
       this.loading = true;
       this.$axios
-        .get('http://localhost:8000/api/v1/admin/expenses/'+this.$route.params.uuid, {
+        .get('http://localhost/'+'api/v1/admin/expenses/'+this.$route.params.uuid, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -160,7 +160,7 @@ export default {
     },
     deleteExpense() {
       this.$axios
-        .delete('http://localhost:8000/api/v1/admin/expenses/'+this.$route.params.uuid, {
+        .delete('http://localhost/'+'api/v1/admin/expenses/'+this.$route.params.uuid, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

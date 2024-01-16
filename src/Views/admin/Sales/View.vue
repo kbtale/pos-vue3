@@ -13,16 +13,22 @@
           <router-link class="btn btn-app rounded-none" :to="`/pos/${sale.uuid}`">
             {{ $t('Edit') }}
           </router-link>
-          <router-link class="btn btn-app rounded-none" :to="`/print/sale/${sale.uuid}`">
+          
+          <router-link class="btn btn-app rounded-none" :to="`/print/sale/${sale.uuid}`" target="_blank">
             {{ $t('Print') }}
           </router-link>
+          <!--
+          <button class="btn btn-app rounded-none" v-print="'#SaleToPrint'">
+            {{ $t('Print') }}
+          </button>
+          -->
           <router-link class="btn btn-red mx-1" to="/admin/sales">
             {{ $t('Back') }}
           </router-link>
         </div>
       </div>
     </div>
-    <div class="my-6 max-w-1/6 mx-auto px-4 sm:px-6 lg:px-8">
+    <div id="SaleToPrint" class="my-6 max-w-1/6 mx-auto px-4 sm:px-6 lg:px-8">
       <div class="grid grid-cols-10 gap-2">
 
         <div class="content-card-body col-span-10 md:col-span-5 bg-white shadow p-2 sm:p-6">
@@ -186,6 +192,7 @@
 <script>
 //import VueBarcode from 'vue-barcode';
 import confirmationModel from '../../../layouts/admin/confirmation.vue';
+import print from 'vue3-print-nb'
 
 export default {
   metaInfo() {
@@ -196,6 +203,9 @@ export default {
   components: {
     //barcode: VueBarcode,
     SaleDeleteModel: confirmationModel,
+  },
+  directives: {
+    print
   },
   computed: {
     created_at() {
@@ -246,7 +256,7 @@ export default {
   methods: {
     deleteSale() {
       this.$axios
-        .delete('http://localhost:8000/api/v1/admin/sales/'+this.$route.params.uuid, {
+        .delete('http://localhost/'+'api/v1/admin/sales/'+this.$route.params.uuid, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -267,7 +277,7 @@ export default {
       this.loading = true;
       console.log(this.$route)
       this.$axios
-        .get('http://localhost:8000/api/v1/admin/sales/'+this.$route.params.uuid, {
+        .get('http://localhost/'+'api/v1/admin/sales/'+this.$route.params.uuid, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

@@ -124,12 +124,7 @@ export default {
 		getFoodIngredients() {
 			this.loading = true;
 			this.$axios
-				.get('http://localhost:8000/api/v1/admin/food-ingredients',
-				{
-					headers: {
-						Authorization: `Bearer ${localStorage.getItem('token')}`
-					}
-				})
+			'http://localhost/'
 				.then((response) => {
 					this.ingredients = response.data;
 					this.loading = false;

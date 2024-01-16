@@ -1,5 +1,5 @@
 <template>
-  <main class="flex-1 relative overflow-y-auto focus:outline-none" tabindex="0">
+  <main id="ReportToPrint" class="flex-1 relative overflow-y-auto focus:outline-none" tabindex="0">
     <div id="repairContainer">
       <div class="my-6 max-w-1/6 mx-auto px-4 sm:px-6 lg:px-8">
         <div class="md:flex md:items-center md:justify-between">
@@ -11,7 +11,7 @@
           </div>
           <p v-if="generatedAt && report.list.length">{{ $t('Report created at ') }}: {{ generatedAt }}</p>
           <div class="flex md:mt-0 md:ml-4">
-            <button @click="printReport" class="btn btn-secondary">
+            <button @click.prevent="printReport('ReportToPrint')" class="btn btn-secondary">
               <svg-vue class="h-5 w-5" :icon="['fas', 'print']"></svg-vue>
             </button>
           </div>
@@ -19,7 +19,7 @@
       </div>
       <div class="my-6 max-w-1/6 mx-auto px-4 sm:px-6 md:px-8">
         <div>
-          <div class="content-card-body p-4 mb-2">
+          <div v-if="printing == false" class="content-card-body p-4 mb-2">
             <div class="md:flex w-full">
               <div class="w-full">
                 <label class="form-label" for="order_type">{{ $t('By Order Type') }}</label>
@@ -303,6 +303,7 @@ export default {
   },
   data() {
     return {
+      printing: false,
       loading: false,
       generatedAt: null,
       takerList: [],
@@ -354,19 +355,26 @@ export default {
       const dateTime = date + ' ' + time;
       this.generatedAt = dateTime;
     },
-    async printReport() {
-      this.loading = true;
-      await this.$htmlToPaper('repairContainer');
-      setTimeout(() => {
-        this.loading = false;
-      }, 1000);
+    async printReport(divName) {
+      setTimeout(()=>{
+        this.printDiv(divName)
+      },300)
+    },
+    printDiv(divName) {
+      var printContent = document.getElementById(divName).innerHTML;
+      var originalContent = document.body.innerHTML;
+      document.body.innerHTML = printContent;
+      
+      window.print();
+      document.body.innerHTML = originalContent;
+      console.log(this.printing)
     },
     letsUpdateReport() {
       console.log('generating report...')
       this.generateReport();
     },
     getFilters() {
-      this.$axios.get('http://localhost:8000/api/v1/admin/sale-filters/', {
+      this.$axios.get('http://localhost/'+'api/v1/admin/sale-filters/', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -380,7 +388,7 @@ export default {
     generateReport() {
       this.loading = true;
       this.$axios
-        .get('http://localhost:8000/api/v1/admin/sale-report/', {
+        .get('http://localhost/'+'api/v1/admin/sale-report/', {
           params: this.filters,
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`

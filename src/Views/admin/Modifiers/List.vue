@@ -217,7 +217,7 @@ export default {
       this.loading = true;
       this.modifierDeleteModel = false;
       this.$axios
-        .delete('http://localhost:8000/api/v1/admin/modifiers-rows-destroy/', { rows: this.selectedRows }, {
+        .delete('http://localhost/'+'api/v1/admin/modifiers-rows-destroy/', { rows: this.selectedRows }, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -254,7 +254,7 @@ export default {
     getFoodModifiers() {
       this.loading = true;
       this.$axios
-        .get('http://localhost:8000/api/v1/admin/modifiers/', {
+        .get('http://localhost/'+'api/v1/admin/modifiers/', {
           params: {
             page: this.page,
             sort: this.sort,

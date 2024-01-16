@@ -217,7 +217,7 @@ export default {
       this.loading = true;
       this.expenseDeleteModel = false;
       this.$axios
-        .delete('http://localhost:8000/api/v1/admin/expense-rows-destroy/', this.selectedRows, {
+        .delete('http://localhost/'+'api/v1/admin/expense-rows-destroy/', this.selectedRows, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -254,7 +254,7 @@ export default {
     getExpeses() {
       this.loading = true;
       this.$axios
-        .get('http://localhost:8000/api/v1/admin/expenses/', {
+        .get('http://localhost/'+'api/v1/admin/expenses/', {
           params: {
             page: this.page,
             sort: this.sort,

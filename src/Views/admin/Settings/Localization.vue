@@ -107,7 +107,7 @@ export default {
   },
   methods: {
     getLanguages() {
-      this.$axios.get('http://localhost:8000/api/v1/admin/settings/languages/', {
+      this.$axios.get('http://localhost/'+'api/v1/admin/settings/languages/', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -117,7 +117,7 @@ export default {
     },
     get() {
       this.$axios
-        .get('http://localhost:8000/api/v1/admin/settings/localization/', {
+        .get('http://localhost/'+'api/v1/admin/settings/localization/', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -133,7 +133,7 @@ export default {
     save() {
       this.loading = true;
       this.$axios
-        .post('http://localhost:8000/api/v1/admin/settings/localization/', this.form, {
+        .post('http://localhost/'+'api/v1/admin/settings/localization/', this.form, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

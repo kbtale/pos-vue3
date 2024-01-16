@@ -42,7 +42,7 @@ export default {
 			this.loading = true;
 			this.show = false;
 			this.$axios
-				.post('http://localhost:8000/api/v1/lang/set-language', currentLocale,
+				.post('http://localhost/'+'api/v1/lang/set-language', currentLocale,
 				{
 					headers: {
 						Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -57,7 +57,7 @@ export default {
 		},
 		loadAll() {
 			this.loading = true;
-			this.$axios.get('http://localhost:8000/api/v1/admin/settings/languages',
+			this.$axios.get('http://localhost/'+'api/v1/admin/settings/languages',
 			{
 				headers: {
 					Authorization: `Bearer ${localStorage.getItem('token')}`
