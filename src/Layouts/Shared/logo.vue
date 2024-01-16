@@ -21,6 +21,10 @@ export default {
       required: false,
     },
   },
+  mounted() {
+    console.log(this.name);
+    console.log(this.logo);
+  },
   computed: {
     name() {
       return this.$store.getters['app/getAppName'];

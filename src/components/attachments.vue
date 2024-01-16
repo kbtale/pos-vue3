@@ -109,7 +109,7 @@ export default {
             self.loading = true;
             formData.append('file', e.target.files[0]);
             this.$axios
-                .post('http://localhost/'+'api/v1/file/upload-attachment', formData, {
+                .post('http://localhost:8000/'+'api/v1/file/upload-attachment', formData, {
                     headers: { 'Content-Type': 'multipart/form-data', Authorization: `Bearer ${localStorage.getItem('token')}`},
                     onUploadProgress: function (progressEvent) {
                         self.uploadingFileProgress = Math.round((progressEvent.loaded / progressEvent.total) * 100);

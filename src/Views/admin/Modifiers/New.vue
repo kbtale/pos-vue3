@@ -99,7 +99,7 @@ export default {
       this.loading = true;
       console.log(JSON.stringify(this.modifier));
       this.$axios
-        .post('http://localhost/'+'api/v1/admin/modifiers/', this.modifier, {
+        .post('http://localhost:8000/'+'api/v1/admin/modifiers/', this.modifier, {
           headers: {
             'Content-Type': 'multipart/form-data',
             Authorization: `Bearer ${localStorage.getItem('token')}`

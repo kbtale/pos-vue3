@@ -135,7 +135,7 @@ export default {
     saveUser() {
       this.loading = true;
       this.$axios
-        .post('http://localhost/'+'api/v1/admin/users/', this.user, {
+        .post('http://localhost:8000/'+'api/v1/admin/users/', this.user, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -156,7 +156,7 @@ export default {
     getUserRoles() {
       this.loading = true;
       this.$axios
-        .get('http://localhost/'+'api/v1/admin/users/user-roles', {
+        .get('http://localhost:8000/'+'api/v1/admin/users/user-roles', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

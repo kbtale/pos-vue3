@@ -119,7 +119,7 @@ export default {
     updateLanguage() {
       this.loading = true;
       this.$axios
-        .put('http://localhost/'+'api/v1/admin/languages/'+this.$route.params.id, {
+        .put('http://localhost:8000/'+'api/v1/admin/languages/'+this.$route.params.id, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -128,7 +128,7 @@ export default {
         })
         .then((response) => {
           if (this.language.locale === this.defaultLocale) {
-            this.$axios.get('http://localhost/'+'api/v1/admin/languages/'+this.$i18n.locale, {
+            this.$axios.get('http://localhost:8000/'+'api/v1/admin/languages/'+this.$i18n.locale, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -150,7 +150,7 @@ export default {
     getLanguage() {
       this.loading = true;
       this.$axios
-        .get('http://localhost/'+'api/v1/admin/languages/'+this.$route.params.id, {
+        .get('http://localhost:8000/'+'api/v1/admin/languages/'+this.$route.params.id, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -167,7 +167,7 @@ export default {
     },
     deleteLanguage() {
       this.$axios
-        .delete('http://localhost/'+'api/v1/admin/languages/'+this.$route.params.id, {
+        .delete('http://localhost:8000/'+'api/v1/admin/languages/'+this.$route.params.id, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

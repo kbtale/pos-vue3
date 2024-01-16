@@ -109,7 +109,7 @@ export default {
     },
     getSaleOrderList() {
       this.$axios
-        .get('http://localhost/'+'api/v1/admin/sales/', {
+        .get('http://localhost:8000/'+'api/v1/admin/sales/', {
           params: {
             page: this.page,
             sort: this.sort,

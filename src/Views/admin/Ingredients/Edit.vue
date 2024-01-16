@@ -115,7 +115,7 @@ export default {
     updateIngredient() {
       this.loading = true;
       this.$axios
-        .patch('http://localhost/'+'api/v1/admin/ingredients/'+this.$route.params.id, this.ingredient, {
+        .patch('http://localhost:8000/'+'api/v1/admin/ingredients/'+this.$route.params.id, this.ingredient, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -135,7 +135,7 @@ export default {
     getIngredient() {
       this.loading = true;
       this.$axios
-        .get('http://localhost/'+'api/v1/admin/ingredients/'+this.$route.params.id, {
+        .get('http://localhost:8000/'+'api/v1/admin/ingredients/'+this.$route.params.id, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -150,7 +150,7 @@ export default {
     },
     deleteIngredient() {
       this.$axios
-        .delete('http://localhost/'+'api/v1/admin/ingredients/'+this.$route.params.id, {
+        .delete('http://localhost:8000/'+'api/v1/admin/ingredients/'+this.$route.params.id, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

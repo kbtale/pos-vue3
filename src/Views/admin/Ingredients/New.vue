@@ -99,7 +99,7 @@ export default {
     saveIngredient() {
       this.loading = true;
       this.$axios
-        .post('http://localhost/'+'api/v1/admin/ingredients/', this.ingredient, {
+        .post('http://localhost:8000/'+'api/v1/admin/ingredients/', this.ingredient, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

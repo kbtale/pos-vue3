@@ -489,7 +489,7 @@ const authGuard = (to, from, next) => {
       console.log(localStorage.getItem('token'))
       console.log("Checking token...")
       axios
-        .post('http://localhost/'+'api/v1/auth/check',
+        .post('http://localhost:8000/'+'api/v1/auth/check',
         { gate: to.meta.gate },
         {
           headers: {
@@ -539,7 +539,7 @@ router.beforeResolve((to, from, next) => {
       localStorage.getItem('token')
     ) {
       axios
-        .post('http://localhost/'+'api/v1/auth/check', { gate: to.meta.gate })
+        .post('http://localhost:8000/'+'api/v1/auth/check', { gate: to.meta.gate })
         .then((response) => {
           if (!response.data.authorized) {
             Cookies.set('intended_url', to.path);

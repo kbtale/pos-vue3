@@ -58,7 +58,7 @@ const Filters = {
     },
 }
 
-app.config.globalProperties.$back = 'http://localhost/'
+app.config.globalProperties.$back = 'http://localhost:8000/'
 app.config.globalProperties.$axios = axios
 app.component('svg-vue', SvgVue)
 app.use(VueClickAway)

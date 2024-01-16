@@ -179,7 +179,7 @@ export default {
       order.progress = this.getProgress(order.items);
       this.loading = true;
       this.$axios
-        .post('http://localhost/'+'api/v1/pos/order-progress/'+order.uuid, order, {
+        .post('http://localhost:8000/'+'api/v1/pos/order-progress/'+order.uuid, order, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -200,7 +200,7 @@ export default {
     },
     autoSycro() {
       this.$axios
-        .get('http://localhost/'+'api/v1/pos/kitchen-orders/', {
+        .get('http://localhost:8000/'+'api/v1/pos/kitchen-orders/', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

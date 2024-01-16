@@ -111,7 +111,7 @@ export default {
     },
     deleteModifier() {
       this.$axios
-        .delete('http://localhost/'+'api/v1/admin/modifiers/'+this.$route.params.id, {
+        .delete('http://localhost:8000/'+'api/v1/admin/modifiers/'+this.$route.params.id, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -131,7 +131,7 @@ export default {
     updateModifier() {
       this.loading = true;
       this.$axios
-        .put('http://localhost/'+'api/v1/admin/modifiers/'+this.$route.params.id, this.modifier, {
+        .put('http://localhost:8000/'+'api/v1/admin/modifiers/'+this.$route.params.id, this.modifier, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -152,7 +152,7 @@ export default {
     getFoodModifier() {
       this.loading = true;
       this.$axios
-        .get('http://localhost/'+'api/v1/admin/modifiers/'+this.$route.params.id, {
+        .get('http://localhost:8000/'+'api/v1/admin/modifiers/'+this.$route.params.id, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

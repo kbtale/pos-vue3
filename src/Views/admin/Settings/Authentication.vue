@@ -80,7 +80,7 @@ export default {
   },
   methods: {
     getUserRoles() {
-      this.$axios.get('http://localhost/'+'api/v1/admin/settings/user-roles/', {
+      this.$axios.get('http://localhost:8000/'+'api/v1/admin/settings/user-roles/', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -90,7 +90,7 @@ export default {
     },
     get() {
       this.$axios
-        .get('http://localhost/'+'api/v1/admin/settings/authentication/', {
+        .get('http://localhost:8000/'+'api/v1/admin/settings/authentication/', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -106,7 +106,7 @@ export default {
     save() {
       this.loading = true;
       this.$axios
-        .post('http://localhost/'+'api/v1/admin/settings/authentication/', this.form, {
+        .post('http://localhost:8000/'+'api/v1/admin/settings/authentication/', this.form, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

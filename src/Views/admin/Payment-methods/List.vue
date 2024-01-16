@@ -82,7 +82,7 @@ export default {
     getPayment() {
       this.loading = true;
       this.$axios
-        .get('http://localhost/'+'api/v1/admin/payment-methods/', {
+        .get('http://localhost:8000/'+'api/v1/admin/payment-methods/', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

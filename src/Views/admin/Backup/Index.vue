@@ -109,7 +109,7 @@ export default {
       this.loading = true;
       this.deleteModel = false;
       this.$axios
-        .post('http://localhost/'+'api/v1/admin/backups/'+this.backupFile+'/remove',
+        .post('http://localhost:8000/'+'api/v1/admin/backups/'+this.backupFile+'/remove',
         {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
@@ -138,7 +138,7 @@ export default {
       this.loading = true;
       this.restoreModel = false;
       this.$axios
-        .patch('http://localhost/'+'api/v1/admin/backups/'+this.backupFile, {
+        .patch('http://localhost:8000/'+'api/v1/admin/backups/'+this.backupFile, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -165,7 +165,7 @@ export default {
       */
       this.loading = true;
       this.$axios
-        .post('http://localhost/'+'api/v1/admin/backups/', {
+        .post('http://localhost:8000/'+'api/v1/admin/backups/', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -187,7 +187,7 @@ export default {
     getBackups() {
       this.loading = true;
       this.$axios
-        .get('http://localhost/'+'api/v1/admin/backups/', {
+        .get('http://localhost:8000/'+'api/v1/admin/backups/', {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

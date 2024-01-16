@@ -86,7 +86,7 @@ export default {
   methods: {
     deletePaymentMethod() {
       this.$axios
-        .delete('http://localhost/'+'api/v1/admin/payment-methods/'+this.$route.params.id, {
+        .delete('http://localhost:8000/'+'api/v1/admin/payment-methods/'+this.$route.params.id, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -106,7 +106,7 @@ export default {
     updatePaymentMethod() {
       this.loading = true;
       this.$axios
-        .put('http://localhost/'+'api/v1/admin/payment-methods/'+this.$route.params.id, this.payment, {
+        .put('http://localhost:8000/'+'api/v1/admin/payment-methods/'+this.$route.params.id, this.payment, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -126,7 +126,7 @@ export default {
     getPaymentMethod() {
       this.loading = true;
       this.$axios
-        .get('http://localhost/'+'api/v1/admin/payment-methods/'+this.$route.params.id, {
+        .get('http://localhost:8000/'+'api/v1/admin/payment-methods/'+this.$route.params.id, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }

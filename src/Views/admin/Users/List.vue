@@ -206,7 +206,7 @@ export default {
     getUsers() {
       this.loading = true;
       this.$axios
-        .get('http://localhost/'+'api/v1/admin/users/', {
+        .get('http://localhost:8000/'+'api/v1/admin/users/', {
           params: {
             page: this.page,
             sort: this.sort,
