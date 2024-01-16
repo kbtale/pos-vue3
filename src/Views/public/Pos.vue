@@ -252,7 +252,7 @@
             <template v-if="partnerStatus != null">
               <span class="text-md flex space-x-1 px-2">
                 <svg-vue class="h-4 w-4 mr-1 items-center" :icon="['fas', 'circle-info']"></svg-vue>
-                 {{ $t(partnerMessage) }} -- {{$t("Limit")}}: {{ currentCustomer.creditLimit }} | {{ $t("Current debt") }}: {{ currentCustomer.partnerCurrentCredit }}
+                 {{ $t(partnerMessage) }} -- {{$t("Limit")}}: {{ currentCustomer.creditLimit }} | {{ $t("Current debt") }}: {{ partnerCurrentCredit }}
               </span>
             </template>
           </div>
@@ -1358,10 +1358,10 @@ export default {
           if (this.pagination.totalPages < this.pagination.currentPage) {
             this.page = this.pagination.totalPages;
             this.getProducts();
-            console.log(JSON.stringify(this.products));
+            //console.log(JSON.stringify(this.products));
           } else {
             this.loading = false;
-            console.log(JSON.stringify(this.products));
+            //console.log(JSON.stringify(this.products));
           }
         })
         .catch(() => {

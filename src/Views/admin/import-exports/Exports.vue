@@ -65,7 +65,7 @@ export default {
 	methods: {
 		exportData() {
 			this.loading = true;
-			console.log(this.exportForm)
+			//console.log(this.exportForm)
 			this.$axios
 				.post('http://192.168.1.186:8000/'+'api/v1/admin/exports/', this.exportForm, {
 				headers: {

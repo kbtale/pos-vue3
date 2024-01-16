@@ -97,7 +97,7 @@ export default {
     },
     saveModifier() {
       this.loading = true;
-      console.log(JSON.stringify(this.modifier));
+      //console.log(JSON.stringify(this.modifier));
       this.$axios
         .post('http://192.168.1.186:8000/'+'api/v1/admin/modifiers/', this.modifier, {
           headers: {
@@ -106,7 +106,7 @@ export default {
           }
         })
         .then((response) => {
-          console.log(response.data)
+          //console.log(response.data)
           this.loading = false;
           /*
           this.$notify({

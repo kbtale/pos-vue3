@@ -277,7 +277,7 @@ export default {
     },
     getSaleOrder() {
       this.loading = true;
-      console.log(this.$route)
+      //console.log(this.$route)
       this.$axios
         .get('http://192.168.1.186:8000/'+'api/v1/admin/sales/'+this.$route.params.uuid, {
           headers: {
@@ -285,7 +285,7 @@ export default {
           }
         })
         .then((response) => {
-          console.log(JSON.stringify(response.data))
+          //console.log(JSON.stringify(response.data))
           this.sale = response.data;
           this.loading = false;
         })

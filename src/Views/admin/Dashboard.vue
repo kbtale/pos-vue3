@@ -78,6 +78,7 @@
           </div>
         </div>
       </div>
+      <!--
       <div class="content-card-body mt-2">
         <div class="grid grid-cols-1 gap-3">
           <div class="flex flex-col bg-white shadow">
@@ -87,12 +88,13 @@
               </div>
             </div>
             <div class="p-2 pt-0">
-              <!--<loading :status="loading.chart"></loading>-->
+              <loading :status="loading.chart"></loading>
               <line-chart :chart-data="chartData"></line-chart>
             </div>
           </div>
         </div>
       </div>
+      -->
     </div>
   </main>
 </template>

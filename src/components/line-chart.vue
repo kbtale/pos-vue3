@@ -1,15 +1,28 @@
 <template>
   <div>
-    <canvas ref="canvas"></canvas>
+    <Line :data="chartData"></Line>
   </div>
 </template>
 
 <script>
 import { ref, watch, onMounted } from 'vue'
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  PointElement,
+  LineElement,
+  Title,
+  Tooltip,
+  Legend
+} from 'chart.js'
 import { Line } from 'vue-chartjs'
 
 export default {
   name: 'ChartComponent',
+  components: {
+    Line
+  },
   props: {
     chartData: {
       type: Object,
@@ -36,7 +49,7 @@ export default {
     })
 
     return {
-      canvas
+      
     }
   }
 }
